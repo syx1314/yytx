@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg_gray"
+    android:orientation="vertical">
+
+    <com.bdlm.yytx.common.view.CommonTitle
+        android:id="@+id/ct_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/login_title" />
+
+    <LinearLayout
+        android:id="@+id/line1"
+        style="@style/style_common_view"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:background="@drawable/shape_circle_white_bg">
+
+        <TextView
+            style="@style/style_common_tv"
+            android:layout_width="wrap_content"
+            android:text="@string/login_phone" />
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/login_phone_hint"
+            android:textSize="@dimen/text_main" />
+
+        <View
+            style="@style/style_vertical_line"
+            android:layout_width="2dp"
+            android:layout_marginBottom="@dimen/drawable_paddind"
+            android:layout_marginTop="@dimen/drawable_paddind"
+            android:background="@color/red" />
+
+        <TextView
+            android:id="@+id/tv_send_code"
+            style="@style/style_common_tv"
+            android:layout_width="wrap_content"
+            android:text="@string/login_code" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/style_common_view"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:background="@drawable/shape_circle_white_bg">
+
+        <TextView
+            style="@style/style_common_tv"
+            android:layout_width="wrap_content"
+            android:text="@string/login_code" />
+
+        <EditText
+            android:id="@+id/et_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_login"
+        style="@style/style_common_view"
+        android:layout_height="@dimen/btn_height"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_circle_red_bg"
+        android:text="@string/login_title"
+        android:textColor="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/paddind_top"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cb_approve"
+            style="@style/style_cb"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="0dp"
+            android:checked="true"
+            android:paddingLeft="@dimen/paddind_top"
+            android:text="同意" />
+
+        <TextView
+            android:id="@+id/tv_protocal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="《亿游天下用户协议》"
+            android:textColor="@color/red" />
+    </LinearLayout>
+
+</LinearLayout>

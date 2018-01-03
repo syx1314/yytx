@@ -1,0 +1,21 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="title_bar">48dp</dimen>
+    <dimen name="text_small_szie">12sp</dimen>
+    <dimen name="paddind_left">10dp</dimen>
+    <dimen name="paddind_rigt">10dp</dimen>
+    <dimen name="paddind_top">8dp</dimen>
+    <dimen name="paddind_bottom">8dp</dimen>
+    <dimen name="line_height">0.5dp</dimen>
+    <dimen name="drawable_paddind">3dp</dimen>
+    <dimen name="btn_height">35dp</dimen>
+
+    <dimen name="title_height">48dp</dimen>
+    <dimen name="title_text_szie">18sp</dimen>
+    <dimen name="text_main">12sp</dimen>
+    <dimen name="text_sub">14sp</dimen>
+    <dimen name="banner_height">120dp</dimen>
+</resources>

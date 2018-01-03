@@ -1,0 +1,25 @@
+<resources>
+
+
+
+
+
+
+    <!--提示框样式-->
+    <!--提示框主体样式-->
+    <style name="AppTheme.AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">    <!-- Used for the buttons -->
+        <item name="android:windowBackground">@color/transparent</item><!--背景透明-->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+
+
+
+    <!-- 大按钮 -->
+    <style name="btn_common_large" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/button_height_medium</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/sp_header</item>
+    </style>
+</resources>

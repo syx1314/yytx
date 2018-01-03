@@ -1,0 +1,40 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 23
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    android {
+        lintOptions {
+            abortOnError false
+        }
+    }
+    buildToolsVersion '26.0.2'
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    compile 'org.xutils:xutils:3.5.0'
+    compile 'com.google.code.gson:gson:2.8.2'
+    //rxjava
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'com.trello:rxlifecycle:0.3.1'
+    compile 'com.trello:rxlifecycle-components:0.3.1'
+    //网络
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+}

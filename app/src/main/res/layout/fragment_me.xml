@@ -1,0 +1,205 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_bg_gray">
+
+            <RelativeLayout
+                android:id="@+id/rl1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/beijing" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/iv_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/touxiang" />
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        style="@style/style_common_tv"
+                        android:layout_marginTop="@dimen/paddind_top"
+                        android:gravity="center"
+                        android:text="鹅鹅鹅鹅鹅鹅"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_small_szie" />
+
+                    <TextView
+                        android:id="@+id/tv_passport_num"
+                        style="@style/style_common_tv"
+                        android:gravity="center"
+                        android:text="护照号：1677543"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_small_szie" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/lin2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl1"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_exchange"
+                    style="@style/style_common_tv"
+                    android:drawableLeft="@mipmap/daijinquan"
+                    android:drawablePadding="@dimen/drawable_paddind"
+                    android:drawableRight="@mipmap/jinru"
+                    android:text="@string/me_exchange" />
+
+                <View
+                    style="@style/style_hortical_line"
+                    android:layout_marginLeft="@dimen/paddind_left" />
+
+                <TextView
+                    android:id="@+id/tv_bind"
+                    style="@style/style_common_tv"
+                    android:drawableLeft="@mipmap/nianka"
+                    android:drawablePadding="@dimen/drawable_paddind"
+                    android:drawableRight="@mipmap/jinru"
+                    android:text="@string/me_bind_card" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/line3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lin2"
+                android:layout_marginTop="@dimen/paddind_left"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_advance_record"
+                    style="@style/style_common_tv"
+                    android:drawableLeft="@mipmap/jilu"
+                    android:drawablePadding="@dimen/drawable_paddind"
+                    android:drawableRight="@mipmap/jinru"
+                    android:text="@string/me_addvance_recored" />
+
+                <View
+                    style="@style/style_hortical_line"
+                    android:layout_marginLeft="@dimen/paddind_left" />
+
+                <TextView
+                    android:id="@+id/tv_recommend"
+                    style="@style/style_common_tv"
+                    android:drawableLeft="@mipmap/haoyou"
+                    android:drawablePadding="@dimen/drawable_paddind"
+                    android:drawableRight="@mipmap/jinru"
+                    android:text="@string/me_recommend_friends" />
+
+                <View
+                    style="@style/style_hortical_line"
+                    android:layout_marginLeft="@dimen/paddind_left" />
+
+                <TextView
+                    android:id="@+id/tv_qrcode"
+                    style="@style/style_common_tv"
+                    android:drawableLeft="@mipmap/erweima"
+                    android:drawablePadding="@dimen/drawable_paddind"
+                    android:drawableRight="@mipmap/jinru"
+                    android:text="@string/me_qrcode" />
+
+                <View
+                    style="@style/style_hortical_line"
+                    android:layout_marginLeft="@dimen/paddind_left" />
+
+                <TextView
+                    android:id="@+id/tv_order"
+                    style="@style/style_common_tv"
+                    android:drawableLeft="@mipmap/dingdan"
+                    android:drawablePadding="@dimen/drawable_paddind"
+                    android:drawableRight="@mipmap/jinru"
+                    android:text="@string/me_order" />
+
+                <View
+                    style="@style/style_hortical_line"
+                    android:layout_marginLeft="@dimen/paddind_left" />
+
+                <TextView
+                    android:id="@+id/tv_about"
+                    style="@style/style_common_tv"
+                    android:drawableLeft="@mipmap/guanyuwomwem"
+                    android:drawablePadding="@dimen/drawable_paddind"
+                    android:drawableRight="@mipmap/jinru"
+                    android:text="@string/me_about_me" />
+
+                <View
+                    style="@style/style_hortical_line"
+                    android:layout_marginLeft="@dimen/paddind_left" />
+
+                <TextView
+                    android:id="@+id/tv_opinion"
+                    style="@style/style_common_tv"
+                    android:drawableLeft="@mipmap/yijianfankui"
+                    android:drawablePadding="@dimen/drawable_paddind"
+                    android:drawableRight="@mipmap/jinru"
+                    android:text="@string/me_opinion" />
+
+                <View
+                    style="@style/style_hortical_line"
+                    android:layout_marginLeft="@dimen/paddind_left" />
+
+                <TextView
+                    android:id="@+id/tv_exit"
+                    style="@style/style_common_tv"
+                    android:drawableLeft="@mipmap/tuichu"
+                    android:drawablePadding="@dimen/drawable_paddind"
+                    android:drawableRight="@mipmap/jinru"
+                    android:text="@string/me_exit" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_below="@id/line3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/paddind_left"
+                    android:gravity="center"
+                    android:text="@string/me_kf_phone"
+                    android:textColor="@color/color_text_gray" />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:gravity="center"
+                    android:text="@string/me_company"
+                    android:textColor="@color/color_text_gray" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

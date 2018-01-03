@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Tbi Lib</string>
+    <string name="tel">400-687-5858</string>
+    <string name="title_prompt">友情提示</string>
+    <string name="menu_settings">设置</string>
+    <string name="check_connection">检查网络</string>
+    <string name="check_sd">请检查内存卡</string>
+    <string name="btn_cancel">取消</string>
+    <string name="btn_ok">确定</string>
+    <string name="btn_yes">是</string>
+    <string name="btn_no">否</string>
+    <string name="btn_exit">退出</string>
+    <string name="btn_complaints">投诉</string>
+    <string name="btn_price">计价规则</string>
+    <string name="warn">提示</string>
+    <string name="history">历史</string>
+    <string name="btn_del">删除</string>
+    <string name="wallet_add_new">添加新卡</string>
+    <string name="welcome">立即体验</string>
+    <string name="sys_err_server_fail">正在抢修中!</string>
+
+    <string name="msg_toolbar_no_found">ToolBar未注入:\n1、布局文件是否包含了ToolBar；2、java代码是否正确使用了inject操作?</string>
+
+    <!-- 定位权限未开放的提示 -->
+    <string name="gps_network_permission">请为此应用打开使用网络的权限</string>
+</resources>

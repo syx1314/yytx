@@ -1,0 +1,47 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="style_common_view">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
+    </style>
+
+    <style name="style_common_tv">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">@dimen/paddind_left</item>
+        <item name="android:paddingRight">@dimen/paddind_rigt</item>
+        <item name="android:paddingTop">@dimen/paddind_top</item>
+        <item name="android:paddingBottom">@dimen/paddind_bottom</item>
+        <item name="android:textColor">@color/color_text_main</item>
+        <item name="android:textSize">@dimen/text_main</item>
+    </style>
+
+    <style name="style_vertical_line">
+        <item name="android:layout_width">0.5dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/color_line</item>
+    </style>
+
+    <style name="style_hortical_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/color_line</item>
+    </style>
+
+    <style name="style_cb" parent="style_common_view">
+        <item name="android:button">@drawable/sel_red_cb</item>
+    </style>
+</resources>

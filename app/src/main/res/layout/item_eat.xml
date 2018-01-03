@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_eat"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:src="@drawable/mofan_chi" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/paddind_top"
+        android:layout_toRightOf="@id/iv_eat"
+        android:text="魔法法术"
+        android:textColor="@color/color_text_main"
+        android:textSize="@dimen/sp_header"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/paddind_top"
+        android:layout_toRightOf="@id/iv_eat"
+        android:drawableLeft="@mipmap/dianhua_chi"
+        android:drawablePadding="@dimen/drawable_paddind"
+        android:text="15555555555" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/iv_eat"
+        android:layout_below="@id/tv_phone"
+        android:layout_marginLeft="@dimen/paddind_top"
+        android:layout_toRightOf="@id/iv_eat"
+        android:gravity="bottom">
+
+        <TextView
+            android:id="@+id/tv_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/dingwei_chi"
+            android:drawablePadding="@dimen/drawable_paddind"
+            android:text="2.8km" />
+
+        <View style="@style/style_vertical_line"
+            android:layout_marginLeft="@dimen/paddind_top"
+            android:layout_marginRight="@dimen/paddind_top"/>
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_phone"
+            android:singleLine="true"
+            android:text="天津市西青区精武镇付村华木里120" />
+    </LinearLayout>
+
+</RelativeLayout>
