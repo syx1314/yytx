@@ -33,4 +33,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'com.gyf.barlibrary:barlibrary:2.3.0'
     implementation project(':lib')
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-5'
+    compile 'com.android.support:design:26.1.0'//版本随意（非必须，引用可以解决无法预览问题）
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
 }
