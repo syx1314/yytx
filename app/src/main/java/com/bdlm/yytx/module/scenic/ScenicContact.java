@@ -17,7 +17,7 @@ public interface ScenicContact {
         void scenicList(ScenicListResponse response);
     }
     interface IScenicView extends IBaseView{
-        void getScenicList(double longitude,double latitude,int passport_type,int city_id,int page);
+        void getScenicList(ScenicListResponse response);
     }
 
     abstract class IScenicModel extends BaseModel{
