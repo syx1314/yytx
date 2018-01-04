@@ -50,7 +50,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
         init();
     }
 
@@ -59,17 +58,15 @@ public class MainActivity extends BaseActivity {
         //实例化布局对象
         layoutInflater = LayoutInflater.from(activity);
         //实例化TabHost对象，得到TabHost
-        tabhost.setup(activity,super.getSupportFragmentManager(), R.id.realtabcontent);
+        tabhost.setup(activity,getSupportFragmentManager(), R.id.realtabcontent);
         tabhost.getTabWidget().setDividerDrawable(null);
         int count = fragmentArray.length;
         //得到fragment的个数
-
         for (int i = 0; i < count; i++) {
             //为每一个Tab按钮设置图标、文字和内容
             TabHost.TabSpec tabSpec = tabhost.newTabSpec(mTextviewArray[i]).setIndicator(getImageView(i));
             //将Tab按钮添加进Tab选项卡中
             tabhost.addTab(tabSpec, fragmentArray[i], null);
-
             //设置Tab按钮的背景
 //            tabhost.getTabWidget().getChildAt(i).setBackgroundResource(android.R.color.transparent);
         }
@@ -89,10 +86,7 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    @Override
-    public void error(String msg) {
 
-    }
 
     @Override
     protected int getLayout() {

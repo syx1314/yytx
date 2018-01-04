@@ -18,9 +18,9 @@ public class LoginPresenter extends BasePresenter<LoginContact.ILoginView> imple
     LoginModel model;
     LoginContact.ILoginView loginView;
 
-    public LoginPresenter() {
+    public LoginPresenter(LoginContact.ILoginView view) {
         model = new LoginModel();
-
+        attachV(view);
     }
 
     @Override

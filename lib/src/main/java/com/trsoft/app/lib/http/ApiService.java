@@ -22,6 +22,7 @@ import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -130,8 +131,13 @@ public class ApiService {
             }else{
                 BaseApplication baseApplication=(BaseApplication)BaseApplication.mContext;
                 if(baseApplication.getLoginConfig()!=null&& Validator.isNotEmpty(baseApplication.getLoginConfig().getToken())){
-                    Logger.d("authorization:"+baseApplication.getLoginConfig().getToken());
-                    request=request.newBuilder().header("authorization",baseApplication.getLoginConfig().getToken()).build();//加入token头
+                    Logger.d("token:"+baseApplication.getLoginConfig().getToken());
+                    request=request.newBuilder().header("token",baseApplication.getLoginConfig().getToken()).build();//加入token头
+//                    request.url()=request.url()+"?token="+baseApplication.getLoginConfig().getToken();
+
+                   request= request.newBuilder().url(request.url()+"?token="+baseApplication.getLoginConfig().getToken()).build();
+
+
                 }
             }
             //返回数据

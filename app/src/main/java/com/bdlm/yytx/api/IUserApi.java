@@ -3,7 +3,9 @@ package com.bdlm.yytx.api;
 import com.bdlm.yytx.entity.UserInfoBean;
 import com.trsoft.app.lib.http.ApiResultBean;
 
+import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import rx.Observable;
 
@@ -12,8 +14,8 @@ import rx.Observable;
  */
 
 public interface IUserApi {
-    @FormUrlEncoded
-    @POST("User/getInfo")
+
+    @GET("User/getInfo")
     Observable<ApiResultBean<UserInfoBean>> getUserInfo();
 
 }

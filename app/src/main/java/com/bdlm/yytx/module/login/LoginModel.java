@@ -24,7 +24,11 @@ public class LoginModel extends LoginContact.ILoginModel {
             @Override
             public void run(ApiResultBean<List<String>> apiResult) {
                 if (loginListener != null) {
-                    loginListener.codeResponse(apiResult);
+                    if (isSuccess(apiResult.getCode())) {
+                        loginListener.codeResponse(apiResult);
+                    } else {
+                        loginListener.error(apiResult.getMsg());
+                    }
                 }
             }
 

@@ -4,6 +4,7 @@ package com.bdlm.yytx.base;
 import com.bdlm.yytx.constant.Constant;
 import com.trsoft.app.lib.BaseApplication;
 import com.trsoft.app.lib.entity.ILoginConfig;
+import com.trsoft.app.lib.utils.PreferenceUtils;
 
 
 /**
@@ -23,7 +24,12 @@ public class MyApplication extends BaseApplication {
 
     @Override
     public ILoginConfig getLoginConfig() {
-        return null;
+        return new ILoginConfig() {
+            @Override
+            public String getToken() {
+                return PreferenceUtils.getInstance().getString(Constant.TOKEN);
+            }
+        };
     }
 
     @Override

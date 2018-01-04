@@ -11,6 +11,7 @@ import com.bdlm.yytx.constant.Constant;
 import com.bdlm.yytx.entity.LoginResponse;
 import com.trsoft.app.lib.http.ApiResultBean;
 
+import com.trsoft.app.lib.inter.CommonCallback;
 import com.trsoft.app.lib.utils.DialogUtil;
 import com.trsoft.app.lib.utils.PreferenceUtils;
 import com.trsoft.app.lib.utils.Validator;
@@ -23,7 +24,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class LoginActivity extends BaseActivity implements LoginContact.ILoginView {
+public class LoginActivity extends BaseActivity implements LoginContact.ILoginView{
 
     @BindView(R.id.et_phone)
     EditText etPhone;
@@ -40,9 +41,7 @@ public class LoginActivity extends BaseActivity implements LoginContact.ILoginVi
 
     @Override
     protected void createPersenter() {
-
-        loginPresenter = new LoginPresenter();
-        loginPresenter.attachV(this);
+        loginPresenter = new LoginPresenter(this);
     }
 
 
@@ -90,8 +89,14 @@ public class LoginActivity extends BaseActivity implements LoginContact.ILoginVi
     @Override
     public void loginResult(LoginResponse loginResponse) {
         if (loginResponse != null && Validator.isNotEmpty(loginResponse.getToken())) {
-            DialogUtil.showAlert(activity, getString(R.string.login_success), null);
+            DialogUtil.showAlert(activity, getString(R.string.login_success), new CommonCallback<Boolean>() {
+                @Override
+                public void onCallBack(Boolean data) {
+                    finish();
+                }
+            });
             PreferenceUtils.getInstance().saveData(Constant.TOKEN, loginResponse.getToken());
+
         }
 
     }

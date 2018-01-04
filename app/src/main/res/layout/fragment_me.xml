@@ -22,6 +22,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scaleType="fitXY"
+
                     android:src="@mipmap/beijing" />
 
                 <LinearLayout
@@ -33,16 +34,14 @@
 
                     <ImageView
                         android:id="@+id/iv_head"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/touxiang" />
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/shape_big_circle_white_bg" />
 
                     <TextView
                         android:id="@+id/tv_name"
                         style="@style/style_common_tv"
-                        android:layout_marginTop="@dimen/paddind_top"
                         android:gravity="center"
-                        android:text="鹅鹅鹅鹅鹅鹅"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_small_szie" />
 
@@ -50,7 +49,6 @@
                         android:id="@+id/tv_passport_num"
                         style="@style/style_common_tv"
                         android:gravity="center"
-                        android:text="护照号：1677543"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_small_szie" />
                 </LinearLayout>

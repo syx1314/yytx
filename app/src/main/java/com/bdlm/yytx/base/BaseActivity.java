@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 
 import com.bdlm.yytx.constant.Constant;
 import com.bdlm.yytx.module.login.LoginActivity;
@@ -22,22 +23,24 @@ import butterknife.ButterKnife;
  * Created by yyj on 2017/12/27.
  */
 
-public abstract class BaseActivity<P extends IBasePresenter> extends ActivitySupport implements IBaseView {
+public abstract class BaseActivity<P extends IBasePresenter,V extends IBaseView> extends ActivitySupport {
 
     private P persenter;
     protected Activity activity;
     protected String token;
+    private V view;
 
     protected abstract int getLayout();
 
     protected abstract void createPersenter();
 
     public void isLogin() {
-        if (Validator.isNotEmpty(PreferenceUtils.getInstance().getString(Constant.TOKEN))) {
-            token = PreferenceUtils.getInstance().getString(Constant.TOKEN);
-            Logger.e(token);
-        } else {
-            startActivity(new Intent(this, LoginActivity.class));
+        token = PreferenceUtils.getInstance().getString(Constant.TOKEN);
+        Logger.e(token);
+        if (TextUtils.isEmpty(token)) {
+            if(activity!=null&&activity.getClass()!=LoginActivity.class) {
+                startActivity(new Intent(this, LoginActivity.class));
+            }
         }
 
     }
@@ -47,9 +50,8 @@ public abstract class BaseActivity<P extends IBasePresenter> extends ActivitySup
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
         createPersenter();
-//        persenter.attachV(this);
-        isLogin();
         activity = this;
+        isLogin();
         ButterKnife.bind(this);
         ImmersionBar.with(this)
                 .statusBarColor(R.color.red)     //状态栏颜色，不写默认透明色

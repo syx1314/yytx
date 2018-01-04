@@ -30,7 +30,7 @@
     <string name="me_title">我的</string>
     <string name="me_exchange">充值代金券</string>
     <string name="me_bind_card">绑定年卡</string>
-    <string name="me_passport_num">护照号</string>
+    <string name="me_passport_num">年卡号:</string>
     <string name="me_addvance_recored">预约记录</string>
     <string name="me_recommend_friends">推荐好友</string>
     <string name="me_qrcode">我的二维码</string>

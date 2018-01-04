@@ -8,9 +8,5 @@ import java.io.Serializable;
  */
 
 public interface ILoginConfig extends Serializable {
-    String getUserId();//用户id
-    String getName();//用户名称
-    String getPhone();//用户手机
-    String getPassword();
     String getToken();//URl的Token
 }

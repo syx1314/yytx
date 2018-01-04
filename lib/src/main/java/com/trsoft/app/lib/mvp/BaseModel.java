@@ -56,4 +56,10 @@ public abstract class BaseModel implements IBaseModel {
             }
         }));
     }
+    protected  boolean isSuccess(int code){
+        if(code==2000){
+            return true;
+        }
+        return false;
+    }
 }
