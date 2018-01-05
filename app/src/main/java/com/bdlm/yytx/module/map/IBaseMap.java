@@ -1,5 +1,6 @@
 package com.bdlm.yytx.module.map;
 
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -13,4 +14,6 @@ import com.bdlm.yytx.base.BaseActivity;
 public interface IBaseMap {
 
      void loadMap(MapView mapView, Bundle savedInstanceState);
+
+     Location getCurPisition();
 }

@@ -11,13 +11,19 @@ import com.orhanobut.logger.Logger;
 /**
  * 高德地图封装类
  * Created by yyj on 2018/1/5.
+ * SDK在Android 6.0下需要进行运行检测的权限如下：
+ * Manifest.permission.ACCESS_COARSE_LOCATION,
+ * Manifest.permission.ACCESS_FINE_LOCATION,
+ * Manifest.permission.WRITE_EXTERNAL_STORAGE,
+ * Manifest.permission.READ_EXTERNAL_STORAGE,
+ * Manifest.permission.READ_PHONE_STATE
  */
 
 public class GdMap {
 
     private AMap aMap;
     private MapView mMapView;
-
+    private OnLocationlistener locationlistener;
     public GdMap(MapView mMapView, Bundle savedInstanceState) {
         this.mMapView = mMapView;
         mMapView.onCreate(savedInstanceState);// 此方法须覆写，虚拟机需要在很多情况下保存地图绘制的当前状态。
@@ -25,7 +31,6 @@ public class GdMap {
         if (aMap == null) {
             aMap = mMapView.getMap();
         }
-
         init();
     }
 
@@ -40,11 +45,13 @@ public class GdMap {
         aMap.setOnMyLocationChangeListener(new AMap.OnMyLocationChangeListener() {
             @Override
             public void onMyLocationChange(Location location) {
-                Logger.e("初始位置信息"+location);
+                Logger.e("初始位置信息" + location);
+                if(locationlistener!=null){
+                    locationlistener.position(location);
+                }
             }
         });
     }
-
 
     protected void onResume() {
         //在activity执行onResume时执行mMapView.onResume ()，重新绘制加载地图
@@ -65,5 +72,9 @@ public class GdMap {
     protected void onSaveInstanceState(Bundle outState) {
         //在activity执行onSaveInstanceState时执行mMapView.onSaveInstanceState (outState)，保存地图当前的状态
         mMapView.onSaveInstanceState(outState);
+    }
+
+    public interface OnLocationlistener{
+        void position(Location location);
     }
 }

@@ -30,16 +30,16 @@
         <!--高德定位Service-->
         <service android:name="com.amap.api.location.APSService"/>
         <activity android:name=".MainActivity">
-
-        </activity>
-        <activity android:name=".module.login.LoginActivity" />
-        <activity android:name=".module.scenic.ScenicListActivity" />
-        <activity android:name=".MapActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".module.login.LoginActivity" />
+        <activity android:name=".module.scenic.ScenicListActivity" />
+        <activity android:name=".MapActivity">
+
         </activity>
     </application>
 
