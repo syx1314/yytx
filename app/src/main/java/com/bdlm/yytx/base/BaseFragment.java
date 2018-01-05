@@ -3,6 +3,7 @@ package com.bdlm.yytx.base;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -35,6 +36,31 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     protected abstract int getLayout();
 
 
+    /**
+     * 跳转指定页面
+     */
+    public void  toActivity(Class activityClass) {
+        if (getActivity() != null) {
+            Intent intent = new Intent(getActivity(), activityClass);
+            getActivity().startActivity(intent);
+            mContext.finish();
+        }
+
+    }
+
+    /**
+     * 不清楚当前页面
+     *
+     * @param activityClass
+     */
+    public void toActivityNoClear(Class activityClass) {
+        if (mContext != null) {
+            Intent intent = new Intent(mContext, activityClass);
+            startActivity(intent);
+        }
+
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -54,7 +80,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mContext=getActivity();
+        mContext = getActivity();
         if (mContext != null) {
             ImmersionBar.with(mContext).statusBarColor(R.color.red).init();
         }
