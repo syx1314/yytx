@@ -3,6 +3,7 @@ package com.bdlm.yytx.module.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
- * 首页 Fragment
+ * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends BaseFragment {
 
@@ -42,7 +43,7 @@ public class HomeFragment extends BaseFragment {
     TextView tvPlay;
     @BindView(R.id.tv_travel_agency)
     TextView tvTravelAgency;
-    Unbinder unbinder;
+
 
     @Override
     protected void createPresenter() {
@@ -68,9 +69,11 @@ public class HomeFragment extends BaseFragment {
             case R.id.tv_cash_coupon:
                 break;
             case R.id.tv_scenic_spot:
-                startActivity(new Intent(mContext, ScenicListActivity.class));
+                toActivity(ScenicListActivity.class);
+
                 break;
             case R.id.tv_tourist_goods:
+
                 break;
             case R.id.tv_chi:
                 break;
