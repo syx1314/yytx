@@ -1,5 +1,6 @@
 package com.trsoft.app.lib.mvp;
 
+import com.orhanobut.logger.Logger;
 import com.trsoft.app.lib.constant.Constant;
 import com.trsoft.app.lib.http.ApiException;
 import com.trsoft.app.lib.http.ApiResultBean;
@@ -43,6 +44,7 @@ public abstract class BaseModel implements IBaseModel {
 
             @Override
             public void onError(Throwable e) {
+                Logger.e(e+"----------我的错误"+e.getMessage()+"----");
               if(ApiException.handleException(e).message!=null) {
                 apiReturn.error(ApiException.handleException(e).message);
               }

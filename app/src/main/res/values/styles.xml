@@ -21,10 +21,7 @@
     <style name="style_common_tv">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingLeft">@dimen/paddind_left</item>
-        <item name="android:paddingRight">@dimen/paddind_rigt</item>
-        <item name="android:paddingTop">@dimen/paddind_top</item>
-        <item name="android:paddingBottom">@dimen/paddind_bottom</item>
+        <item name="android:padding">@dimen/paddind_left</item>
         <item name="android:textColor">@color/color_text_main</item>
         <item name="android:textSize">@dimen/text_main</item>
     </style>

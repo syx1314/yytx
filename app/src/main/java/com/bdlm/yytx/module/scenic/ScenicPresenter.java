@@ -1,5 +1,6 @@
 package com.bdlm.yytx.module.scenic;
 
+import com.bdlm.yytx.entity.ScenicDetailResponse;
 import com.bdlm.yytx.entity.ScenicListResponse;
 import com.trsoft.app.lib.mvp.BasePresenter;
 
@@ -24,6 +25,9 @@ public class ScenicPresenter extends BasePresenter<ScenicContact.IScenicView> im
         scenicModel.requestScenicList( longitude,   latitude,  passport_type,  city_id,  page,this);
     }
 
+    public void requestScenicDetails(String scenic_id){
+        scenicModel.requestScenicDetails(scenic_id,this);
+    }
     @Override
     public void error(String msg) {
         if(scenicView!=null)
@@ -35,5 +39,12 @@ public class ScenicPresenter extends BasePresenter<ScenicContact.IScenicView> im
 
         if(scenicView!=null)
             scenicView.getScenicList(response);
+    }
+
+    @Override
+    public void reponseScenicDetails(ScenicDetailResponse response) {
+        if(scenicView!=null){
+            scenicView.scenicDetails(response);
+        }
     }
 }

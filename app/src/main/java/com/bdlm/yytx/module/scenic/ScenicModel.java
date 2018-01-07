@@ -1,6 +1,7 @@
 package com.bdlm.yytx.module.scenic;
 
 import com.bdlm.yytx.api.IScenicApi;
+import com.bdlm.yytx.entity.ScenicDetailResponse;
 import com.bdlm.yytx.entity.ScenicListResponse;
 import com.trsoft.app.lib.http.ApiResultBean;
 import com.trsoft.app.lib.http.IApiReturn;
@@ -18,6 +19,30 @@ public class ScenicModel extends ScenicContact.IScenicModel {
                 if (isSuccess(apiResult.getCode()) && apiResult.getData() != null) {
                     if (listener != null)
                         listener.scenicList(apiResult.getData());
+                } else {
+                    if (listener != null) {
+                        listener.error(apiResult.getMsg());
+                    }
+                }
+            }
+
+            @Override
+            public void error(String message) {
+                if (listener != null) {
+                    listener.error(message);
+                }
+            }
+        });
+    }
+
+    @Override
+    void requestScenicDetails(String scenic_id, final ScenicContact.IScenicListener listener) {
+        Subscribe(getApiService(IScenicApi.class).scenicDetails(scenic_id), new IApiReturn<ScenicDetailResponse>() {
+            @Override
+            public void run(ApiResultBean<ScenicDetailResponse> apiResult) {
+                if (isSuccess(apiResult.getCode()) && apiResult.getData() != null) {
+                    if (listener != null)
+                        listener.reponseScenicDetails(apiResult.getData());
                 } else {
                     if (listener != null) {
                         listener.error(apiResult.getMsg());

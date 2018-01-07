@@ -61,4 +61,5 @@ dependencies {
     compile 'com.amap.api:location:3.7.0'
     //搜索
     compile 'com.amap.api:search:5.7.0'
+
 }

@@ -27,8 +27,9 @@
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="3b37f9e0cfa9c8199b5b285baebe87a4" />
-        <!--高德定位Service-->
-        <service android:name="com.amap.api.location.APSService"/>
+        <!-- 高德定位Service -->
+        <service android:name="com.amap.api.location.APSService" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,9 +39,8 @@
         </activity>
         <activity android:name=".module.login.LoginActivity" />
         <activity android:name=".module.scenic.ScenicListActivity" />
-        <activity android:name=".MapActivity">
-
-        </activity>
+        <activity android:name=".MapActivity"></activity>
+        <activity android:name=".module.scenic.ScenicDetailsActivity"></activity>
     </application>
 
 </manifest>

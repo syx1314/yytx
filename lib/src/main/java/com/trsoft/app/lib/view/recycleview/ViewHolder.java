@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.flyco.labelview.LabelView;
+import com.trsoft.app.lib.utils.ImageLoader;
 import com.trsoft.app.lib.utils.Validator;
 
 /**
@@ -38,7 +40,24 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         }
         return this;
     }
+    public ViewHolder setImage(int viewId, String url) {
+        ImageView view = getView(viewId);
+        if (view != null) {
+            ImageLoader.display(url,view);
+        }
+        return this;
+    }
 
+    public ViewHolder setLableText(int viewId,String text){
+        LabelView labelView=getView(viewId);
+        if(text==null){
+            labelView.setVisibility(View.GONE);
+        }else {
+            labelView.setVisibility(View.VISIBLE);
+            labelView.setText(text);
+        }
+        return this;
+    }
     public ViewHolder setOnClickListener(int viewId,
                                          View.OnClickListener listener) {
         View view = getView(viewId);

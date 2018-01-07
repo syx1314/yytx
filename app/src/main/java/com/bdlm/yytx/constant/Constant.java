@@ -8,4 +8,5 @@ public class Constant {
 
     public final  static String BASEURL="http://api.yyhz369.com/";
     public final  static String TOKEN="LOGINTOKEN";
+    public final  static String SCENIC_ID="scenic_id";//景区id
 }

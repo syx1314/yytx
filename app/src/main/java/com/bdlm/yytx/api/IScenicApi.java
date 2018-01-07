@@ -1,5 +1,6 @@
 package com.bdlm.yytx.api;
 
+import com.bdlm.yytx.entity.ScenicDetailResponse;
 import com.bdlm.yytx.entity.ScenicListResponse;
 import com.trsoft.app.lib.http.ApiResultBean;
 
@@ -18,4 +19,10 @@ public interface IScenicApi {
     @FormUrlEncoded
     @POST("Senic/getList")
     Observable<ApiResultBean<ScenicListResponse>> getScenicList(@Field("longitude") double longitude, @Field("latitude") double latitude, @Field("passport_type") int passport_type, @Field("city_id") int city_id, @Field("page") int page);
+
+    @FormUrlEncoded
+    @POST("Senic/getDetailById")
+    Observable<ApiResultBean<ScenicDetailResponse>> scenicDetails(@Field("senic_id") String senic_id);
+
+
 }
