@@ -3,6 +3,7 @@ package com.bdlm.yytx.module.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,9 @@ import android.widget.TextView;
 
 import com.bdlm.yytx.R;
 import com.bdlm.yytx.base.BaseFragment;
+import com.bdlm.yytx.common.view.CommonTitle;
 import com.bdlm.yytx.module.scenic.ScenicListActivity;
+import com.gyf.barlibrary.ImmersionBar;
 import com.youth.banner.Banner;
 
 import butterknife.BindView;
@@ -24,7 +27,8 @@ import butterknife.Unbinder;
  */
 public class HomeFragment extends BaseFragment {
 
-
+    @BindView(R.id.title)
+    CommonTitle title;
     @BindView(R.id.banner)
     Banner banner;
     @BindView(R.id.tv_gonggao)
@@ -50,6 +54,16 @@ public class HomeFragment extends BaseFragment {
 
     }
 
+
+
+    @Override
+    protected void initImmersionBar() {
+        super.initImmersionBar();
+
+        mImmersionBar.statusBarColorTransformEnable(false).init();
+                mImmersionBar.titleBar(banner).init();
+    }
+
     @Override
     protected int getLayout() {
         return R.layout.fragment_home;
@@ -62,15 +76,13 @@ public class HomeFragment extends BaseFragment {
     }
 
 
-
     @OnClick({R.id.tv_cash_coupon, R.id.tv_scenic_spot, R.id.tv_tourist_goods, R.id.tv_chi, R.id.tv_live, R.id.tv_play, R.id.tv_travel_agency})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_cash_coupon:
                 break;
             case R.id.tv_scenic_spot:
-                toActivity(ScenicListActivity.class);
-
+                toActivityNoClear(ScenicListActivity.class);
                 break;
             case R.id.tv_tourist_goods:
 

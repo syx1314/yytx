@@ -135,7 +135,7 @@ public class ApiService {
                     request=request.newBuilder().header("token",baseApplication.getLoginConfig().getToken()).build();//加入token头
 //                    request.url()=request.url()+"?token="+baseApplication.getLoginConfig().getToken();
 
-                   request= request.newBuilder().url(request.url()+"?token="+baseApplication.getLoginConfig().getToken()).build();
+                   request= request.newBuilder().url(request.url()+"?token="+baseApplication.getLoginConfig().getToken()+"&device_token=HDUTr65FRT").build();
 
 
                 }

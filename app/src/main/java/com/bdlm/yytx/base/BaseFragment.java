@@ -30,6 +30,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     private P mPresenter;
     private Unbinder mUnbinder;
     protected Activity mContext;
+    protected ImmersionBar mImmersionBar;
 
     protected abstract void createPresenter();
 
@@ -39,7 +40,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     /**
      * 跳转指定页面
      */
-    public void  toActivity(Class activityClass) {
+    public void toActivity(Class activityClass) {
         if (getActivity() != null) {
             Intent intent = new Intent(getActivity(), activityClass);
             getActivity().startActivity(intent);
@@ -82,8 +83,29 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         super.onActivityCreated(savedInstanceState);
         mContext = getActivity();
         if (mContext != null) {
-            ImmersionBar.with(mContext).statusBarColor(R.color.red).init();
+//            ImmersionBar.with(mContext).statusBarColor(R.color.red).init();
+            if (isImmersionBarEnabled()) {
+                initImmersionBar();
+
+            }
         }
+    }
+
+    /**
+     * 初始化沉浸式
+     */
+    protected void initImmersionBar() {
+        mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar.keyboardEnable(true).navigationBarWithKitkatEnable(false).init();
+    }
+
+    /**
+     * 是否在Fragment使用沉浸式
+     *
+     * @return the boolean
+     */
+    protected boolean isImmersionBarEnabled() {
+        return true;
     }
 
     @Override
@@ -91,7 +113,9 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         super.onDestroy();
         if (mUnbinder != null) {
             mUnbinder.unbind();
-
+        }
+        if (mImmersionBar != null) {
+            mImmersionBar.destroy();
         }
     }
 }

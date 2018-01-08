@@ -14,10 +14,6 @@ import com.bdlm.yytx.R;
  */
 public class FindFragment extends Fragment {
 
-
-   
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

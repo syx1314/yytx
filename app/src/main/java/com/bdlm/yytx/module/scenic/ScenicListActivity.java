@@ -56,7 +56,6 @@ public class ScenicListActivity extends BaseActivity implements ScenicContact.IS
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         refreshLayout.setOnLoadmoreListener(this);
-
         LinearLayoutManager manager = new LinearLayoutManager(activity);
         rv.setLayoutManager(manager);
         rv.addItemDecoration(new RecycleViewDivider(activity, LinearLayoutManager.HORIZONTAL));
@@ -86,13 +85,12 @@ public class ScenicListActivity extends BaseActivity implements ScenicContact.IS
                     holder.setText(R.id.tv_scenic_grade, response.getLevel_name());
                     holder.setText(R.id.tv_passport_type, response.getPassport_type_name());
                     holder.setText(R.id.tv_short_description, response.getShort_description());
-
                 }
             };
             rv.setAdapter(adapter);
 
         } else {
-            senicList.clear();
+//            senicList.clear();
         }
         adapter.setOnItemClickListener(this);
         presenter.requestScenicList(116.1914062500, 39.6056881783, 0, 0, 1);
@@ -134,9 +132,11 @@ public class ScenicListActivity extends BaseActivity implements ScenicContact.IS
     @Override
     public void onClick(int position) {
         if (activity != null) {
-            Intent intent = new Intent(activity, ScenicDetailsActivity.class);
-            intent.putExtra(Constant.SCENIC_ID, senicList.get(position).getSenic_id());
-            startActivity(intent);
+            if (senicList != null && senicList.size() > 0) {
+                Intent intent = new Intent(activity, ScenicDetailsActivity.class);
+                intent.putExtra(Constant.SCENIC_ID, senicList.get(position).getSenic_id());
+                startActivity(intent);
+            }
         }
     }
 }

@@ -36,7 +36,6 @@ import java.io.File;
 import java.io.IOException;
 
 
-
 /**
  * 窗口工具类,提供可重用的窗口
  *
@@ -206,7 +205,6 @@ public class DialogUtil {
     //endregion
 
 
-
     //region Dialog
 
     /**
@@ -228,6 +226,10 @@ public class DialogUtil {
      * @param callback
      */
     public static void showAlert(final Activity ctx, String title, final String msg, final CommonCallback<Boolean> callback) {
+
+        if (ctx == null) {
+            return;
+        }
         final Dialog mAlertDialog = new Dialog(ctx, R.style.MyDialogStyle);
         mAlertDialog.setCancelable(false);
 

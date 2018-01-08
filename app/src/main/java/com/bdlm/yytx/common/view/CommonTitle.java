@@ -57,12 +57,15 @@ public class CommonTitle extends RelativeLayout {
         this.context = context;
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CommonTitle);
+        int color = typedArray.getColor(R.styleable.CommonTitle_commonTitleColor, getResources().getColor(R.color.red));
         boolean leftVisibility = typedArray.getBoolean(R.styleable.CommonTitle_leftVisibility, true);
         boolean rightVisibility = typedArray.getBoolean(R.styleable.CommonTitle_rightVisibility, false);
         boolean rightTvVisibility = typedArray.getBoolean(R.styleable.CommonTitle_rightTvVisibility, false);
         String rightTvContent = typedArray.getString(R.styleable.CommonTitle_rightTvContent);
         String title = typedArray.getString(R.styleable.CommonTitle_title);
         View view = LayoutInflater.from(context).inflate(R.layout.layout_comon_title, null);
+        View rlTitle = view.findViewById(R.id.rl_title);
+        rlTitle.setBackgroundColor(color);
         addView(view);
         ButterKnife.bind(this);
         if (!TextUtils.isEmpty(title)) {

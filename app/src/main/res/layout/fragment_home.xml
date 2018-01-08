@@ -6,17 +6,24 @@
     android:orientation="vertical"
     tools:context="com.bdlm.yytx.module.home.HomeFragment">
 
-    <com.bdlm.yytx.common.view.CommonTitle
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:leftVisibility="false"
-        app:title="@string/home_title" />
+        android:layout_height="wrap_content">
 
-    <com.youth.banner.Banner
-        android:id="@+id/banner"
-        android:layout_width="match_parent"
-        android:background="@mipmap/banner_sy"
-        android:layout_height="@dimen/banner_height" />
+        <com.youth.banner.Banner
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/banner_height"
+            android:background="@mipmap/banner_sy" />
+
+        <com.bdlm.yytx.common.view.CommonTitle
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:commonTitleColor="#00000000"
+            app:leftVisibility="false"
+            app:title="@string/home_title" />
+    </FrameLayout>
 
     <LinearLayout
         style="@style/style_common_view"
@@ -63,8 +70,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawableTop="@mipmap/quan"
             android:drawablePadding="@dimen/drawable_paddind"
+            android:drawableTop="@mipmap/quan"
             android:gravity="center"
             android:text="@string/home_cash_coupon" />
 
@@ -73,8 +80,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawableTop="@mipmap/jingqu"
             android:drawablePadding="@dimen/drawable_paddind"
+            android:drawableTop="@mipmap/jingqu"
             android:gravity="center"
             android:text="@string/home_scenic_spot" />
 
@@ -83,11 +90,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawableTop="@mipmap/lvyouyongpin"
             android:drawablePadding="@dimen/drawable_paddind"
+            android:drawableTop="@mipmap/lvyouyongpin"
             android:gravity="center"
             android:text="@string/home_tourist_goods" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -98,8 +106,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawableTop="@mipmap/chi"
             android:drawablePadding="@dimen/drawable_paddind"
+            android:drawableTop="@mipmap/chi"
             android:gravity="center"
             android:text="@string/home_eat" />
 
@@ -108,8 +116,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawableTop="@mipmap/zhu"
             android:drawablePadding="@dimen/drawable_paddind"
+            android:drawableTop="@mipmap/zhu"
             android:gravity="center"
             android:text="@string/home_live" />
 
@@ -118,17 +126,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawableTop="@mipmap/wan"
             android:drawablePadding="@dimen/drawable_paddind"
+            android:drawableTop="@mipmap/wan"
             android:gravity="center"
             android:text="@string/home_play" />
+
         <TextView
             android:id="@+id/tv_travel_agency"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawableTop="@mipmap/lvxingshe"
             android:drawablePadding="@dimen/drawable_paddind"
+            android:drawableTop="@mipmap/lvxingshe"
             android:gravity="center"
             android:text="@string/home_travel_agency" />
     </LinearLayout>
