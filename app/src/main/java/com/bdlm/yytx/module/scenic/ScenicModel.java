@@ -1,10 +1,14 @@
 package com.bdlm.yytx.module.scenic;
 
+import com.bdlm.yytx.api.IPassportApi;
 import com.bdlm.yytx.api.IScenicApi;
+import com.bdlm.yytx.entity.PassportTypeBean;
 import com.bdlm.yytx.entity.ScenicDetailResponse;
 import com.bdlm.yytx.entity.ScenicListResponse;
 import com.trsoft.app.lib.http.ApiResultBean;
 import com.trsoft.app.lib.http.IApiReturn;
+
+import java.util.List;
 
 /**
  * Created by yyj on 2018/1/4.
@@ -58,4 +62,29 @@ public class ScenicModel extends ScenicContact.IScenicModel {
             }
         });
     }
+
+    @Override
+    void requestPassportType( final ScenicContact.IScenicListener listener) {
+        Subscribe(getApiService(IPassportApi.class).getPassportType(), new IApiReturn<List<PassportTypeBean>>() {
+            @Override
+            public void run(ApiResultBean<List<PassportTypeBean>> apiResult) {
+                if (isSuccess(apiResult.getCode()) && apiResult.getData() != null) {
+                    if (listener != null)
+                        listener.responsePassportType(apiResult.getData());
+                } else {
+                    if (listener != null) {
+                        listener.error(apiResult.getMsg());
+                    }
+                }
+            }
+
+            @Override
+            public void error(String message) {
+                if (listener != null) {
+                    listener.error(message);
+                }
+            }
+        });
+    }
+
 }

@@ -23,6 +23,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:lv_text="预约"
+            app:lv_gravity="TOP_LEFT"
+            app:lv_background_color="#ee000000"
+            app:lv_fill_triangle="true"
             app:lv_text_bold="true" />
     </FrameLayout>
 
@@ -42,6 +45,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:gravity="center_vertical"
+        android:drawableLeft="@mipmap/icon_position_gray"
         android:text="45km"
         android:textSize="@dimen/sp_content3" />
 
@@ -49,13 +54,13 @@
         android:id="@+id/tv_scenic_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_scenic_name"
         android:layout_marginLeft="@dimen/paddings_8"
         android:layout_toRightOf="@id/fl"
-        android:background="@drawable/shape_radio_red"
+        android:background="@drawable/shape_radio_orangle"
+        android:layout_centerVertical="true"
         android:padding="@dimen/drawable_paddind"
         android:text="自然风光"
-        android:textColor="@color/red"
+        android:textColor="@color/color_orangle"
         android:textSize="10sp" />
 
     <TextView
@@ -65,10 +70,11 @@
         android:layout_below="@id/tv_scenic_name"
         android:layout_marginLeft="@dimen/drawable_paddind"
         android:layout_toRightOf="@id/tv_scenic_type"
-        android:background="@drawable/shape_radio_red"
+        android:layout_centerVertical="true"
+        android:background="@drawable/shape_radio_green"
         android:padding="@dimen/drawable_paddind"
         android:text="5A级景区"
-        android:textColor="@color/red"
+        android:textColor="@color/color_green"
         android:textSize="10sp" />
 
     <TextView
@@ -78,10 +84,11 @@
         android:layout_below="@id/tv_scenic_name"
         android:layout_marginLeft="@dimen/drawable_paddind"
         android:layout_toRightOf="@id/tv_scenic_grade"
-        android:background="@drawable/shape_radio_red"
+        android:background="@drawable/shape_radio_orangle"
+        android:layout_centerVertical="true"
         android:padding="@dimen/drawable_paddind"
         android:text=" 黄金版 "
-        android:textColor="@color/red"
+        android:textColor="@color/color_orangle"
         android:textSize="10sp" />
 
     <TextView
@@ -94,7 +101,7 @@
         android:layout_toRightOf="@id/fl"
         android:ellipsize="end"
         android:gravity="bottom"
-        android:maxLines="2"
+        android:maxLines="1"
         android:text="简短描述"
         android:textColor="@color/color_text_gray"
         android:textSize="12sp" />

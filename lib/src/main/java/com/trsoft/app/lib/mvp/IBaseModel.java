@@ -5,4 +5,5 @@ package com.trsoft.app.lib.mvp;
  */
 
 public interface IBaseModel {
+
 }

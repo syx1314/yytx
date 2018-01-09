@@ -8,9 +8,21 @@
     tools:context="com.bdlm.yytx.module.scenic.ScenicListActivity">
 
     <com.bdlm.yytx.common.view.CommonTitle
+        android:id="@+id/title"
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:title="@string/home_play" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:tabSelectedTextColor="@color/color_red_light"
+        app:tabIndicatorColor="@color/color_red_light" />
+
+    <View style="@style/style_hortical_line" />
 
     <include layout="@layout/layout_refresh" />
 

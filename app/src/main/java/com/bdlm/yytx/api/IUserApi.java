@@ -10,6 +10,7 @@ import retrofit2.http.POST;
 import rx.Observable;
 
 /**
+ * 关于用户的
  * Created by Adim on 2018/1/2.
  */
 

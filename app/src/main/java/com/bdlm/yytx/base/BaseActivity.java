@@ -74,6 +74,7 @@ public abstract class BaseActivity<P extends IBasePresenter, V extends IBaseView
         mImmersionBar = ImmersionBar.with(activity);
         mImmersionBar.init();
 
+
     }
 
     /**
