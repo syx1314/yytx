@@ -63,6 +63,7 @@ public class ScenicListActivity extends BaseActivity implements ScenicContact.IS
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         refreshLayout.setOnLoadmoreListener(this);
+        refreshLayout.setEnableRefresh(false);
         LinearLayoutManager manager = new LinearLayoutManager(activity);
         rv.setLayoutManager(manager);
         rv.addItemDecoration(new RecycleViewDivider(activity, LinearLayoutManager.HORIZONTAL));
@@ -168,7 +169,12 @@ public class ScenicListActivity extends BaseActivity implements ScenicContact.IS
 
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
+        if(refreshLayout.isLoading()){
+            refreshLayout.finishLoadmore();
+        }
         presenter.cancelRequest();
+        refreshLayout.resetNoMoreData();
+
         passPortType = typeBeans.get(tab.getPosition()).getId();
         if(senicList!=null){
             senicList.clear();

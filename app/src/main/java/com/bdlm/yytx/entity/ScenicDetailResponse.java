@@ -5,21 +5,32 @@ package com.bdlm.yytx.entity;
  */
 
 public class ScenicDetailResponse {
-        private String senic_id;
-        private String name;
-        private String long_title;
-        private String image;
-        private String sound;
-        private String price;
-        private String map;
-        private String ticket;
-        private String traffic;
-        private String short_description;
-        private String open;
-        private String address;
-        private String city_id;
-        private String vr_url;
-        private String level;
+
+    private String senic_id;
+    private String name;
+    private String short_description;
+    private String long_description;
+    private String thumbnail;
+    private String image;
+    private String sound;
+    private String telephone;
+    private String address;
+    private String status;
+    private String traffic;
+    private String price;
+    private String services;
+    private String ticket;
+    private String season;
+    private String notice;
+    private String open;
+    private String long_title;
+    private String short_title;
+    private String vr_url;
+    private String advance_enddate;
+    private String discount_info;
+    private String level_name;
+    private int advance;
+    private String passport_type_name;
 
     public String getSenic_id() {
         return senic_id;
@@ -37,12 +48,28 @@ public class ScenicDetailResponse {
         this.name = name;
     }
 
-    public String getLong_title() {
-        return long_title;
+    public String getShort_description() {
+        return short_description;
     }
 
-    public void setLong_title(String long_title) {
-        this.long_title = long_title;
+    public void setShort_description(String short_description) {
+        this.short_description = short_description;
+    }
+
+    public String getLong_description() {
+        return long_description;
+    }
+
+    public void setLong_description(String long_description) {
+        this.long_description = long_description;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 
     public String getImage() {
@@ -61,52 +88,12 @@ public class ScenicDetailResponse {
         this.sound = sound;
     }
 
-    public String getPrice() {
-        return price;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public String getMap() {
-        return map;
-    }
-
-    public void setMap(String map) {
-        this.map = map;
-    }
-
-    public String getTicket() {
-        return ticket;
-    }
-
-    public void setTicket(String ticket) {
-        this.ticket = ticket;
-    }
-
-    public String getTraffic() {
-        return traffic;
-    }
-
-    public void setTraffic(String traffic) {
-        this.traffic = traffic;
-    }
-
-    public String getShort_description() {
-        return short_description;
-    }
-
-    public void setShort_description(String short_description) {
-        this.short_description = short_description;
-    }
-
-    public String getOpen() {
-        return open;
-    }
-
-    public void setOpen(String open) {
-        this.open = open;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public String getAddress() {
@@ -117,12 +104,84 @@ public class ScenicDetailResponse {
         this.address = address;
     }
 
-    public String getCity_id() {
-        return city_id;
+    public String getStatus() {
+        return status;
     }
 
-    public void setCity_id(String city_id) {
-        this.city_id = city_id;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getTraffic() {
+        return traffic;
+    }
+
+    public void setTraffic(String traffic) {
+        this.traffic = traffic;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getServices() {
+        return services;
+    }
+
+    public void setServices(String services) {
+        this.services = services;
+    }
+
+    public String getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(String ticket) {
+        this.ticket = ticket;
+    }
+
+    public String getSeason() {
+        return season;
+    }
+
+    public void setSeason(String season) {
+        this.season = season;
+    }
+
+    public String getNotice() {
+        return notice;
+    }
+
+    public void setNotice(String notice) {
+        this.notice = notice;
+    }
+
+    public String getOpen() {
+        return open;
+    }
+
+    public void setOpen(String open) {
+        this.open = open;
+    }
+
+    public String getLong_title() {
+        return long_title;
+    }
+
+    public void setLong_title(String long_title) {
+        this.long_title = long_title;
+    }
+
+    public String getShort_title() {
+        return short_title;
+    }
+
+    public void setShort_title(String short_title) {
+        this.short_title = short_title;
     }
 
     public String getVr_url() {
@@ -133,11 +192,43 @@ public class ScenicDetailResponse {
         this.vr_url = vr_url;
     }
 
-    public String getLevel() {
-        return level;
+    public String getAdvance_enddate() {
+        return advance_enddate;
     }
 
-    public void setLevel(String level) {
-        this.level = level;
+    public void setAdvance_enddate(String advance_enddate) {
+        this.advance_enddate = advance_enddate;
+    }
+
+    public String getDiscount_info() {
+        return discount_info;
+    }
+
+    public void setDiscount_info(String discount_info) {
+        this.discount_info = discount_info;
+    }
+
+    public String getLevel_name() {
+        return level_name;
+    }
+
+    public void setLevel_name(String level_name) {
+        this.level_name = level_name;
+    }
+
+    public int getAdvance() {
+        return advance;
+    }
+
+    public void setAdvance(int advance) {
+        this.advance = advance;
+    }
+
+    public String getPassport_type_name() {
+        return passport_type_name;
+    }
+
+    public void setPassport_type_name(String passport_type_name) {
+        this.passport_type_name = passport_type_name;
     }
 }

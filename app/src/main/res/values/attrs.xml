@@ -27,6 +27,7 @@
         <attr name="rightTvVisibility" format="boolean" />
         <attr name="rightTvContent" format="string" />
         <attr name="title" format="string" />
+        <attr name="title_icon" format="reference"/>
     </declare-styleable>
 
 

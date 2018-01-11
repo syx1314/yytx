@@ -20,7 +20,7 @@ import rx.Observable;
 public interface ILoginApi {
     @FormUrlEncoded
     @POST("User/login")
-    Observable<ApiResultBean<LoginResponse>> login(@Field("mobile") String mobile, @Field("code") String code, @Field("device_token") String device_token);
+    Observable<ApiResultBean<LoginResponse>> login(@Field("mobile") String mobile, @Field("code") String code);
 
     @FormUrlEncoded
     @POST("User/sendVerCode")

@@ -20,7 +20,6 @@ public class MePresenter extends BasePresenter<MeContact.IMeView> implements MeC
     }
 
 
-
     @Override
     public void attachV(MeContact.IMeView view) {
         meView = view;
@@ -31,15 +30,25 @@ public class MePresenter extends BasePresenter<MeContact.IMeView> implements MeC
         meModel.getUserInfo(this);
     }
 
+
+    public void  requestLogout(){
+        meModel.logout(this);
+    }
     @Override
     public void error(String msg) {
-        if(meView!=null)
-        meView.error(msg);
+        if (meView != null)
+            meView.error(msg);
     }
 
     @Override
     public void userInfo(UserInfoBean userInfoBean) {
-        if(meView!=null)
-        meView.getUserInfo(userInfoBean);
+        if (meView != null)
+            meView.getUserInfo(userInfoBean);
+    }
+
+    @Override
+    public void logoutResult(String msg) {
+        if (meView != null)
+            meView.responseLogout(msg);
     }
 }

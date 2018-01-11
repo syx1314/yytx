@@ -7,6 +7,13 @@ package com.bdlm.yytx.constant;
 public class Constant {
 
     public final  static String BASEURL="http://api.yyhz369.com/";
+    public final  static String BASEURL2="http://wap.yyhz369.com/";
     public final  static String TOKEN="LOGINTOKEN";
     public final  static String SCENIC_ID="scenic_id";//景区id
+    public final  static String BUNDLE_STRING="BUNDLE_STRING";//景区id
+    public final  static String BUNDLE_URL="BUNDLE_URL";//景区id
+    public final  static String CURLON="CURLON";//d当前的经纬度
+    public final  static String CURLAN="CURLAN";//d当前的经纬度
+
+
 }

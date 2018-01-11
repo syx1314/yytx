@@ -4,12 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_bg_gray"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
     <com.bdlm.yytx.common.view.CommonTitle
         android:id="@+id/ct_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         app:title="@string/login_title" />
 
     <LinearLayout

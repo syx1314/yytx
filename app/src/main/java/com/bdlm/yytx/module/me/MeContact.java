@@ -14,14 +14,17 @@ public interface MeContact {
 
     interface IMeListener extends IBaseListener {
         void userInfo(UserInfoBean userInfoBean);
+        void logoutResult(String msg);
     }
 
     interface IMeView extends IBaseView {
         void getUserInfo(UserInfoBean userInfoBean);
+        void responseLogout(String msg);
     }
 
-    public abstract class IMeModel extends BaseModel {
+     abstract class IMeModel extends BaseModel {
         abstract void getUserInfo(IMeListener listener);
+        abstract void logout(IMeListener listener);
     }
 
 

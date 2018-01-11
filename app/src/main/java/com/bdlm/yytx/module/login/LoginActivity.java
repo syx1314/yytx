@@ -42,6 +42,7 @@ public class LoginActivity extends BaseActivity implements LoginContact.ILoginVi
     @Override
     protected void createPersenter() {
         loginPresenter = new LoginPresenter(this);
+        mImmersionBar.statusBarColor(R.color.color_status_bar).init();
     }
 
 

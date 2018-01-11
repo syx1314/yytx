@@ -132,13 +132,10 @@ public class ApiService {
                 BaseApplication baseApplication=(BaseApplication)BaseApplication.mContext;
                 if(baseApplication.getLoginConfig()!=null&& Validator.isNotEmpty(baseApplication.getLoginConfig().getToken())){
                     Logger.d("token:"+baseApplication.getLoginConfig().getToken());
-                    request=request.newBuilder().header("token",baseApplication.getLoginConfig().getToken()).build();//加入token头
 //                    request.url()=request.url()+"?token="+baseApplication.getLoginConfig().getToken();
-
-                   request= request.newBuilder().url(request.url()+"?token="+baseApplication.getLoginConfig().getToken()+"&device_token=HDUTr65FRT").build();
-
-
+//                   request= request.newBuilder().url(request.url()+"?token="+baseApplication.getLoginConfig().getToken()+"&device_token=HDUTr65FRT").build();
                 }
+                request= request.newBuilder().url(request.url()+"?token="+baseApplication.getLoginConfig().getToken()+"&device_token=HDUTr65FRT").build();
             }
             //返回数据
             Response originalResponse=chain.proceed(request);

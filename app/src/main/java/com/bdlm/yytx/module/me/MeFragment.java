@@ -10,14 +10,19 @@ import android.widget.TextView;
 
 import com.bdlm.yytx.R;
 import com.bdlm.yytx.base.BaseFragment;
+import com.bdlm.yytx.constant.Constant;
 import com.bdlm.yytx.entity.UserInfoBean;
+import com.bdlm.yytx.module.login.LoginActivity;
 import com.orhanobut.logger.Logger;
+import com.trsoft.app.lib.inter.CommonCallback;
 import com.trsoft.app.lib.utils.DialogUtil;
 import com.trsoft.app.lib.utils.ImageLoader;
+import com.trsoft.app.lib.utils.PreferenceUtils;
 import com.trsoft.app.lib.utils.validator.ValidatorUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 
@@ -47,6 +52,7 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
     TextView tvOpinion;
     @BindView(R.id.tv_exit)
     TextView tvExit;
+    Unbinder unbinder;
     private MePresenter presenter;
 
     @Override
@@ -75,13 +81,47 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
     public void getUserInfo(UserInfoBean userInfoBean) {
 
 
-        if(userInfoBean!=null){
-            ValidatorUtil.setTextVal(tvName,userInfoBean.getNick_name());
-            ValidatorUtil.setTextVal(tvPassportNum,mContext.getString(R.string.me_passport_num)+userInfoBean.getPassport_num());
+        if (userInfoBean != null) {
+            ValidatorUtil.setTextVal(tvName, userInfoBean.getNick_name());
+            ValidatorUtil.setTextVal(tvPassportNum, mContext.getString(R.string.me_passport_num) + userInfoBean.getPassport_num());
 
-            ImageLoader.displayCircleImage(mContext,userInfoBean.getAvatar(),ivHead);
+            ImageLoader.displayCircleImage(mContext, userInfoBean.getAvatar(), ivHead);
         }
     }
 
+    @Override
+    public void responseLogout(String msg) {
+        DialogUtil.showAlert(mContext, msg, new CommonCallback<Boolean>() {
+            @Override
+            public void onCallBack(Boolean data) {
+                PreferenceUtils.getInstance().clear();
+                toActivityNoClear(LoginActivity.class);
+            }
+        });
+    }
 
+    @OnClick({R.id.tv_exchange, R.id.tv_bind, R.id.tv_advance_record, R.id.tv_recommend, R.id.tv_qrcode, R.id.tv_order, R.id.tv_about, R.id.tv_opinion, R.id.tv_exit})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_exchange:
+                break;
+            case R.id.tv_bind:
+                break;
+            case R.id.tv_advance_record:
+                break;
+            case R.id.tv_recommend:
+                break;
+            case R.id.tv_qrcode:
+                break;
+            case R.id.tv_order:
+                break;
+            case R.id.tv_about:
+                break;
+            case R.id.tv_opinion:
+                break;
+            case R.id.tv_exit:
+              presenter.requestLogout();
+                break;
+        }
+    }
 }

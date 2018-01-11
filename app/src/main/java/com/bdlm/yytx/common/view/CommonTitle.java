@@ -3,6 +3,7 @@ package com.bdlm.yytx.common.view;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -58,6 +59,7 @@ public class CommonTitle extends RelativeLayout {
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CommonTitle);
         int color = typedArray.getColor(R.styleable.CommonTitle_commonTitleColor, getResources().getColor(R.color.red));
+        Drawable titleDrawable = typedArray.getDrawable(R.styleable.CommonTitle_title_icon);
         boolean leftVisibility = typedArray.getBoolean(R.styleable.CommonTitle_leftVisibility, true);
         boolean rightVisibility = typedArray.getBoolean(R.styleable.CommonTitle_rightVisibility, false);
         boolean rightTvVisibility = typedArray.getBoolean(R.styleable.CommonTitle_rightTvVisibility, false);
@@ -68,6 +70,10 @@ public class CommonTitle extends RelativeLayout {
         rlTitle.setBackgroundColor(color);
         addView(view);
         ButterKnife.bind(this);
+        if (titleDrawable != null) {
+            titleDrawable.setBounds(10, 0, 40, 40);
+            tvTitle.setCompoundDrawables(null, null, titleDrawable, null);
+        }
         if (!TextUtils.isEmpty(title)) {
             tvTitle.setText(title);
         }
@@ -115,5 +121,9 @@ public class CommonTitle extends RelativeLayout {
         void leftOclick();
 
         void rightOclick();
+    }
+
+    public void setTvTitle(String title) {
+        tvTitle.setText(title);
     }
 }

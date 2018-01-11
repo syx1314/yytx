@@ -47,7 +47,21 @@
     <string name="scenic_tab1">游玩须知</string>
     <string name="scenic_tab2">图文详情</string>
     <string name="scenic_tab3">附近推荐</string>
+    <string name="scenic_open">开放时间</string>
+    <string name="scenic_yhzc">优惠政策</string>
+    <string name="scenic_traffic">交通信息</string>
+    <string name="scenic_note">注意事项</string>
+    <string name="scenic_addvance_end_date">最晚预约至:%s</string>
+    <string name="scenic_hand_passport">持卡享优惠</string>
+    <string name="scenic_addvance">需预约</string>
 
+    <string name="sel_city_title">地区选择</string>
+
+
+    <!--TODO: loadHtml-->
+    <string name="xnlv">虚拟旅游</string>
+    <string name="buy_ticket">购买门票</string>
+    <string name="advance">预约</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

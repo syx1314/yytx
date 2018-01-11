@@ -19,4 +19,8 @@ public interface IUserApi {
     @GET("User/getInfo")
     Observable<ApiResultBean<UserInfoBean>> getUserInfo();
 
+
+    @GET("User/logout")
+    Observable<ApiResultBean<String>> logout();
+
 }

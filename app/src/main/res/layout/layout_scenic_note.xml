@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/style_common_tv"
+        android:textSize="@dimen/sp_header"
+        android:layout_height="wrap_content"
+        android:text="@string/scenic_open"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/tv_open_time"
+        style="@style/style_common_tv"
+        android:text="14:20-18:50"/>
+    <View style="@style/style_hortical_line"/>
+    <TextView
+        style="@style/style_common_tv"
+        android:textSize="@dimen/sp_header"
+        android:layout_height="wrap_content"
+        android:text="@string/scenic_traffic"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/tv_traffic"
+        style="@style/style_common_tv"
+        android:text="自驾：杭瑞高速公路-於潜互通-S208-S16-法横线-保松线"/>
+    <View style="@style/style_hortical_line"/>
+    <TextView
+        style="@style/style_common_tv"
+        android:textSize="@dimen/sp_header"
+        android:layout_height="wrap_content"
+        android:text="@string/scenic_yhzc"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/tv_yyzc"
+        style="@style/style_common_tv"
+        android:text="凭护照预约免费，会员本人提前两天在亿游天下APP进行预约（为了保障您的出行顺利，节假日、旅游旺季期间游玩请提前一周预约）"/>
+    <View style="@style/style_hortical_line"/>
+  <TextView
+        style="@style/style_common_tv"
+        android:textSize="@dimen/sp_header"
+        android:layout_height="wrap_content"
+        android:text="@string/scenic_note"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/tv_note"
+        style="@style/style_common_tv"
+        android:text="1.该景区需提前两天预定，旺季提前1周。预定成功方可享受会员免费政策。
+2.可通过APP预约景区。
+3.护照有效期内该景区只可使用一次。
+4.游玩行程如有变动，需在游玩的前一天上午12:00之前致电：400-8810-662取消行程。取消成功之后还可预定该景区。12:00之后视为该景区已游玩。"/>
+    <View style="@style/style_hortical_line"/>
+
+</LinearLayout>

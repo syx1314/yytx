@@ -44,7 +44,7 @@ public class LoginModel extends LoginContact.ILoginModel {
 
     @Override
     public void login(String phone, String code, final LoginContact.ILoginListener loginListener) {
-        Subscribe(getApiService(ILoginApi.class).login(phone, code, ""), new IApiReturn<LoginResponse>() {
+        Subscribe(getApiService(ILoginApi.class).login(phone, code), new IApiReturn<LoginResponse>() {
             @Override
             public void run(ApiResultBean<LoginResponse> apiResult) {
                 if (loginListener != null) {

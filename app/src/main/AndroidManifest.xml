@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <application
         android:name=".base.MyApplication"
@@ -39,8 +40,10 @@
         </activity>
         <activity android:name=".module.login.LoginActivity" />
         <activity android:name=".module.scenic.ScenicListActivity" />
-        <activity android:name=".MapActivity"></activity>
-        <activity android:name=".module.scenic.ScenicDetailsActivity"></activity>
+        <activity android:name=".MapActivity" />
+        <activity android:name=".module.scenic.ScenicDetailsActivity" />
+        <activity android:name=".module.city.SelCityActivity" />
+        <activity android:name=".module.webview.LoadHtmlActivity"></activity>
     </application>
 
 </manifest>

@@ -8,7 +8,7 @@ package com.trsoft.app.lib.mvp;
 public abstract class BasePresenter<V extends IBaseView> implements IBasePresenter<V>{
     private V mvpView;
 
-    public V getMvpView() {
+    protected V getMvpView() {
         return mvpView;
     }
 

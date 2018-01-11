@@ -2,7 +2,9 @@ package com.bdlm.yytx.base;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -21,6 +23,9 @@ import com.trsoft.app.lib.mvp.IBaseView;
 import com.trsoft.app.lib.utils.DialogUtil;
 import com.trsoft.app.lib.utils.PreferenceUtils;
 import com.trsoft.app.lib.utils.Validator;
+
+import java.util.Map;
+import java.util.Set;
 
 import butterknife.ButterKnife;
 import rx.Observer;
@@ -50,6 +55,7 @@ public abstract class BaseActivity<P extends IBasePresenter, V extends IBaseView
             if (activity != null && activity.getClass() != LoginActivity.class) {
                 startActivity(new Intent(this, LoginActivity.class));
             }
+            return;
         }
 
     }
@@ -72,8 +78,7 @@ public abstract class BaseActivity<P extends IBasePresenter, V extends IBaseView
     protected void initImmersionBar() {
         //在BaseActivity里初始化
         mImmersionBar = ImmersionBar.with(activity);
-        mImmersionBar.init();
-
+        mImmersionBar.keyboardEnable(true).init();
 
     }
 
@@ -130,6 +135,16 @@ public abstract class BaseActivity<P extends IBasePresenter, V extends IBaseView
 
     }
 
+    public  void toActivityOneDataNoClear(Class activityClass,String data){
+        if(activity!=null){
+            Intent intent = new Intent(activity, activityClass);
+            intent.putExtra(Constant.BUNDLE_STRING,data);
+            startActivity(intent);
+        }
+    }
+
+
+
     /**
      * 不清楚当前页面
      *
@@ -143,6 +158,11 @@ public abstract class BaseActivity<P extends IBasePresenter, V extends IBaseView
 
     }
 
+    public void toCallPhone(String phone){
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phone));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
     @Override
     protected void onDestroy() {
         if (persenter != null) {

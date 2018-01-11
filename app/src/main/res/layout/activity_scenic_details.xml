@@ -6,86 +6,7 @@
     android:background="@color/gray_light_bg">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <FrameLayout
-            android:id="@+id/rl_header"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/details_img_height">
-
-            <ImageView
-                android:id="@+id/ic_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/paddings"
-                android:src="@mipmap/icon_back" />
-
-            <TextView
-                android:id="@+id/tv_bq1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_margin="@dimen/paddind_left"
-                android:background="@drawable/shape_circle_orangle_bg"
-                android:padding="@dimen/drawable_paddind"
-                android:text="5A景区"
-                android:textColor="@color/white" />
-        </FrameLayout>
-
-        <TextView
-            android:id="@+id/tv_scenic_name"
-            style="@style/style_common_tv"
-            android:background="@color/white"
-            android:text="龙潭大峡谷"
-
-            android:textSize="@dimen/sp_content" />
-
-        <TextView
-            android:id="@+id/tv_price"
-            style="@style/style_common_tv"
-            android:background="@color/white"
-            android:text="¥128"
-            android:textColor="@color/color_red_light"
-            android:textSize="@dimen/sp_header"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tv_scenic_address"
-            style="@style/style_common_tv"
-            android:background="@color/white"
-            android:textColor="@color/color_text_gray"
-            android:drawableLeft="@mipmap/icon_position"
-            android:drawablePadding="@dimen/drawable_paddind"
-            android:text="四川省雅安市宝兴县硗碛藏族乡"
-            android:textSize="@dimen/text_sub" />
-
-        <View style="@style/style_hortical_line" />
-
-        <View
-            style="@style/style_hortical_line"
-            android:layout_marginTop="@dimen/paddings_8" />
-
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tablayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            app:tabIndicatorColor="@color/color_orangle" />
-        <View style="@style/style_hortical_line"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:textColor="@color/color_text_gray"
-            android:text="1.凭预约旅游年卡免费，会员本人提前两天在APP进行预约（为了保障您的出行顺利，节假日、旅游旺季期间游玩请提前一周预约）。
-2.公交路线：
-乘坐327路（老古城——槐树岭公交总站）、385路（大灰厂西站——老古城）或951路（坨里——地铁八宝山站），到芦井北站下车，即可到达园博园6号门。
-3.营业时间：7:00-18:00"/>
-    </LinearLayout>
-
-    <LinearLayout
+        android:id="@+id/lin_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -99,11 +20,10 @@
             android:layout_weight="1"
             android:drawableTop="@mipmap/icon_kf"
             android:gravity="center"
-            android:textSize="10sp"
-            android:text="联系客服" />
+            android:text="联系客服"
+            android:textSize="10sp" />
 
-        <View
-            style="@style/style_vertical_line" />
+        <View style="@style/style_vertical_line" />
 
         <TextView
             android:id="@+id/btn_vr"
@@ -113,8 +33,8 @@
             android:layout_weight="1"
             android:drawableTop="@mipmap/icon_vr"
             android:gravity="center"
-            android:textSize="10sp"
-            android:text="虚拟旅游" />
+            android:text="虚拟旅游"
+            android:textSize="10sp" />
 
         <Button
             android:id="@+id/btn_ticket_buy"
@@ -132,4 +52,132 @@
             android:text="@string/btn_advance"
             android:textColor="@color/white" />
     </LinearLayout>
+
+    <com.bdlm.yytx.common.view.CommonTitle
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:visibility="gone"
+        app:title="景区详情" />
+
+    <ScrollView
+        android:id="@+id/sv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/lin_bottom"
+        android:layout_below="@id/title"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_header"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/details_img_height">
+
+                <ImageView
+                    android:id="@+id/ic_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/paddings"
+                    android:src="@mipmap/icon_back" />
+
+                <TextView
+                    android:id="@+id/tv_scenic_grade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="@dimen/paddind_left"
+                    android:background="@drawable/shape_circle_green_bg"
+                    android:padding="@dimen/drawable_paddind"
+                    android:text="5A景区"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_scenic_name"
+                style="@style/style_common_tv"
+                android:background="@color/white"
+                android:text="龙潭大峡谷"
+                android:textSize="@dimen/sp_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/paddind_left">
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:text="128"
+                    android:drawableLeft="@mipmap/icon_rmb"
+                    android:gravity="center"
+                    android:textColor="@color/color_red_light"
+                    android:textSize="@dimen/text_big"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_is_addvance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/paddind_left"
+                    android:background="@drawable/shape_circle_orangle_bg"
+                    android:padding="@dimen/drawable_paddind"
+                    android:textSize="@dimen/text_small"
+                    android:gravity="center"
+                    android:text=" 预约 "
+                    android:textColor="@color/white" />
+                <TextView
+                    android:id="@+id/tv_addvance_endDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="@color/color_text_gray"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_scenic_address"
+                style="@style/style_common_tv"
+                android:background="@color/white"
+                android:drawableLeft="@mipmap/icon_position"
+                android:drawablePadding="@dimen/drawable_paddind"
+                android:text="四川省雅安市宝兴县硗碛藏族乡"
+                android:textColor="@color/color_text_gray"
+                android:textSize="@dimen/text_sub" />
+
+            <View style="@style/style_hortical_line" />
+
+            <View
+                style="@style/style_hortical_line"
+                android:layout_marginTop="@dimen/paddings_8" />
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:tabIndicatorColor="@color/color_orangle" />
+
+            <View style="@style/style_hortical_line" />
+
+            <FrameLayout
+                android:id="@+id/fl_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white" />
+        </LinearLayout>
+    </ScrollView>
+
+
 </RelativeLayout>

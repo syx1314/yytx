@@ -7,14 +7,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.bdlm.yytx.R;
+import com.bdlm.yytx.constant.Constant;
+import com.bdlm.yytx.module.login.LoginActivity;
 import com.gyf.barlibrary.ImmersionBar;
+import com.orhanobut.logger.Logger;
 import com.trsoft.app.lib.mvp.BasePresenter;
 import com.trsoft.app.lib.mvp.IBaseView;
+import com.trsoft.app.lib.utils.PreferenceUtils;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -31,10 +36,23 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     private Unbinder mUnbinder;
     protected Activity mContext;
     protected ImmersionBar mImmersionBar;
+    private String token;
 
     protected abstract void createPresenter();
 
     protected abstract int getLayout();
+
+    public void isLogin() {
+        token = PreferenceUtils.getInstance().getString(Constant.TOKEN);
+        Logger.e(token);
+        if (TextUtils.isEmpty(token)) {
+            if (mContext != null && mContext.getClass() != LoginActivity.class) {
+                startActivity(new Intent(mContext, LoginActivity.class));
+            }
+            return;
+        }
+
+    }
 
 
     /**

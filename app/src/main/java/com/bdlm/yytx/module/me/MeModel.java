@@ -33,4 +33,28 @@ public class MeModel extends MeContact.IMeModel {
             }
         });
     }
+
+    @Override
+    void logout(final MeContact.IMeListener listener) {
+        Subscribe(getApiService(IUserApi.class).logout(), new IApiReturn<String>() {
+            @Override
+            public void run(ApiResultBean<String> apiResult) {
+                if (listener != null) {
+                    if (isSuccess(apiResult.getCode())) {
+                        listener.logoutResult(apiResult.getMsg());
+                    }else {
+                        listener.error(apiResult.getMsg());
+                    }
+                }
+            }
+
+            @Override
+            public void error(String message) {
+                if(listener!=null)
+                listener.error(message);
+            }
+        });
+    }
+
+
 }
