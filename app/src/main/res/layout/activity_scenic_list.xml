@@ -12,7 +12,7 @@
         android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="@string/home_play" />
+        app:title="@string/scenic_list_title" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tablayout"

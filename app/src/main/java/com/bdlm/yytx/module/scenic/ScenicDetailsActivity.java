@@ -136,15 +136,15 @@ public class ScenicDetailsActivity extends BaseActivity implements ScenicContact
             ImageLoader.display(response.getImage(), relativeLayout);
             ValidatorUtil.setTextVal(tvScenicGrade, response.getLevel_name());
             ValidatorUtil.setTextVal(tvScenicName, response.getName() + response.getLong_title());
-            ValidatorUtil.setTextVal(tvPrice,response.getPrice());
+            ValidatorUtil.setTextVal(tvPrice, response.getPrice());
             ValidatorUtil.setTextVal(tvScenicAddress, response.getAddress());
             if (response.getAdvance() == 1) {
                 tvIsAddvance.setTextSize(14);
-                ValidatorUtil.setTextVal(tvIsAddvance,getString(R.string.scenic_addvance));
+                ValidatorUtil.setTextVal(tvIsAddvance, getString(R.string.scenic_addvance));
                 tvPrice.setVisibility(View.GONE);
                 tvAddvanceEndDate.setText(String.format(getString(R.string.scenic_addvance_end_date), response.getAdvance_enddate()));
-            }else {
-                ValidatorUtil.setTextVal(tvIsAddvance,getString(R.string.scenic_hand_passport));
+            } else {
+                ValidatorUtil.setTextVal(tvIsAddvance, getString(R.string.scenic_hand_passport));
             }
             addPlayLayout(tabLayout.getTabAt(0));
         }
@@ -170,7 +170,7 @@ public class ScenicDetailsActivity extends BaseActivity implements ScenicContact
         } else if (tab.getText().equals("图文详情")) {
             View view = LayoutInflater.from(activity).inflate(R.layout.layout_webview, flContent);
             WebView webView = view.findViewById(R.id.webView);
-            webView.loadUrl(Constant.BASEURL+"/Senic/getDescription/senic_id/" + response.getSenic_id());
+            webView.loadUrl(Constant.BASEURL + "/Senic/getDescription/senic_id/" + response.getSenic_id());
         }
     }
 
@@ -205,18 +205,19 @@ public class ScenicDetailsActivity extends BaseActivity implements ScenicContact
                 startActivity(intent);
                 break;
             case R.id.btn_ticket_buy:
-
+                isLogin();
                 intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.buy_ticket));
-                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Ticket/showlist/senic_id/1847/user_name/18336407333");
+                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Ticket/showlist/senic_id/" + response.getSenic_id() + "/token/" + token);
                 startActivity(intent);
                 break;
             case R.id.btn_advance:
+                isLogin();
                 intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.advance));
-                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Advance/index/user_name/18336407333/sid/750");
+                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Advance/index/token/" + token + "/sid/" + response.getSenic_id());
                 startActivity(intent);
                 break;
             case R.id.ic_back:
-               onBackPressed();
+                onBackPressed();
                 break;
         }
 
@@ -229,6 +230,7 @@ public class ScenicDetailsActivity extends BaseActivity implements ScenicContact
         return appearAnimation;
 
     }
+
     //消失的动画
     private AlphaAnimation disApperaView() {
         AlphaAnimation disappearAnimation = new AlphaAnimation(1, 0);

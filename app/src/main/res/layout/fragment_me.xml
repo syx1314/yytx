@@ -41,21 +41,21 @@
                     <TextView
                         android:id="@+id/tv_name"
                         style="@style/style_common_tv"
+                        android:layout_marginTop="@dimen/paddings_8"
                         android:gravity="center"
-                        android:textColor="@color/white"
-                        android:text="111111"
-                        android:textSize="@dimen/text_small_szie"
                         android:padding="0dp"
-                        android:layout_marginTop="@dimen/paddings_8"/>
+                        android:text="111111"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_small_szie" />
 
                     <TextView
                         android:id="@+id/tv_passport_num"
                         style="@style/style_common_tv"
 
-                        android:padding="0dp"
                         android:gravity="center"
-                        android:textColor="@color/white"
+                        android:padding="0dp"
                         android:text="111111"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_small_szie" />
                 </LinearLayout>
             </RelativeLayout>
@@ -68,13 +68,27 @@
                 android:background="@color/white"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_exchange"
-                    style="@style/style_common_tv"
-                    android:drawableLeft="@mipmap/daijinquan"
-                    android:drawablePadding="@dimen/drawable_paddind"
-                    android:drawableRight="@mipmap/jinru"
-                    android:text="@string/me_exchange" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_exchange"
+                        style="@style/style_common_tv"
+                        android:layout_width="wrap_content"
+                        android:drawableLeft="@mipmap/daijinquan"
+                        android:drawablePadding="@dimen/drawable_paddind"
+                        android:text="@string/me_exchange" />
+
+                    <TextView
+                        android:id="@+id/tv_balance"
+                        style="@style/style_common_tv"
+                        android:drawableRight="@mipmap/jinru"
+                        android:gravity="center|right"
+                        android:drawablePadding="@dimen/drawable_paddind"
+                        android:text="￥120" />
+                </LinearLayout>
 
                 <View
                     style="@style/style_hortical_line"
@@ -181,10 +195,10 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_below="@id/line3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
+                android:layout_below="@id/line3"
                 android:orientation="vertical">
 
                 <TextView
@@ -192,18 +206,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/paddind_left"
                     android:gravity="center"
-                    android:textSize="@dimen/text_sub"
                     android:text="@string/me_kf_phone"
-                    android:textColor="@color/color_text_gray" />
+                    android:textColor="@color/color_text_gray"
+                    android:textSize="@dimen/text_sub" />
 
                 <TextView
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_sub"
                     android:gravity="center"
                     android:text="@string/me_company"
-                    android:textColor="@color/color_text_gray" />
+                    android:textColor="@color/color_text_gray"
+                    android:textSize="@dimen/text_sub" />
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>

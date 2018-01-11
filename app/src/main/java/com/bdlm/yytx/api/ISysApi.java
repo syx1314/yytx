@@ -6,7 +6,9 @@ import com.trsoft.app.lib.http.ApiResultBean;
 import java.util.List;
 
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -19,4 +21,7 @@ public interface ISysApi {
     @FormUrlEncoded
     @POST("Ad/getAdList")
     Observable<ApiResultBean<List<ImageBean>>> adList(String position_id);
+
+    @GET("User/get_system_config")
+    Observable<ApiResultBean<String>> systemConfig(@Query("type") String type);
 }

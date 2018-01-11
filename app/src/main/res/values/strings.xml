@@ -40,7 +40,8 @@
     <string name="me_exit">退出</string>
     <string name="me_kf_phone">全国统一客服:400-881-0662</string>
     <string name="me_company">北京亿游天下旅游发展有限公司</string>
-
+    <!--TODO: 景区列表-->
+    <string name="scenic_list_title">全国景区</string>
     <!--TODO:景区详情-->
     <string name="btn_ticket_buy">门票购买</string>
     <string name="btn_advance">立即预约</string>

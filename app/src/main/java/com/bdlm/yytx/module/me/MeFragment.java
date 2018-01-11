@@ -36,6 +36,8 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
     TextView tvPassportNum;
     @BindView(R.id.tv_exchange)
     TextView tvExchange;
+    @BindView(R.id.tv_balance)
+    TextView tvBalance;
     @BindView(R.id.tv_bind)
     TextView tvBind;
     @BindView(R.id.tv_advance_record)
@@ -52,7 +54,6 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
     TextView tvOpinion;
     @BindView(R.id.tv_exit)
     TextView tvExit;
-    Unbinder unbinder;
     private MePresenter presenter;
 
     @Override
@@ -84,7 +85,7 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
         if (userInfoBean != null) {
             ValidatorUtil.setTextVal(tvName, userInfoBean.getNick_name());
             ValidatorUtil.setTextVal(tvPassportNum, mContext.getString(R.string.me_passport_num) + userInfoBean.getPassport_num());
-
+            tvBalance.setText("¥"+userInfoBean.getBalance());
             ImageLoader.displayCircleImage(mContext, userInfoBean.getAvatar(), ivHead);
         }
     }
@@ -120,7 +121,7 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
             case R.id.tv_opinion:
                 break;
             case R.id.tv_exit:
-              presenter.requestLogout();
+                presenter.requestLogout();
                 break;
         }
     }
