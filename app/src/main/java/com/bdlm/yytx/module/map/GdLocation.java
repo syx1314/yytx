@@ -5,6 +5,7 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.bdlm.yytx.entity.PositionBean;
+import com.orhanobut.logger.Logger;
 import com.trsoft.app.lib.BaseApplication;
 
 /**
@@ -23,6 +24,7 @@ public class GdLocation {
     public GdLocation() {
         initLocation();
     }
+
     /**
      * 初始化定位
      *
@@ -51,7 +53,7 @@ public class GdLocation {
         mOption.setHttpTimeOut(30000);//可选，设置网络请求超时时间。默认为30秒。在仅设备模式下无效
         mOption.setInterval(2000);//可选，设置定位间隔。默认为2秒
         mOption.setNeedAddress(true);//可选，设置是否返回逆地理地址信息。默认是true
-        mOption.setOnceLocation(false);//可选，设置是否单次定位。默认是false
+        mOption.setOnceLocation(true);//可选，设置是否单次定位。默认是false
         mOption.setOnceLocationLatest(false);//可选，设置是否等待wifi刷新，默认为false.如果设置为true,会自动变为单次定位，持续定位时不要使用
         AMapLocationClientOption.setLocationProtocol(AMapLocationClientOption.AMapLocationProtocol.HTTP);//可选， 设置网络请求的协议。可选HTTP或者HTTPS。默认为HTTP
         mOption.setSensorEnable(false);//可选，设置是否使用传感器。默认是false
@@ -69,6 +71,7 @@ public class GdLocation {
             if (null != loc) {
                 //解析定位结果
                 if (result != null) {
+                    Logger.e(loc + "定位结果");
                     PositionBean positionBean = new PositionBean(loc.getErrorCode(), loc.getLongitude(), loc.getLatitude(), loc.getProvince(), loc.getErrorInfo(), loc.getLocationDetail());
                     result.locationResult(positionBean);
                 }
@@ -87,7 +90,7 @@ public class GdLocation {
      * @since 2.8.0
      */
     public void startLocation() {
-        if(locationClient!=null) {
+        if (locationClient != null) {
             // 设置定位参数
             locationClient.setLocationOption(getDefaultOption());
             // 启动定位
@@ -102,7 +105,7 @@ public class GdLocation {
      * @since 2.8.0
      */
     public void stopLocation() {
-        if(locationClient!=null) {
+        if (locationClient != null) {
             // 停止定位
             locationClient.stopLocation();
         }

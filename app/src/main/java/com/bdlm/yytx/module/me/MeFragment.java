@@ -1,6 +1,7 @@
 package com.bdlm.yytx.module.me;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.bdlm.yytx.base.BaseFragment;
 import com.bdlm.yytx.constant.Constant;
 import com.bdlm.yytx.entity.UserInfoBean;
 import com.bdlm.yytx.module.login.LoginActivity;
+import com.bdlm.yytx.module.webview.LoadHtmlActivity;
 import com.orhanobut.logger.Logger;
 import com.trsoft.app.lib.inter.CommonCallback;
 import com.trsoft.app.lib.utils.DialogUtil;
@@ -85,7 +87,7 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
         if (userInfoBean != null) {
             ValidatorUtil.setTextVal(tvName, userInfoBean.getNick_name());
             ValidatorUtil.setTextVal(tvPassportNum, mContext.getString(R.string.me_passport_num) + userInfoBean.getPassport_num());
-            tvBalance.setText("¥"+userInfoBean.getBalance());
+            tvBalance.setText("¥" + userInfoBean.getBalance());
             ImageLoader.displayCircleImage(mContext, userInfoBean.getAvatar(), ivHead);
         }
     }
@@ -101,22 +103,45 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
         });
     }
 
-    @OnClick({R.id.tv_exchange, R.id.tv_bind, R.id.tv_advance_record, R.id.tv_recommend, R.id.tv_qrcode, R.id.tv_order, R.id.tv_about, R.id.tv_opinion, R.id.tv_exit})
+    @OnClick({R.id.lin_exchange, R.id.tv_bind, R.id.tv_advance_record, R.id.tv_recommend, R.id.tv_qrcode, R.id.tv_order, R.id.tv_about, R.id.tv_opinion, R.id.tv_exit})
     public void onViewClicked(View view) {
+        Intent intent = new Intent(mContext, LoadHtmlActivity.class);
+        String token = PreferenceUtils.getInstance().getString(Constant.TOKEN);
         switch (view.getId()) {
-            case R.id.tv_exchange:
+            case R.id.lin_exchange:
+                intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.me_exchange));
+                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Index/rechargeBalance?&token=" + token);
+                startActivity(intent);
                 break;
             case R.id.tv_bind:
+                intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.me_bind_card));
+                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Index/bindPassport?token=" + token);
+                startActivity(intent);
                 break;
             case R.id.tv_advance_record:
+                intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.me_addvance_recored));
+                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Advance/showlist?token=" + token);
+                startActivity(intent);
                 break;
             case R.id.tv_recommend:
+                intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.me_recommend_friends));
+                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Distribution/recommend?token=" + token);
+                startActivity(intent);
                 break;
             case R.id.tv_qrcode:
+                intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.me_qrcode));
+                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Distribution/qrcode?token=" + token);
+                startActivity(intent);
                 break;
             case R.id.tv_order:
+                intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.me_order));
+                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Ticket/orderList?token=" + token);
+                startActivity(intent);
                 break;
             case R.id.tv_about:
+                intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.me_about_me));
+                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL + "/User/get_system_config/type/ABOUTUS");
+                startActivity(intent);
                 break;
             case R.id.tv_opinion:
                 break;

@@ -26,7 +26,7 @@ public class ScenicPresenter extends BasePresenter<ScenicContact.IScenicView> im
         this.scenicView = view;
     }
 
-    public void requestScenicList(double longitude, final double latitude, int passport_type, int city_id, int page) {
+    public void requestScenicList(String longitude, final String latitude, int passport_type, int city_id, int page) {
         scenicModel.requestScenicList(longitude, latitude, passport_type, city_id, page, this);
     }
 

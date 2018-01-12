@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ScenicModel extends ScenicContact.IScenicModel {
     @Override
-    void requestScenicList(double longitude, final double latitude, int passport_type, int city_id, int page, final ScenicContact.IScenicListener listener) {
+    void requestScenicList(String longitude, final String latitude, int passport_type, int city_id, int page, final ScenicContact.IScenicListener listener) {
         Subscribe(getApiService(IScenicApi.class).getScenicList(longitude, latitude, passport_type, city_id, page), new IApiReturn<ScenicListResponse>() {
             @Override
             public void run(ApiResultBean<ScenicListResponse> apiResult) {

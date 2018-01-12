@@ -100,22 +100,22 @@ public abstract class BaseActivity<P extends IBasePresenter, V extends IBaseView
      * @param noTips      拒绝权限
      * @param noAgainTips 点击不在提醒 提示用户如何操作
      */
-    protected void requestPermissoin(String permission, String okTips, String noTips, String noAgainTips) {
+    protected void requestPermissoin(final String okTips, final String noTips, final String noAgainTips, String... permission) {
         RxPermissions rxPermissions = new RxPermissions(activity);
-        rxPermissions.requestEach(Manifest.permission.READ_PHONE_STATE).subscribe(new Action1<Permission>() {
+        rxPermissions.requestEach(permission).subscribe(new Action1<Permission>() {
             @Override
             public void call(Permission permission) {
                 if (permission.granted) {
                     // 用户已经同意该权限
-                    DialogUtil.showAlert(activity, "用户已经同意该权限", null);
+                    DialogUtil.showAlert(activity, okTips, null);
 
                 } else if (permission.shouldShowRequestPermissionRationale) {
                     // 用户拒绝了该权限，没有选中『不再询问』（Never ask again）,那么下次再次启动时，还会提示请求权限的对话框
 
-                    DialogUtil.showAlert(activity, "用户拒绝了该权限", null);
+                    DialogUtil.showAlert(activity, noTips, null);
                 } else {
                     // 用户拒绝了该权限，并且选中『不再询问』，提醒用户手动打开权限
-                    DialogUtil.showAlert(activity, "权限被拒绝，请在设置里面开启相应权限，若无相应权限会影响使用", null);
+                    DialogUtil.showAlert(activity, noAgainTips, null);
 
                 }
             }

@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context="com.bdlm.yytx.module.webview.LoadHtmlActivity">
 
     <com.bdlm.yytx.common.view.CommonTitle
         android:id="@+id/ct_title"
-        android:fitsSystemWindows="true"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <include layout="@layout/layout_webview"/>

@@ -25,7 +25,7 @@ public interface IScenicApi {
 
     @FormUrlEncoded
     @POST("Senic/getList")
-    Observable<ApiResultBean<ScenicListResponse>> getScenicList(@Field("longitude") double longitude, @Field("latitude") double latitude, @Field("passport_type") int passport_type, @Field("city_id") int city_id, @Field("page") int page);
+    Observable<ApiResultBean<ScenicListResponse>> getScenicList(@Field("longitude") String longitude, @Field("latitude") String latitude, @Field("passport_type") int passport_type, @Field("city_id") int city_id, @Field("page") int page);
 
     @FormUrlEncoded
     @POST("Senic/getDetailById")

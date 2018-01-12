@@ -17,12 +17,16 @@ import com.bdlm.yytx.constant.Constant;
 import com.bdlm.yytx.module.login.LoginActivity;
 import com.gyf.barlibrary.ImmersionBar;
 import com.orhanobut.logger.Logger;
+import com.tbruyelle.rxpermissions.Permission;
+import com.tbruyelle.rxpermissions.RxPermissions;
 import com.trsoft.app.lib.mvp.BasePresenter;
 import com.trsoft.app.lib.mvp.IBaseView;
+import com.trsoft.app.lib.utils.DialogUtil;
 import com.trsoft.app.lib.utils.PreferenceUtils;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import rx.functions.Action1;
 
 /**
  * Created by yyj on 2017/12/28.
@@ -94,6 +98,39 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
 
         return mRootView;
 
+    }
+
+    /**
+     * 请求权限
+     *
+     * @param permission  权限
+     * @param okTips      授权提示
+     * @param noTips      拒绝权限
+     * @param noAgainTips 点击不在提醒 提示用户如何操作
+     */
+    protected void requestPermissoin(final String okTips, final String noTips, final String noAgainTips, String... permission) {
+        if (mContext == null) {
+            return;
+        }
+        RxPermissions rxPermissions = new RxPermissions(mContext);
+        rxPermissions.requestEach(permission).subscribe(new Action1<Permission>() {
+            @Override
+            public void call(Permission permission) {
+                if (permission.granted) {
+                    // 用户已经同意该权限
+                    DialogUtil.showAlert(mContext, okTips, null);
+
+                } else if (permission.shouldShowRequestPermissionRationale) {
+                    // 用户拒绝了该权限，没有选中『不再询问』（Never ask again）,那么下次再次启动时，还会提示请求权限的对话框
+
+                    DialogUtil.showAlert(mContext, noTips, null);
+                } else {
+                    // 用户拒绝了该权限，并且选中『不再询问』，提醒用户手动打开权限
+                    DialogUtil.showAlert(mContext, noAgainTips, null);
+
+                }
+            }
+        });
     }
 
     @Override

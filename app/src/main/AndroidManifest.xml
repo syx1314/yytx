@@ -43,7 +43,8 @@
         <activity android:name=".MapActivity" />
         <activity android:name=".module.scenic.ScenicDetailsActivity" />
         <activity android:name=".module.city.SelCityActivity" />
-        <activity android:name=".module.webview.LoadHtmlActivity"></activity>
+        <activity android:name=".module.webview.LoadHtmlActivity" />
+        <activity android:name=".module.scenic.SearchScenicActivity"></activity>
     </application>
 
 </manifest>

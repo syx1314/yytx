@@ -23,7 +23,8 @@
             app:commonTitleColor="#22000000"
             app:title_icon="@mipmap/icon_down_arrow"
             app:leftVisibility="false"
-            app:title="天津市" />
+            app:rightTvVisibility="true"
+            app:rightTvContent="搜索"/>
     </FrameLayout>
 
     <LinearLayout

@@ -14,9 +14,17 @@ import android.widget.TextView;
 import com.bdlm.yytx.R;
 import com.bdlm.yytx.base.BaseFragment;
 import com.bdlm.yytx.common.view.CommonTitle;
+import com.bdlm.yytx.constant.Constant;
+import com.bdlm.yytx.entity.PositionBean;
 import com.bdlm.yytx.module.city.SelCityActivity;
+import com.bdlm.yytx.module.map.GdLocation;
 import com.bdlm.yytx.module.scenic.ScenicListActivity;
+import com.bdlm.yytx.module.scenic.SearchScenicActivity;
 import com.gyf.barlibrary.ImmersionBar;
+import com.orhanobut.logger.Logger;
+import com.trsoft.app.lib.utils.DialogUtil;
+import com.trsoft.app.lib.utils.PreferenceUtils;
+import com.trsoft.app.lib.utils.validator.ValidatorUtil;
 import com.youth.banner.Banner;
 
 import butterknife.BindView;
@@ -27,7 +35,7 @@ import butterknife.Unbinder;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView {
 
     @BindView(R.id.title)
     CommonTitle title;
@@ -49,7 +57,7 @@ public class HomeFragment extends BaseFragment {
     TextView tvPlay;
     @BindView(R.id.tv_travel_agency)
     TextView tvTravelAgency;
-
+    HomePersenter persenter;
     /**
      * 高德定位需要进行检测的权限数组
      */
@@ -60,9 +68,23 @@ public class HomeFragment extends BaseFragment {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.READ_PHONE_STATE
     };
+
     @Override
     protected void createPresenter() {
+        requestPermissoin("权限获得", "没有获得权限", "不在提醒", needPermissions);
+        persenter = new HomePersenter(this);
+        persenter.getPosition();
+        title.setClickFun(new CommonTitle.IClickFun() {
+            @Override
+            public void leftOclick() {
 
+            }
+
+            @Override
+            public void rightOclick() {
+                toActivityNoClear(SearchScenicActivity.class);
+            }
+        });
     }
 
 
@@ -75,12 +97,6 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected int getLayout() {
         return R.layout.fragment_home;
-    }
-
-
-    @Override
-    public void error(String msg) {
-
     }
 
 
@@ -109,4 +125,19 @@ public class HomeFragment extends BaseFragment {
                 break;
         }
     }
+
+    @Override
+    public void resultPosition(PositionBean positionBean) {
+        title.setTvTitle(positionBean.getProvince());
+        if (positionBean != null) {
+            PreferenceUtils.getInstance().saveData(Constant.CURLAN, positionBean.getLatitude() + "");
+            PreferenceUtils.getInstance().saveData(Constant.CURLON, positionBean.getLongitude() + "");
+        }
+    }
+
+    @Override
+    public void error(String msg) {
+        DialogUtil.showAlert(mContext, msg, null);
+    }
+
 }

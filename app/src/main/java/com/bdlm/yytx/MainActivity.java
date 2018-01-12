@@ -1,5 +1,6 @@
 package com.bdlm.yytx;
 
+import android.Manifest;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTabHost;
 
@@ -40,12 +41,12 @@ public class MainActivity extends BaseActivity {
     //定义数组来存放按钮图片
 //    private int mImages[] = {R.drawable.bt_home_selector, R.drawable.bt_tab2_selector, R.drawable.bt_tab3_selector,
 //            R.drawable.bt_tab4_selector};
-    private int mImages[] = {R.drawable.bt_home_selector,R.drawable.bt_tab2_selector, R.drawable.bt_tab3_selector,
+    private int mImages[] = {R.drawable.bt_home_selector, R.drawable.bt_tab2_selector, R.drawable.bt_tab3_selector,
             R.drawable.bt_tab4_selector};
 
     //Tab选项卡的文字
 //    private String mTextviewArray[] = {"首页", "景区", "统计", "设置"};
-    private String mTextviewArray[] = {"首页", "特产", "发现","我的"};
+    private String mTextviewArray[] = {"首页", "特产", "发现", "我的"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,7 +59,7 @@ public class MainActivity extends BaseActivity {
         //实例化布局对象
         layoutInflater = LayoutInflater.from(activity);
         //实例化TabHost对象，得到TabHost
-        tabhost.setup(activity,getSupportFragmentManager(), R.id.realtabcontent);
+        tabhost.setup(activity, getSupportFragmentManager(), R.id.realtabcontent);
         tabhost.getTabWidget().setDividerDrawable(null);
         int count = fragmentArray.length;
         //得到fragment的个数
@@ -85,7 +86,6 @@ public class MainActivity extends BaseActivity {
         return view;
 
     }
-
 
 
     @Override

@@ -28,7 +28,7 @@ public interface ScenicContact {
     }
 
     abstract class IScenicModel extends BaseModel{
-        abstract void requestScenicList(double longitude,double latitude,int passport_type,int city_id,int page,IScenicListener listener);
+        abstract void requestScenicList(String longitude,String latitude,int passport_type,int city_id,int page,IScenicListener listener);
         abstract void  requestScenicDetails(String scenic_id,IScenicListener listener);
         abstract void  requestPassportType(IScenicListener listener);
 

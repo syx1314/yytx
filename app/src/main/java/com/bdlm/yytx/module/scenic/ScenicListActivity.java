@@ -21,6 +21,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.trsoft.app.lib.utils.DialogUtil;
+import com.trsoft.app.lib.utils.PreferenceUtils;
 import com.trsoft.app.lib.view.recycleview.RecycleViewDivider;
 import com.trsoft.app.lib.view.recycleview.ViewHolder;
 import com.trsoft.app.lib.view.recycleview.adapter.BaseRecycleViewAdapter;
@@ -45,8 +46,8 @@ public class ScenicListActivity extends BaseActivity implements ScenicContact.IS
     private List<ScenicResponse> senicList;
     private BaseRecycleViewAdapter<ScenicResponse> adapter;
     private List<PassportTypeBean> typeBeans;
-    private double lon;
-    private double lat;
+    private String lon;
+    private String lat;
     private int passPortType;
 
     @Override
@@ -71,8 +72,8 @@ public class ScenicListActivity extends BaseActivity implements ScenicContact.IS
         //获取护照类型
         presenter.requestPassportType();
         tablayout.addOnTabSelectedListener(this);
-        lon = 116.1914062500;
-        lat = 39.6056881783;
+        lon = PreferenceUtils.getInstance().getString(Constant.CURLON);
+        lat = PreferenceUtils.getInstance().getString(Constant.CURLAN);
     }
 
     @Override

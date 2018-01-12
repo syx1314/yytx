@@ -61,7 +61,7 @@
             </RelativeLayout>
 
             <LinearLayout
-                android:id="@+id/lin2"
+                android:id="@+id/lin_exchange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/rl1"
@@ -107,7 +107,7 @@
                 android:id="@+id/line3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/lin2"
+                android:layout_below="@id/lin_exchange"
                 android:layout_marginTop="@dimen/paddind_left"
                 android:background="@color/white"
                 android:orientation="vertical">
