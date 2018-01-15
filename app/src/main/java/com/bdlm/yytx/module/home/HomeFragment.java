@@ -87,11 +87,13 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
         });
     }
 
-
     @Override
-    protected void initImmersionBar() {
-        super.initImmersionBar();
-        mImmersionBar.titleBar(banner).init();
+    public void onResume() {
+        super.onResume();
+//        mImmersionBar.titleBar(title).init();
+        mImmersionBar.statusBarColor(R.color.color_status_bar);
+        mImmersionBar.fitsSystemWindows(true).init();
+
     }
 
     @Override

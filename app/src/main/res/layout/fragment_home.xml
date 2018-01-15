@@ -6,26 +6,22 @@
     android:background="@color/white"
     android:orientation="vertical"
     tools:context="com.bdlm.yytx.module.home.HomeFragment">
-
-    <FrameLayout
+    <!--  app:commonTitleColor="#22000000"-->
+    <com.bdlm.yytx.common.view.CommonTitle
+        android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <com.youth.banner.Banner
-            android:id="@+id/banner"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/banner_height"
-            android:background="@mipmap/banner_sy" />
-        <com.bdlm.yytx.common.view.CommonTitle
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            app:commonTitleColor="#22000000"
-            app:title_icon="@mipmap/icon_down_arrow"
-            app:leftVisibility="false"
-            app:rightTvVisibility="true"
-            app:rightTvContent="搜索"/>
-    </FrameLayout>
+        android:layout_height="wrap_content"
+        app:leftVisibility="false"
+        app:rightTvContent="搜索"
+        app:rightTvVisibility="true"
+        app:title_icon="@mipmap/icon_down_arrow" />
+
+    <com.youth.banner.Banner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/banner_height"
+        android:background="@mipmap/banner_sy" />
+
 
     <LinearLayout
         style="@style/style_common_view"
