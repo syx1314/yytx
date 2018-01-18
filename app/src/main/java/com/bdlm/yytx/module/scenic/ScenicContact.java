@@ -19,6 +19,7 @@ public interface ScenicContact {
         void scenicList(ScenicListResponse response);
         void reponseScenicDetails(ScenicDetailResponse response);
         void   responsePassportType(List<PassportTypeBean> passportTypeBeans);
+
     }
 
     interface IScenicView extends IBaseView{
@@ -31,6 +32,7 @@ public interface ScenicContact {
         abstract void requestScenicList(String longitude,String latitude,int passport_type,int city_id,int page,IScenicListener listener);
         abstract void  requestScenicDetails(String scenic_id,IScenicListener listener);
         abstract void  requestPassportType(IScenicListener listener);
+        abstract void  requestSearchScenic(String search_name,IScenicListener listener);
 
 
     }

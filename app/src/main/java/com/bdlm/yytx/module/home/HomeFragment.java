@@ -85,14 +85,8 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
                 toActivityNoClear(SearchScenicActivity.class);
             }
         });
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-//        mImmersionBar.titleBar(title).init();
-        mImmersionBar.statusBarColor(R.color.color_status_bar);
-        mImmersionBar.fitsSystemWindows(true).init();
+//        mImmersionBar.statusBarColor(R.color.color_status_bar).init();
+        mImmersionBar.titleBar(title).init();
 
     }
 

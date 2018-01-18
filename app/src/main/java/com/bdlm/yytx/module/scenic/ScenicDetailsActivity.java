@@ -170,7 +170,9 @@ public class ScenicDetailsActivity extends BaseActivity implements ScenicContact
         } else if (tab.getText().equals("图文详情")) {
             View view = LayoutInflater.from(activity).inflate(R.layout.layout_webview, flContent);
             WebView webView = view.findViewById(R.id.webView);
-            webView.loadUrl(Constant.BASEURL + "/Senic/getDescription/senic_id/" + response.getSenic_id());
+            if (response.getSenic_id() != null) {
+                webView.loadUrl(Constant.BASEURL + "/Senic/getDescription/senic_id/" + response.getSenic_id());
+            }
         }
     }
 

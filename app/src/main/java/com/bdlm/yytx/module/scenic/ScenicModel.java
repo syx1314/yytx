@@ -64,13 +64,37 @@ public class ScenicModel extends ScenicContact.IScenicModel {
     }
 
     @Override
-    void requestPassportType( final ScenicContact.IScenicListener listener) {
+    void requestPassportType(final ScenicContact.IScenicListener listener) {
         Subscribe(getApiService(IPassportApi.class).getPassportType(), new IApiReturn<List<PassportTypeBean>>() {
             @Override
             public void run(ApiResultBean<List<PassportTypeBean>> apiResult) {
                 if (isSuccess(apiResult.getCode()) && apiResult.getData() != null) {
                     if (listener != null)
                         listener.responsePassportType(apiResult.getData());
+                } else {
+                    if (listener != null) {
+                        listener.error(apiResult.getMsg());
+                    }
+                }
+            }
+
+            @Override
+            public void error(String message) {
+                if (listener != null) {
+                    listener.error(message);
+                }
+            }
+        });
+    }
+
+    @Override
+    void requestSearchScenic(String search_name, final ScenicContact.IScenicListener listener) {
+        Subscribe(getApiService(IScenicApi.class).searchScenic(search_name), new IApiReturn<ScenicListResponse>() {
+            @Override
+            public void run(ApiResultBean<ScenicListResponse> apiResult) {
+                if (isSuccess(apiResult.getCode()) && apiResult.getData() != null) {
+                    if (listener != null)
+                        listener.scenicList(apiResult.getData());
                 } else {
                     if (listener != null) {
                         listener.error(apiResult.getMsg());

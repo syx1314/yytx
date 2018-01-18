@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'yytx'
             keyPassword '080913asd'
-            storeFile file('D:/yytx/yytx.jks')
+            storeFile file('F:/yytx/yytx.jks')
             storePassword '080913asd'
         }
     }
@@ -31,6 +31,7 @@ android {
             signingConfig signingConfigs.config
         }
         debug {
+            signingConfig signingConfigs.config
         }
     }
     productFlavors {
@@ -61,5 +62,4 @@ dependencies {
     compile 'com.amap.api:location:3.7.0'
     //搜索
     compile 'com.amap.api:search:5.7.0'
-
 }

@@ -34,6 +34,10 @@ public class ScenicPresenter extends BasePresenter<ScenicContact.IScenicView> im
         scenicModel.requestScenicDetails(scenic_id, this);
     }
 
+    public void requestScenicSearch(String search_name){
+        scenicModel.requestSearchScenic(search_name,this);
+    }
+
     public void requestPassportType() {
         scenicModel.requestPassportType(this);
     }

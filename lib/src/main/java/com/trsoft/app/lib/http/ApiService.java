@@ -135,7 +135,11 @@ public class ApiService {
 //                    request.url()=request.url()+"?token="+baseApplication.getLoginConfig().getToken();
 //                   request= request.newBuilder().url(request.url()+"?token="+baseApplication.getLoginConfig().getToken()+"&device_token=HDUTr65FRT").build();
                 }
-                request= request.newBuilder().url(request.url()+"?token="+baseApplication.getLoginConfig().getToken()+"&device_token=HDUTr65FRT").build();
+                if((request.url()+"").contains("?")) {
+                    request = request.newBuilder().url(request.url() + "&token=" + baseApplication.getLoginConfig().getToken() + "&device_token=HDUTr65FRT").build();
+                }else {
+                    request = request.newBuilder().url(request.url() + "?token=" + baseApplication.getLoginConfig().getToken() + "&device_token=HDUTr65FRT").build();
+                }
             }
             //返回数据
             Response originalResponse=chain.proceed(request);

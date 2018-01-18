@@ -90,7 +90,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
 
         View mRootView = inflater.inflate(getLayout(), container, false);
         mUnbinder = ButterKnife.bind(this, mRootView);
-        createPresenter();
+
         if (mPresenter != null) {
             mPresenter.attachV(this);
 
@@ -99,6 +99,8 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         return mRootView;
 
     }
+
+
 
     /**
      * 请求权限
@@ -118,12 +120,12 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
             public void call(Permission permission) {
                 if (permission.granted) {
                     // 用户已经同意该权限
-                    DialogUtil.showAlert(mContext, okTips, null);
+//                    DialogUtil.showAlert(mContext, okTips, null);
 
                 } else if (permission.shouldShowRequestPermissionRationale) {
                     // 用户拒绝了该权限，没有选中『不再询问』（Never ask again）,那么下次再次启动时，还会提示请求权限的对话框
 
-                    DialogUtil.showAlert(mContext, noTips, null);
+//                    DialogUtil.showAlert(mContext, noTips, null);
                 } else {
                     // 用户拒绝了该权限，并且选中『不再询问』，提醒用户手动打开权限
                     DialogUtil.showAlert(mContext, noAgainTips, null);
@@ -144,6 +146,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
 
             }
         }
+        createPresenter();
     }
 
     /**

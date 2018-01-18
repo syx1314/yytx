@@ -13,6 +13,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -26,6 +27,10 @@ public interface IScenicApi {
     @FormUrlEncoded
     @POST("Senic/getList")
     Observable<ApiResultBean<ScenicListResponse>> getScenicList(@Field("longitude") String longitude, @Field("latitude") String latitude, @Field("passport_type") int passport_type, @Field("city_id") int city_id, @Field("page") int page);
+
+
+    @GET("Senic/getList")
+    Observable<ApiResultBean<ScenicListResponse>> searchScenic(@Query("search_name")  String search_name);
 
     @FormUrlEncoded
     @POST("Senic/getDetailById")
