@@ -4,6 +4,8 @@ import com.amap.api.maps.offlinemap.City;
 import com.bdlm.yytx.entity.CityBean;
 import com.bdlm.yytx.entity.ScenicDetailResponse;
 import com.bdlm.yytx.entity.ScenicListResponse;
+import com.bdlm.yytx.entity.ScenicResponse;
+import com.bdlm.yytx.entity.TicketBean;
 import com.trsoft.app.lib.http.ApiResultBean;
 
 
@@ -39,4 +41,12 @@ public interface IScenicApi {
     @GET("Senic/getCitys")
     Observable<ApiResultBean<List<CityBean>>> getCitys();
 
+    @GET("Senic/getRoundRecommend")
+    Observable<ApiResultBean<List<ScenicResponse>>>  nearByScenic(@Query("longitude") String longitude,@Query("latitude") String latitude,@Query("senic_id") String senic_id);
+
+    @GET("Ticket/getList")
+    Observable<ApiResultBean<List<TicketBean>>> ticketList();
+
+    @GET("Senic/recommend")
+    Observable<ApiResultBean<List<ScenicResponse>>> recommend();
 }

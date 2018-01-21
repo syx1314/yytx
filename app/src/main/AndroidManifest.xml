@@ -44,7 +44,8 @@
         <activity android:name=".module.scenic.ScenicDetailsActivity" />
         <activity android:name=".module.city.SelCityActivity" />
         <activity android:name=".module.webview.LoadHtmlActivity" />
-        <activity android:name=".module.scenic.SearchScenicActivity"></activity>
+        <activity android:name=".module.scenic.SearchScenicActivity" />
+        <activity android:name=".module.scenic.TicketListActivity"></activity>
     </application>
 
 </manifest>

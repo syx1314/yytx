@@ -5,6 +5,8 @@ import com.bdlm.yytx.api.IScenicApi;
 import com.bdlm.yytx.entity.PassportTypeBean;
 import com.bdlm.yytx.entity.ScenicDetailResponse;
 import com.bdlm.yytx.entity.ScenicListResponse;
+import com.bdlm.yytx.entity.ScenicResponse;
+import com.bdlm.yytx.entity.TicketBean;
 import com.trsoft.app.lib.http.ApiResultBean;
 import com.trsoft.app.lib.http.IApiReturn;
 
@@ -95,6 +97,54 @@ public class ScenicModel extends ScenicContact.IScenicModel {
                 if (isSuccess(apiResult.getCode()) && apiResult.getData() != null) {
                     if (listener != null)
                         listener.scenicList(apiResult.getData());
+                } else {
+                    if (listener != null) {
+                        listener.error(apiResult.getMsg());
+                    }
+                }
+            }
+
+            @Override
+            public void error(String message) {
+                if (listener != null) {
+                    listener.error(message);
+                }
+            }
+        });
+    }
+
+    @Override
+    void requestScenicList(String longitude, String latitude, String scenic_id, final ScenicContact.IScenicListener listener) {
+        Subscribe(getApiService(IScenicApi.class).nearByScenic(longitude, latitude, scenic_id), new IApiReturn<List<ScenicResponse>>() {
+            @Override
+            public void run(ApiResultBean<List<ScenicResponse>> apiResult) {
+                if (isSuccess(apiResult.getCode()) && apiResult.getData() != null) {
+                    if (listener != null)
+                        listener.scenicList(apiResult.getData());
+                } else {
+                    if (listener != null) {
+                        listener.error(apiResult.getMsg());
+                    }
+                }
+            }
+
+            @Override
+            public void error(String message) {
+                if (listener != null) {
+                    listener.error(message);
+                }
+            }
+        });
+    }
+
+    @Override
+    void requestTicketList(final ScenicContact.IScenicListener listener) {
+        Subscribe(getApiService(IScenicApi.class).ticketList(), new IApiReturn<List<TicketBean>>() {
+            @Override
+            public void run(ApiResultBean<List<TicketBean>> apiResult) {
+                if (isSuccess(apiResult.getCode()) && apiResult.getData() != null) {
+                    if (listener != null)
+                        listener.responseTicket(apiResult.getData());
                 } else {
                     if (listener != null) {
                         listener.error(apiResult.getMsg());

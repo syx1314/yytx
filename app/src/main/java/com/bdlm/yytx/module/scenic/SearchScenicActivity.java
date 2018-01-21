@@ -108,6 +108,11 @@ public class SearchScenicActivity extends BaseActivity implements ScenicContact.
     }
 
     @Override
+    public void getScenicList(List<ScenicResponse> response) {
+
+    }
+
+    @Override
     public void scenicDetails(ScenicDetailResponse response) {
 
     }

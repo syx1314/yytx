@@ -131,6 +131,11 @@ public class ScenicListActivity extends BaseActivity implements ScenicContact.IS
     }
 
     @Override
+    public void getScenicList(List<ScenicResponse> response) {
+
+    }
+
+    @Override
     public void scenicDetails(ScenicDetailResponse response) {
 
     }

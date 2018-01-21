@@ -5,6 +5,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -23,12 +26,17 @@ import com.bdlm.yytx.constant.Constant;
 import com.bdlm.yytx.entity.PassportTypeBean;
 import com.bdlm.yytx.entity.ScenicDetailResponse;
 import com.bdlm.yytx.entity.ScenicListResponse;
+import com.bdlm.yytx.entity.ScenicResponse;
 import com.bdlm.yytx.module.webview.LoadHtmlActivity;
 import com.orhanobut.logger.Logger;
 import com.trsoft.app.lib.utils.DialogUtil;
 import com.trsoft.app.lib.utils.ImageLoader;
+import com.trsoft.app.lib.utils.PreferenceUtils;
 import com.trsoft.app.lib.utils.Validator;
 import com.trsoft.app.lib.utils.validator.ValidatorUtil;
+import com.trsoft.app.lib.view.recycleview.RecycleViewDivider;
+import com.trsoft.app.lib.view.recycleview.ViewHolder;
+import com.trsoft.app.lib.view.recycleview.adapter.BaseRecycleViewAdapter;
 
 import java.util.List;
 
@@ -75,6 +83,8 @@ public class ScenicDetailsActivity extends BaseActivity implements ScenicContact
     TextView tvAddvanceEndDate;
     private ScenicPresenter presenter;
     ScenicDetailResponse response;
+    private String scenic_id;
+    private RecyclerView rv;
 
     @Override
     protected int getLayout() {
@@ -84,7 +94,7 @@ public class ScenicDetailsActivity extends BaseActivity implements ScenicContact
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void createPersenter() {
-        String scenic_id = getIntent().getStringExtra(Constant.SCENIC_ID);
+        scenic_id = getIntent().getStringExtra(Constant.SCENIC_ID);
         presenter = new ScenicPresenter(this);
 
         if (Validator.isNotEmpty(scenic_id)) {
@@ -127,6 +137,19 @@ public class ScenicDetailsActivity extends BaseActivity implements ScenicContact
     @Override
     public void getScenicList(ScenicListResponse response) {
 
+    }
+
+    @Override
+    public void getScenicList(final List<ScenicResponse> response) {
+            rv.setAdapter(new BaseRecycleViewAdapter<ScenicResponse>(response,R.layout.item_main_scenic){
+                @Override
+                public void onBindViewHolder(ViewHolder holder, int position) {
+                    super.onBindViewHolder(holder, position);
+                    ScenicResponse scenic = response.get(position);
+                    holder.setImage(R.id.iv_scenic,scenic.getThumbnail());
+                    holder.setText(R.id.tv_scenic_name, scenic.getName());
+                }
+            });
     }
 
     @Override
@@ -173,6 +196,16 @@ public class ScenicDetailsActivity extends BaseActivity implements ScenicContact
             if (response.getSenic_id() != null) {
                 webView.loadUrl(Constant.BASEURL + "/Senic/getDescription/senic_id/" + response.getSenic_id());
             }
+        } else {
+            String lon = PreferenceUtils.getInstance().getString(Constant.CURLON);
+            String lat = PreferenceUtils.getInstance().getString(Constant.CURLAN);
+            presenter.requestScenicList(lon, lat, scenic_id);
+            View view = LayoutInflater.from(activity).inflate(R.layout.layout_recycleview, flContent);
+             rv = view.findViewById(R.id.rv);
+            GridLayoutManager manager = new GridLayoutManager(activity,2);
+            rv.setLayoutManager(manager);
+            rv.addItemDecoration(new RecycleViewDivider(activity, LinearLayoutManager.HORIZONTAL));
+
         }
     }
 

@@ -33,6 +33,12 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
+    public  ViewHolder visable(int viewId,int visable){
+        View view = getView(viewId);
+        view.setVisibility(visable);
+        return this;
+    }
+
     public ViewHolder setImageResource(int viewId, int resId) {
         ImageView view = getView(viewId);
         if (view != null) {

@@ -31,33 +31,26 @@ public class MainActivity extends BaseActivity {
     FrameLayout tabcontent;
     @BindView(android.R.id.tabhost)
     FragmentTabHost tabhost;
-    //定义一个布局
-    private LayoutInflater layoutInflater;
 
     //定义数组来存放Fragment界面
-//    private Class fragmentArray[] = {HomeFragment.class, ScenicFragment.class, StatisticsFragment.class, SettingFragment.class};
     private Class fragmentArray[] = {HomeFragment.class, SpecialtyFragment.class, FindFragment.class, MeFragment.class};
 
     //定义数组来存放按钮图片
-//    private int mImages[] = {R.drawable.bt_home_selector, R.drawable.bt_tab2_selector, R.drawable.bt_tab3_selector,
-//            R.drawable.bt_tab4_selector};
     private int mImages[] = {R.drawable.bt_home_selector, R.drawable.bt_tab2_selector, R.drawable.bt_tab3_selector,
             R.drawable.bt_tab4_selector};
 
     //Tab选项卡的文字
-//    private String mTextviewArray[] = {"首页", "景区", "统计", "设置"};
     private String mTextviewArray[] = {"首页", "特产", "发现", "我的"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         init();
     }
 
 
     public void init() {
-        //实例化布局对象
-        layoutInflater = LayoutInflater.from(activity);
         //实例化TabHost对象，得到TabHost
         tabhost.setup(activity, getSupportFragmentManager(), R.id.realtabcontent);
         tabhost.getTabWidget().setDividerDrawable(null);

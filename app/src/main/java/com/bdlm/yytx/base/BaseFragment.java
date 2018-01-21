@@ -4,7 +4,10 @@ package com.bdlm.yytx.base;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -19,6 +22,7 @@ import com.gyf.barlibrary.ImmersionBar;
 import com.orhanobut.logger.Logger;
 import com.tbruyelle.rxpermissions.Permission;
 import com.tbruyelle.rxpermissions.RxPermissions;
+import com.trsoft.app.lib.inter.CommonCallback;
 import com.trsoft.app.lib.mvp.BasePresenter;
 import com.trsoft.app.lib.mvp.IBaseView;
 import com.trsoft.app.lib.utils.DialogUtil;
@@ -95,12 +99,23 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
             mPresenter.attachV(this);
 
         }
-
         return mRootView;
 
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mContext = getActivity();
+        if (mContext != null) {
+//            ImmersionBar.with(mContext).statusBarColor(R.color.red).init();
+            if (isImmersionBarEnabled()) {
+                initImmersionBar();
 
+            }
+        }
+        createPresenter();
+    }
 
     /**
      * 请求权限
@@ -111,6 +126,9 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
      * @param noAgainTips 点击不在提醒 提示用户如何操作
      */
     protected void requestPermissoin(final String okTips, final String noTips, final String noAgainTips, String... permission) {
+        if (Build.VERSION.SDK_INT < 23) {
+            return;
+        }
         if (mContext == null) {
             return;
         }
@@ -128,26 +146,22 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
 //                    DialogUtil.showAlert(mContext, noTips, null);
                 } else {
                     // 用户拒绝了该权限，并且选中『不再询问』，提醒用户手动打开权限
-                    DialogUtil.showAlert(mContext, noAgainTips, null);
+                   DialogUtil.showAlertCusTitlel(mContext,"温馨提示",noAgainTips,"是","否", new CommonCallback<Boolean>() {
+                        @Override
+                        public void onCallBack(Boolean data) {
+                            if(data){
+                                Uri packageURI = Uri.parse("package:" + mContext.getPackageName());
+                                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageURI);
+                                startActivity(intent);
+                            }
+                        }
+                    });
 
                 }
             }
         });
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mContext = getActivity();
-        if (mContext != null) {
-//            ImmersionBar.with(mContext).statusBarColor(R.color.red).init();
-            if (isImmersionBarEnabled()) {
-                initImmersionBar();
-
-            }
-        }
-        createPresenter();
-    }
 
     /**
      * 初始化沉浸式
@@ -166,6 +180,12 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         return true;
     }
 
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden && mImmersionBar != null)
+            mImmersionBar.init();
+    }
     @Override
     public void onDestroy() {
         super.onDestroy();
