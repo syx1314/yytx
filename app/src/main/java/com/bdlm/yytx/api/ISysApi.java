@@ -1,10 +1,12 @@
 package com.bdlm.yytx.api;
 
+import com.bdlm.yytx.entity.AppVersion;
 import com.bdlm.yytx.entity.ImageBean;
 import com.trsoft.app.lib.http.ApiResultBean;
 
 import java.util.List;
 
+import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -24,4 +26,8 @@ public interface ISysApi {
 
     @GET("User/get_system_config")
     Observable<ApiResultBean<String>> systemConfig(@Query("type") String type);
+
+    @FormUrlEncoded
+    @POST("App/upVer")
+    Observable<ApiResultBean<AppVersion>> checkAppVersion(@Field("version") String version);
 }

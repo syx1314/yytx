@@ -32,11 +32,7 @@
         <service android:name="com.amap.api.location.APSService" />
 
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".module.login.LoginActivity" />
         <activity android:name=".module.scenic.ScenicListActivity" />
@@ -45,7 +41,14 @@
         <activity android:name=".module.city.SelCityActivity" />
         <activity android:name=".module.webview.LoadHtmlActivity" />
         <activity android:name=".module.scenic.SearchScenicActivity" />
-        <activity android:name=".module.scenic.TicketListActivity"></activity>
+        <activity android:name=".module.scenic.TicketListActivity" />
+        <activity android:name=".module.welcome.WelcomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

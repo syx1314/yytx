@@ -19,7 +19,7 @@ import rx.schedulers.Schedulers;
  * @date 2017/12/28
  */
 
-public abstract class BaseModel implements IBaseModel {
+public  class BaseModel implements IBaseModel {
 
 
     private int tag = 0;
