@@ -31,14 +31,21 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
 
     @Override
     public void appInfo(final AppVersion appVersion) {
-
+        if(!appVersion.getIs_update().equals("1")){
+            try {
+                Thread.sleep(2000);
+                toActivity(MainActivity.class);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return;
+        }
         DialogUtil.showAlertCusTitle(activity, "版本提示", appVersion.getExplain(), "更新", "忽略", new CommonCallback<Boolean>() {
             @Override
             public void onCallBack(Boolean data) {
 
                 if (data) {
                     toUrl(appVersion.getDownurl());
-
                 } else {
                     if (appVersion.getIs_forced_update().equals("1")) {
                         finish();

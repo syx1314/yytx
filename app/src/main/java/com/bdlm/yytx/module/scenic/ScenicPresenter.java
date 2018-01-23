@@ -7,6 +7,7 @@ import com.bdlm.yytx.entity.ScenicDetailResponse;
 import com.bdlm.yytx.entity.ScenicListResponse;
 import com.bdlm.yytx.entity.ScenicResponse;
 import com.bdlm.yytx.entity.TicketBean;
+import com.bdlm.yytx.entity.TicketListResponse;
 import com.trsoft.app.lib.mvp.BasePresenter;
 import com.trsoft.app.lib.mvp.IBaseView;
 
@@ -61,8 +62,8 @@ public class ScenicPresenter extends BasePresenter<IBaseView> implements ScenicC
         }
     }
 
-    public void requestTicketList() {
-        scenicModel.requestTicketList(this);
+    public void requestTicketList(String page) {
+        scenicModel.requestTicketList(page,this);
     }
 
     public void cancelRequest() {
@@ -104,8 +105,8 @@ public class ScenicPresenter extends BasePresenter<IBaseView> implements ScenicC
     }
 
     @Override
-    public void responseTicket(List<TicketBean> ticketBeanList) {
+    public void responseTicket(TicketListResponse ticketListResponse) {
         if (ticketView != null)
-            ticketView.resultTicketList(ticketBeanList);
+            ticketView.resultTicketList(ticketListResponse);
     }
 }

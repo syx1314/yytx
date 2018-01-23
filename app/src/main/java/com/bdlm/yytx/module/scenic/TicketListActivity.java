@@ -10,9 +10,13 @@ import android.view.View;
 import com.bdlm.yytx.R;
 import com.bdlm.yytx.base.BaseActivity;
 import com.bdlm.yytx.constant.Constant;
+import com.bdlm.yytx.entity.Page;
 import com.bdlm.yytx.entity.TicketBean;
+import com.bdlm.yytx.entity.TicketListResponse;
 import com.bdlm.yytx.module.webview.LoadHtmlActivity;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 import com.trsoft.app.lib.utils.DialogUtil;
 import com.trsoft.app.lib.utils.Validator;
 import com.trsoft.app.lib.utils.validator.ValidatorUtil;
@@ -20,18 +24,22 @@ import com.trsoft.app.lib.view.recycleview.RecycleViewDivider;
 import com.trsoft.app.lib.view.recycleview.ViewHolder;
 import com.trsoft.app.lib.view.recycleview.adapter.BaseRecycleViewAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TicketListActivity extends BaseActivity implements ScenicContact.ITicketView {
+public class TicketListActivity extends BaseActivity implements ScenicContact.ITicketView, OnRefreshLoadmoreListener {
 
     @BindView(R.id.rv)
     RecyclerView rv;
     @BindView(R.id.refreshLayout)
     SmartRefreshLayout refreshLayout;
     ScenicPresenter presenter;
+    private BaseRecycleViewAdapter<TicketBean> adapter;
+    private List<TicketBean> ticketBeanList;
+    private Page pageInfo;
 
     @Override
     protected int getLayout() {
@@ -43,23 +51,13 @@ public class TicketListActivity extends BaseActivity implements ScenicContact.IT
         mImmersionBar.statusBarColor(R.color.color_status_bar).init();
         presenter = new ScenicPresenter(this);
         refreshLayout.setEnableRefresh(false);
-        refreshLayout.setEnableLoadmore(false);
+        refreshLayout.setOnRefreshLoadmoreListener(this);
         LinearLayoutManager manager = new LinearLayoutManager(activity);
         rv.setLayoutManager(manager);
         rv.addItemDecoration(new RecycleViewDivider(activity, LinearLayoutManager.HORIZONTAL));
-        presenter.requestTicketList();
-
-
-    }
-
-    @Override
-    public void error(String msg) {
-        DialogUtil.showAlert(activity, msg, null);
-    }
-
-    @Override
-    public void resultTicketList(final List<TicketBean> ticketBeanList) {
-        BaseRecycleViewAdapter<TicketBean> adapter = new BaseRecycleViewAdapter<TicketBean>(ticketBeanList, R.layout.item_scenic_ticket) {
+        presenter.requestTicketList("1");
+        ticketBeanList = new ArrayList<>();
+        adapter = new BaseRecycleViewAdapter<TicketBean>(ticketBeanList, R.layout.item_scenic_ticket) {
             @Override
             public void onBindViewHolder(ViewHolder holder, int position) {
                 super.onBindViewHolder(holder, position);
@@ -89,11 +87,41 @@ public class TicketListActivity extends BaseActivity implements ScenicContact.IT
         });
     }
 
+    @Override
+    public void error(String msg) {
+        DialogUtil.showAlert(activity, msg, null);
+    }
+
+    @Override
+    public void resultTicketList(TicketListResponse ticketListResponse) {
+        pageInfo = ticketListResponse.getPageInfo();
+        ticketBeanList.addAll(ticketListResponse.getSenicList());
+        if (refreshLayout.isLoading()) {
+            refreshLayout.finishLoadmore();
+        }
+        adapter.notifyDataSetChanged();
+
+    }
+
     public void buyTicket(String scenic_id) {
         isLogin();
         Intent intent = new Intent(activity, LoadHtmlActivity.class);
         intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.buy_ticket));
         intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Ticket/showlist/senic_id/" + scenic_id + "/token/" + token);
         startActivity(intent);
+    }
+
+    @Override
+    public void onLoadmore(RefreshLayout refreshlayout) {
+        if (pageInfo.getCurPage() < pageInfo.getCountPage()) {
+            presenter.requestTicketList(pageInfo.getNextPage() + "");
+        } else {
+            refreshlayout.finishLoadmoreWithNoMoreData();
+        }
+    }
+
+    @Override
+    public void onRefresh(RefreshLayout refreshlayout) {
+
     }
 }

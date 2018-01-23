@@ -6,6 +6,7 @@ import com.bdlm.yytx.entity.ScenicDetailResponse;
 import com.bdlm.yytx.entity.ScenicListResponse;
 import com.bdlm.yytx.entity.ScenicResponse;
 import com.bdlm.yytx.entity.TicketBean;
+import com.bdlm.yytx.entity.TicketListResponse;
 import com.trsoft.app.lib.http.ApiResultBean;
 
 
@@ -45,7 +46,7 @@ public interface IScenicApi {
     Observable<ApiResultBean<List<ScenicResponse>>>  nearByScenic(@Query("longitude") String longitude,@Query("latitude") String latitude,@Query("senic_id") String senic_id);
 
     @GET("Ticket/getList")
-    Observable<ApiResultBean<List<TicketBean>>> ticketList();
+    Observable<ApiResultBean<TicketListResponse>> ticketList(@Query("page")String  page);
 
     @GET("Senic/recommend")
     Observable<ApiResultBean<List<ScenicResponse>>> recommend();

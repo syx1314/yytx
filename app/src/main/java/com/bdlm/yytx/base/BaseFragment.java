@@ -108,7 +108,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         super.onViewCreated(view, savedInstanceState);
         mContext = getActivity();
         if (mContext != null) {
-//            ImmersionBar.with(mContext).statusBarColor(R.color.red).init();
             if (isImmersionBarEnabled()) {
                 initImmersionBar();
 
@@ -167,8 +166,8 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
      * 初始化沉浸式
      */
     protected void initImmersionBar() {
-        mImmersionBar = ImmersionBar.with(this);
-        mImmersionBar.keyboardEnable(true).navigationBarWithKitkatEnable(false).init();
+        mImmersionBar = ImmersionBar.with(mContext);
+        mImmersionBar.init();
     }
 
     /**

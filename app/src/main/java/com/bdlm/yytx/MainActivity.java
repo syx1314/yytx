@@ -89,4 +89,9 @@ public class MainActivity extends BaseActivity {
     protected void createPersenter() {
 
     }
+
+    @Override
+    protected boolean isImmersionBarEnabled() {
+        return false;
+    }
 }

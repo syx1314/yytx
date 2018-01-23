@@ -1,6 +1,10 @@
 package com.bdlm.yytx.module.login;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,15 +28,21 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class LoginActivity extends BaseActivity implements LoginContact.ILoginView{
+public class LoginActivity extends BaseActivity implements LoginContact.ILoginView {
 
     @BindView(R.id.et_phone)
     EditText etPhone;
     @BindView(R.id.et_code)
     EditText etCode;
+    @BindView(R.id.tv_send_code)
+    TextView tvSendCode;
+    @BindView(R.id.btn_login)
+    Button btnLogin;
     @BindView(R.id.cb_approve)
     CheckBox cbApprove;
+
     private LoginPresenter loginPresenter;
+    private CountDownTimer timer;
 
     @Override
     protected int getLayout() {
@@ -43,21 +53,52 @@ public class LoginActivity extends BaseActivity implements LoginContact.ILoginVi
     protected void createPersenter() {
         loginPresenter = new LoginPresenter(this);
         mImmersionBar.statusBarColor(R.color.color_status_bar).init();
+        etCode.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() >= 4) {
+                    btnLogin.setEnabled(true);
+                }
+            }
+        });
     }
 
 
     @OnClick(R.id.tv_send_code)
     public void onSendCode() {
-        String phone = etPhone.getText().toString();
-        if (Validator.isNotEmpty(phone)) {
-            if (Validator.isMobile(phone)) {
-                loginPresenter.sendCode(phone);
-            } else {
-                DialogUtil.showAlert(activity, "手机号有误", null);
+        timer = new CountDownTimer(60 * 1000, 1000) {
+            @Override
+            public void onTick(long l) {
+
+                String phone = etPhone.getText().toString();
+                if (Validator.isNotEmpty(phone)) {
+                    if (Validator.isMobile(phone)) {
+                        loginPresenter.sendCode(phone);
+                        tvSendCode.setText(l / 1000 + "");
+                    } else {
+                        DialogUtil.showAlert(activity, "手机号有误", null);
+                    }
+                } else {
+                    DialogUtil.showAlert(activity, "请输入手机号", null);
+                }
             }
-        } else {
-            DialogUtil.showAlert(activity, "请输入手机号", null);
-        }
+
+            @Override
+            public void onFinish() {
+                tvSendCode.setEnabled(true);
+            }
+        };
+
     }
 
     @OnClick(R.id.btn_login)
@@ -67,7 +108,7 @@ public class LoginActivity extends BaseActivity implements LoginContact.ILoginVi
             String code = etCode.getText().toString();
             if (Validator.isNotEmpty(phone) && Validator.isNotEmpty(code)) {
                 loginPresenter.login(phone, code);
-            }else {
+            } else {
                 DialogUtil.showAlert(activity, "请输入手机号", null);
             }
         } else {
@@ -84,6 +125,9 @@ public class LoginActivity extends BaseActivity implements LoginContact.ILoginVi
 
     @Override
     public void sendCodeResult(ApiResultBean<List<String>> apiResult) {
+        if (apiResult.getCode() == 2000) {
+            tvSendCode.setEnabled(false);
+        }
         DialogUtil.showAlert(activity, apiResult.getMsg(), null);
     }
 

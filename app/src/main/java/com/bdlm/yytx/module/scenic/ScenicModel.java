@@ -7,6 +7,7 @@ import com.bdlm.yytx.entity.ScenicDetailResponse;
 import com.bdlm.yytx.entity.ScenicListResponse;
 import com.bdlm.yytx.entity.ScenicResponse;
 import com.bdlm.yytx.entity.TicketBean;
+import com.bdlm.yytx.entity.TicketListResponse;
 import com.trsoft.app.lib.http.ApiResultBean;
 import com.trsoft.app.lib.http.IApiReturn;
 
@@ -138,10 +139,10 @@ public class ScenicModel extends ScenicContact.IScenicModel {
     }
 
     @Override
-    void requestTicketList(final ScenicContact.IScenicListener listener) {
-        Subscribe(getApiService(IScenicApi.class).ticketList(), new IApiReturn<List<TicketBean>>() {
+    void requestTicketList(String page,final ScenicContact.IScenicListener listener) {
+        Subscribe(getApiService(IScenicApi.class).ticketList(page), new IApiReturn<TicketListResponse>() {
             @Override
-            public void run(ApiResultBean<List<TicketBean>> apiResult) {
+            public void run(ApiResultBean<TicketListResponse> apiResult) {
                 if (isSuccess(apiResult.getCode()) && apiResult.getData() != null) {
                     if (listener != null)
                         listener.responseTicket(apiResult.getData());

@@ -5,6 +5,7 @@ import com.bdlm.yytx.entity.ScenicDetailResponse;
 import com.bdlm.yytx.entity.ScenicListResponse;
 import com.bdlm.yytx.entity.ScenicResponse;
 import com.bdlm.yytx.entity.TicketBean;
+import com.bdlm.yytx.entity.TicketListResponse;
 import com.trsoft.app.lib.mvp.BaseModel;
 import com.trsoft.app.lib.mvp.IBaseListener;
 import com.trsoft.app.lib.mvp.IBaseView;
@@ -22,7 +23,7 @@ public interface ScenicContact {
         void scenicList(List<ScenicResponse> response);
         void reponseScenicDetails(ScenicDetailResponse response);
         void   responsePassportType(List<PassportTypeBean> passportTypeBeans);
-        void responseTicket(List<TicketBean> ticketBeanList);
+        void responseTicket(TicketListResponse ticketListResponse);
     }
 
     interface IScenicView extends IBaseView{
@@ -32,7 +33,7 @@ public interface ScenicContact {
         void passportType(List<PassportTypeBean> passportTypeBeans);
     }
     interface ITicketView extends IBaseView{
-        void resultTicketList(List<TicketBean> ticketBeanList);
+        void resultTicketList(TicketListResponse ticketListResponse);
     }
 
     abstract class IScenicModel extends BaseModel{
@@ -41,7 +42,7 @@ public interface ScenicContact {
         abstract void  requestPassportType(IScenicListener listener);
         abstract void  requestSearchScenic(String search_name,IScenicListener listener);
         abstract void requestScenicList(String longitude,  String latitude,String scenic_id,IScenicListener listener);
-        abstract void requestTicketList(IScenicListener listener);
+        abstract void requestTicketList(String page,IScenicListener listener);
 
     }
 }
