@@ -27,15 +27,15 @@ public class BaseRecycleViewAdapter<T> extends RecyclerView.Adapter<ViewHolder> 
 
     public BaseRecycleViewAdapter(List<T> mdatas, @LayoutRes int resLayoutId) {
         this.mdatas = mdatas;
-        this.resLayoutId=resLayoutId;
+        this.resLayoutId = resLayoutId;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if(parent.getContext()!=null) {
-            View inflate = LayoutInflater.from(parent.getContext()).inflate(resLayoutId, null);
+        if (parent.getContext() != null) {
+            View inflate = LayoutInflater.from(parent.getContext()).inflate(resLayoutId, parent, false);
 
-           return new ViewHolder(inflate);
+            return new ViewHolder(inflate);
         }
         return null;
     }
@@ -43,25 +43,29 @@ public class BaseRecycleViewAdapter<T> extends RecyclerView.Adapter<ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
-          if(holder==null){
-              return;
-          }
-          holder.itemView.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                  if(onItemClickListener!=null){
-                      onItemClickListener.onClick(position);
-                  }
-              }
-          });
+        if (holder == null) {
+            return;
+        }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (onItemClickListener != null) {
+                    onItemClickListener.onClick(position);
+                }
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return mdatas != null ? mdatas.size() : 0;
     }
-    public interface OnItemClickListener{
-        void onClick( int position);
+
+    public interface OnItemClickListener {
+        void onClick(int position);
     }
 
+    public void refreshData() {
+        notifyDataSetChanged();
+    }
 }

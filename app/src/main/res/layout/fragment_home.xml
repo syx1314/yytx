@@ -1,210 +1,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical"
-    tools:context="com.bdlm.yytx.module.home.HomeFragment">
+    android:orientation="vertical">
     <!--  app:commonTitleColor="#22000000"-->
-    <com.bdlm.yytx.common.view.CommonTitle
+    <!--<com.bdlm.yytx.common.view.CommonTitle-->
+    <!--android:id="@+id/title"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:leftVisibility="false"-->
+    <!--app:rightTvContent="搜索"-->
+    <!--app:rightTvVisibility="true"-->
+    <!--app:title_icon="@mipmap/icon_down_arrow" />-->
+    <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:leftVisibility="false"
-        app:rightTvContent="搜索"
-        app:rightTvVisibility="true"
-        app:title_icon="@mipmap/icon_down_arrow" />
+        android:layout_height="@dimen/title_height"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:background="@color/red"
+        android:text="天津" />
 
-    <ScrollView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="none">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <com.youth.banner.Banner
-                android:id="@+id/banner"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/banner_height"
-                android:background="@mipmap/banner_sy" />
-
-
-            <LinearLayout
-                style="@style/style_common_view"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:background="@color/white">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="亿游"
-                    android:textColor="@color/color_text_main" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/drawable_paddind"
-                    android:layout_marginRight="@dimen/drawable_paddind"
-                    android:background="@mipmap/gonggao"
-                    android:padding="@dimen/drawable_paddind"
-                    android:text="公告"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="推荐"
-                    android:textColor="@color/red" />
-
-                <TextView
-                    android:id="@+id/tv_gonggao"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/drawable_paddind"
-                    android:text="亿游出境高峰期1500元/人"
-                    android:textColor="@color/color_text_main" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:background="@color/white">
-
-                <TextView
-                    android:id="@+id/tv_cash_coupon"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawablePadding="@dimen/drawable_paddind"
-                    android:drawableTop="@mipmap/quan"
-                    android:gravity="center"
-                    android:text="@string/home_cash_coupon" />
-
-                <TextView
-                    android:id="@+id/tv_scenic_spot"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawablePadding="@dimen/drawable_paddind"
-                    android:drawableTop="@mipmap/jingqu"
-                    android:gravity="center"
-                    android:text="@string/home_scenic_spot" />
-
-                <TextView
-                    android:id="@+id/tv_tourist_goods"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawablePadding="@dimen/drawable_paddind"
-                    android:drawableTop="@mipmap/lvyouyongpin"
-                    android:gravity="center"
-                    android:text="@string/home_tourist_goods" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_horizontal_margin">
-
-                <TextView
-                    android:id="@+id/tv_chi"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawablePadding="@dimen/drawable_paddind"
-                    android:drawableTop="@mipmap/chi"
-                    android:gravity="center"
-                    android:text="@string/home_eat" />
-
-                <TextView
-                    android:id="@+id/tv_live"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawablePadding="@dimen/drawable_paddind"
-                    android:drawableTop="@mipmap/zhu"
-                    android:gravity="center"
-                    android:text="@string/home_live" />
-
-                <TextView
-                    android:id="@+id/tv_play"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawablePadding="@dimen/drawable_paddind"
-                    android:drawableTop="@mipmap/wan"
-                    android:gravity="center"
-                    android:text="@string/home_play" />
-
-                <TextView
-                    android:id="@+id/tv_travel_agency"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawablePadding="@dimen/drawable_paddind"
-                    android:drawableTop="@mipmap/lvxingshe"
-                    android:gravity="center"
-                    android:text="@string/home_travel_agency" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4">
-
-
-                    <ImageView
-                        android:id="@+id/iv_scenic1"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:scaleType="fitXY" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@mipmap/juxing_sy"
-                        android:gravity="center"
-                        android:text="景区推荐"
-                        android:textColor="@color/white" />
-                </RelativeLayout>
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3">
-
-                    <ImageView
-                        android:id="@+id/iv_scenic2"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:layout_marginLeft="1dp"
-                        android:scaleType="fitXY" />
-
-                    <TextView
-                        android:id="@+id/tv_scenic2"
-                        style="@style/style_common_tv"
-                        android:layout_width="match_parent"
-                        android:layout_gravity="bottom"
-                        android:gravity="right"
-                        android:text="@string/home_play"
-                        android:textColor="@color/white" />
-                </FrameLayout>
-            </LinearLayout>
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/base_bg"/>
-        </LinearLayout>
-    </ScrollView>
+        android:background="@color/base_bg" />
 </LinearLayout>

@@ -68,6 +68,8 @@ public class LoginActivity extends BaseActivity implements LoginContact.ILoginVi
             public void afterTextChanged(Editable editable) {
                 if (editable.length() >= 4) {
                     btnLogin.setEnabled(true);
+                }else {
+                    btnLogin.setEnabled(false);
                 }
             }
         });
@@ -79,25 +81,25 @@ public class LoginActivity extends BaseActivity implements LoginContact.ILoginVi
         timer = new CountDownTimer(60 * 1000, 1000) {
             @Override
             public void onTick(long l) {
-
-                String phone = etPhone.getText().toString();
-                if (Validator.isNotEmpty(phone)) {
-                    if (Validator.isMobile(phone)) {
-                        loginPresenter.sendCode(phone);
-                        tvSendCode.setText(l / 1000 + "");
-                    } else {
-                        DialogUtil.showAlert(activity, "手机号有误", null);
-                    }
-                } else {
-                    DialogUtil.showAlert(activity, "请输入手机号", null);
-                }
+                tvSendCode.setText(l / 1000 + "");
             }
-
             @Override
             public void onFinish() {
                 tvSendCode.setEnabled(true);
             }
         };
+        String phone = etPhone.getText().toString();
+        if (Validator.isNotEmpty(phone)) {
+            if (Validator.isMobile(phone)) {
+                loginPresenter.sendCode(phone);
+                timer.start();
+            } else {
+                DialogUtil.showAlert(activity, "手机号有误", null);
+            }
+        } else {
+            DialogUtil.showAlert(activity, "请输入手机号", null);
+        }
+
 
     }
 
