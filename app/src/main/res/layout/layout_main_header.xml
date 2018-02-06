@@ -44,6 +44,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/drawable_paddind"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
             android:text="亿游出境高峰期1500元/人"
             android:textColor="@color/color_text_main" />
     </LinearLayout>
@@ -132,6 +135,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/lin_recomend"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_horizontal_margin">
@@ -141,13 +145,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="4">
 
-
-            <ImageView
-                android:id="@+id/iv_scenic1"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:scaleType="fitXY"
-                android:src="@mipmap/banner_sy" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -169,7 +166,7 @@
                 android:layout_height="100dp"
                 android:layout_marginLeft="1dp"
                 android:scaleType="fitXY"
-                android:src="@mipmap/banner_sy" />
+                />
 
             <TextView
                 android:id="@+id/tv_scenic2"
@@ -179,6 +176,12 @@
                 android:gravity="right"
                 android:text="@string/home_play"
                 android:textColor="@color/white" />
+
+            <ImageView
+                android:id="@+id/iv_scenic1"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:scaleType="fitXY" />
         </FrameLayout>
     </LinearLayout>
 </LinearLayout>

@@ -58,6 +58,29 @@
 
     <string name="sel_city_title">地区选择</string>
 
+    <!--TODO：特产-->
+    <string name="specialty_title">特产</string>
+    <string name="specialty_search">搜索</string>
+
+    <!--TODO：商家部分-->
+    <string name="business_add">加盟</string>
+    <string name="business_add_title">商家加盟</string>
+    <string name="business_add_cancel_upload">取消上传</string>
+    <string name="business_name">店铺名字</string>
+    <string name="business_name_hint">请输入店铺名字</string>
+    <string name="business_discount">亿游优惠</string>
+    <string name="business_discount_hint">请输入折扣信息</string>
+    <string name="business_phone">订餐电话</string>
+    <string name="business_phone_hint">请输入订餐电话</string>
+    <string name="business_address">店面地址</string>
+    <string name="business_address_hint">请输入店面地址</string>
+    <string name="business_feature">特色</string>
+    <string name="business_feature_hint">请填写店铺特色</string>
+    <string name="business_banner">上传门头照片</string>
+    <string name="business_approve">上传审核</string>
+
+    <!--TODO:搜索poi-->
+    <string name="poi_hint">请输入地址</string>
 
     <!--TODO: loadHtml-->
     <string name="xnlv">虚拟旅游</string>

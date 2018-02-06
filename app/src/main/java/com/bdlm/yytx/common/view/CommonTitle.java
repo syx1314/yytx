@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -24,7 +25,7 @@ import butterknife.OnClick;
  * Created by 小呆呆 on 2017/11/25 0025.
  */
 
-public class CommonTitle extends RelativeLayout {
+public class CommonTitle extends LinearLayout {
     @BindView(R.id.iv_left)
     ImageView ivLeft;
     @BindView(R.id.tv_title)
@@ -89,14 +90,14 @@ public class CommonTitle extends RelativeLayout {
             ivRight.setVisibility(INVISIBLE);
         }
 
-        if (rightTvVisibility) {
-            tvRight.setVisibility(VISIBLE);
+
             if (!TextUtils.isEmpty(rightTvContent)) {
                 tvRight.setText(rightTvContent);
+                tvRight.setVisibility(VISIBLE);
+            } else {
+                tvRight.setVisibility(INVISIBLE);
             }
-        } else {
-            tvRight.setVisibility(INVISIBLE);
-        }
+
 
     }
 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lin_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_name"
+        style="@style/style_common_tv"
+        android:layout_width="match_parent"
+        android:paddingLeft="@dimen/spacing_medium"
+        android:paddingRight="@dimen/spacing_medium"
+        android:paddingTop="@dimen/spacing_medium"
+        android:text="合众大厦" />
+
+
+    <TextView
+        android:id="@+id/tv_address"
+        style="@style/style_common_tv"
+        android:paddingBottom="@dimen/spacing_medium"
+        android:paddingLeft="@dimen/spacing_medium"
+        android:paddingRight="@dimen/spacing_medium"
+        android:text="天津市七星区啥的回家啊好的几卡号的接口" />
+
+    <View style="@style/style_hortical_line" />
+</LinearLayout>

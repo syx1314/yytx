@@ -1,7 +1,6 @@
 package com.bdlm.yytx.module.scenic;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
@@ -11,7 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.bdlm.yytx.R;
-import com.bdlm.yytx.base.BaseActivity;
+import com.bdlm.yytx.base.BaseLoginActivity;
 import com.bdlm.yytx.constant.Constant;
 import com.bdlm.yytx.entity.PassportTypeBean;
 import com.bdlm.yytx.entity.ScenicDetailResponse;
@@ -25,10 +24,9 @@ import com.trsoft.app.lib.view.recycleview.adapter.BaseRecycleViewAdapter;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class SearchScenicActivity extends BaseActivity implements ScenicContact.IScenicView, BaseRecycleViewAdapter.OnItemClickListener {
+public class SearchScenicActivity extends BaseLoginActivity implements ScenicContact.IScenicView, BaseRecycleViewAdapter.OnItemClickListener {
 
     @BindView(R.id.et_search_key)
     EditText etSearchKey;

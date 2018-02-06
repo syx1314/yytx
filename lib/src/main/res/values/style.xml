@@ -22,4 +22,5 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/sp_header</item>
     </style>
+
 </resources>

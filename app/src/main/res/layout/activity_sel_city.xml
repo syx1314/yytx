@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.bdlm.yytx.module.city.SelCityActivity">
+    tools:context="com.bdlm.yytx.module.city.SelCityLoginActivity">
 
     <com.bdlm.yytx.common.view.CommonTitle
         android:layout_width="match_parent"

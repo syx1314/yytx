@@ -1,22 +1,19 @@
 package com.bdlm.yytx.module.webview;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.bdlm.yytx.R;
-import com.bdlm.yytx.base.BaseActivity;
+import com.bdlm.yytx.base.BaseLoginActivity;
 import com.bdlm.yytx.common.view.CommonTitle;
 import com.bdlm.yytx.constant.Constant;
 import com.trsoft.app.lib.utils.Validator;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
-public class LoadHtmlActivity extends BaseActivity {
+public class LoadHtmlLoginActivity extends BaseLoginActivity {
 
     @BindView(R.id.ct_title)
     CommonTitle ctTitle;

@@ -23,6 +23,7 @@ public class HomePersenter extends BasePresenter<IHomeContact.IHomeView> impleme
         attachV(homeView);
     }
 
+    //获取当前位置
     public void getPosition() {
         GdLocation location = new GdLocation();
         location.setResult(new GdLocation.OnLocationResult() {
@@ -45,6 +46,11 @@ public class HomePersenter extends BasePresenter<IHomeContact.IHomeView> impleme
         model.requestRecommendScenic(this);
     }
 
+    //获取公告
+    public void getNotice() {
+      model.getNotice(this);
+    }
+
     @Override
     public void attachV(IHomeContact.IHomeView view) {
         super.attachV(view);
@@ -64,5 +70,10 @@ public class HomePersenter extends BasePresenter<IHomeContact.IHomeView> impleme
         if (homeView != null) {
             homeView.resultScenic(responses);
         }
+    }
+
+    @Override
+    public void notice(String noticeStr) {
+        homeView.resultNotice(noticeStr);
     }
 }

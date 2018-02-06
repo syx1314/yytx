@@ -3,7 +3,6 @@
     android:id="@+id/rl_title"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:fitsSystemWindows="true"
     android:paddingLeft="@dimen/paddind_rigt"
     android:paddingRight="@dimen/paddind_rigt">
 

@@ -20,11 +20,13 @@ public interface IHomeContact {
     interface IHomeListener extends IBaseListener {
 
         void resultScenic(List<ScenicResponse> responses);
+        void notice(String noticeStr);
     }
 
     interface  IHomeView extends IBaseView{
         void resultPosition(PositionBean positionBean);
         void resultScenic(List<ScenicResponse> responses);
+        void resultNotice(String noticeStr);
     }
 
 

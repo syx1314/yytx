@@ -27,6 +27,10 @@ public interface ISysApi {
     @GET("User/get_system_config")
     Observable<ApiResultBean<String>> systemConfig(@Query("type") String type);
 
+    @GET("App/get_system_config")
+    Observable<ApiResultBean<String>> systemNotice(@Query("type") String type);
+
+
     @FormUrlEncoded
     @POST("App/upVer")
     Observable<ApiResultBean<AppVersion>> checkAppVersion(@Field("version") String version);

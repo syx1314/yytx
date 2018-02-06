@@ -1,8 +1,6 @@
 package com.bdlm.yytx.base;
 
-import android.Manifest;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,30 +8,24 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 import com.bdlm.yytx.constant.Constant;
-import com.bdlm.yytx.module.login.LoginActivity;
+import com.bdlm.yytx.module.login.LoginLoginActivity;
 import com.gyf.barlibrary.ImmersionBar;
 import com.orhanobut.logger.Logger;
-
 import com.tbruyelle.rxpermissions.Permission;
 import com.tbruyelle.rxpermissions.RxPermissions;
 import com.trsoft.app.lib.ActivitySupport;
-import com.trsoft.app.lib.R;
 import com.trsoft.app.lib.mvp.IBasePresenter;
 import com.trsoft.app.lib.mvp.IBaseView;
 import com.trsoft.app.lib.utils.DialogUtil;
 import com.trsoft.app.lib.utils.PreferenceUtils;
-import com.trsoft.app.lib.utils.Validator;
-
-import java.util.Map;
-import java.util.Set;
 
 import butterknife.ButterKnife;
-import rx.Observer;
 import rx.functions.Action1;
 
 
 /**
  * Created by yyj on 2017/12/27.
+ * 不含登录
  */
 
 public abstract class BaseActivity<P extends IBasePresenter, V extends IBaseView> extends ActivitySupport {
@@ -48,24 +40,12 @@ public abstract class BaseActivity<P extends IBasePresenter, V extends IBaseView
 
     protected abstract void createPersenter();
 
-    public void isLogin() {
-        token = PreferenceUtils.getInstance().getString(Constant.TOKEN);
-        Logger.e(token);
-        if (TextUtils.isEmpty(token)) {
-            if (activity != null && activity.getClass() != LoginActivity.class) {
-                startActivity(new Intent(this, LoginActivity.class));
-            }
-            return;
-        }
-
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
         activity = this;
-        isLogin();
         ButterKnife.bind(this);
         //初始化沉浸式
         if (isImmersionBarEnabled()) {

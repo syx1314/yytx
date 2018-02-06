@@ -8,19 +8,27 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bdlm.yytx.R;
+import com.bdlm.yytx.base.BaseFragment;
 
 /**
  * 特产
  */
-public class SpecialtyFragment extends Fragment {
-
+public class SpecialtyFragment extends BaseFragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout_scenic_note for this fragment
-        return inflater.inflate(R.layout.fragment_specialty, container, false);
+    protected void createPresenter() {
+
     }
 
+    @Override
+    protected int getLayout() {
+        return R.layout.fragment_specialty;
+    }
+
+
+    @Override
+    public void error(String msg) {
+
+    }
 }

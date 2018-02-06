@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/base_bg"
+    android:orientation="vertical"
+    tools:context="com.bdlm.yytx.module.business.BusinessJoinActivity">
+
+    <com.bdlm.yytx.common.view.CommonTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rightTvContent="@string/business_add_cancel_upload"
+        app:title="@string/business_add_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/style_common_tv"
+                android:layout_width="wrap_content"
+                android:background="@color/white"
+                android:text="@string/business_name" />
+
+            <EditText
+                android:id="@+id/et_business_name"
+                style="@style/style_common_tv"
+                android:layout_width="match_parent"
+                android:layout_toRightOf="@id/tv_name"
+                android:background="@color/white"
+                android:hint="@string/business_name_hint" />
+
+            <View
+                android:id="@+id/line1"
+                style="@style/style_hortical_line"
+                android:layout_below="@id/tv_name" />
+
+
+            <TextView
+                android:id="@+id/tv_discount"
+                style="@style/style_common_tv"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/line1"
+                android:background="@color/white"
+                android:text="@string/business_discount" />
+
+            <EditText
+                android:id="@+id/et_business_discount"
+                style="@style/style_common_tv"
+                android:layout_width="match_parent"
+                android:layout_below="@id/line1"
+                android:layout_toRightOf="@id/tv_discount"
+                android:background="@color/white"
+                android:hint="@string/business_discount_hint" />
+
+
+            <View
+                android:id="@+id/line2"
+                style="@style/style_hortical_line"
+                android:layout_below="@id/tv_discount" />
+
+
+            <TextView
+                android:id="@+id/tv_phone"
+                style="@style/style_common_tv"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/line2"
+                android:text="@string/business_phone" />
+
+            <EditText
+                android:id="@+id/et_business_phone"
+                style="@style/style_common_tv"
+                android:layout_width="match_parent"
+                android:layout_below="@id/line2"
+                android:layout_toRightOf="@id/tv_phone"
+                android:background="@color/white"
+                android:hint="@string/business_phone_hint" />
+
+
+            <View
+                android:id="@+id/line4"
+                style="@style/style_hortical_line"
+                android:layout_below="@id/tv_phone" />
+
+
+            <TextView
+                android:id="@+id/tv_address"
+                style="@style/style_common_tv"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/line4"
+                android:text="@string/business_address" />
+
+            <EditText
+                android:id="@+id/et_business_address"
+                style="@style/style_common_tv"
+                android:layout_width="match_parent"
+                android:layout_below="@id/line4"
+                android:layout_toRightOf="@id/tv_address"
+                android:background="@color/white"
+                android:drawableRight="@mipmap/dingwei_jm"
+                android:gravity="center_vertical"
+                android:hint="@string/business_address_hint" />
+
+
+            <TextView
+                android:id="@+id/tv_feature"
+                style="@style/style_common_tv"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_address"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:background="@color/white"
+                android:drawableLeft="@mipmap/juxing_jm"
+                android:drawablePadding="@dimen/drawable_paddind"
+                android:text="@string/business_feature" />
+
+            <View
+                android:id="@+id/line5"
+                style="@style/style_hortical_line"
+                android:layout_below="@id/tv_feature" />
+
+            <EditText
+                android:id="@+id/et_feature"
+                style="@style/style_common_tv"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line5"
+                android:background="@color/white"
+                android:gravity="left"
+                android:hint="@string/business_feature_hint"
+                android:minLines="4" />
+
+            <TextView
+                android:id="@+id/tv_banner"
+                style="@style/style_common_tv"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_feature"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:background="@color/white"
+                android:drawableLeft="@mipmap/juxing_jm"
+                android:drawablePadding="@dimen/drawable_paddind"
+                android:text="@string/business_banner" />
+
+            <View
+                android:id="@+id/line6"
+                style="@style/style_hortical_line"
+                android:layout_below="@id/tv_banner" />
+
+            <LinearLayout
+                android:id="@+id/line7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line6"
+                android:background="@color/white"
+                android:padding="@dimen/spacing_medium">
+
+                <ImageView
+                    android:id="@+id/iv_business_banner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:src="@mipmap/tianjia_jm" />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btn_approve"
+                style="@style/btn_common_large"
+                android:layout_below="@id/line7"
+                android:layout_margin="@dimen/spacing_medium"
+                android:background="@mipmap/juxing_sj"
+                android:text="@string/business_approve" />
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.bdlm.yytx.R;
-import com.bdlm.yytx.base.BaseActivity;
+import com.bdlm.yytx.base.BaseLoginActivity;
 import com.bdlm.yytx.entity.CityBean;
 import com.bdlm.yytx.entity.PositionBean;
 import com.bdlm.yytx.module.map.GdLocation;
@@ -20,7 +20,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SelCityActivity extends BaseActivity implements ISelCityContact.ICityView {
+public class SelCityLoginActivity extends BaseLoginActivity implements ISelCityContact.ICityView {
     SelCityPresenter selCityPresenter;
     @BindView(R.id.rv)
     RecyclerView rv;

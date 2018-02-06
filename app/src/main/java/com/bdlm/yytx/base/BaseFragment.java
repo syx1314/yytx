@@ -2,7 +2,6 @@ package com.bdlm.yytx.base;
 
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -15,9 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bdlm.yytx.R;
 import com.bdlm.yytx.constant.Constant;
-import com.bdlm.yytx.module.login.LoginActivity;
+import com.bdlm.yytx.module.login.LoginLoginActivity;
 import com.gyf.barlibrary.ImmersionBar;
 import com.orhanobut.logger.Logger;
 import com.tbruyelle.rxpermissions.Permission;
@@ -54,8 +52,8 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         token = PreferenceUtils.getInstance().getString(Constant.TOKEN);
         Logger.e(token);
         if (TextUtils.isEmpty(token)) {
-            if (mContext != null && mContext.getClass() != LoginActivity.class) {
-                startActivity(new Intent(mContext, LoginActivity.class));
+            if (mContext != null && mContext.getClass() != LoginLoginActivity.class) {
+                startActivity(new Intent(mContext, LoginLoginActivity.class));
             }
             return;
         }

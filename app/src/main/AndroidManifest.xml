@@ -31,15 +31,13 @@
         <!-- 高德定位Service -->
         <service android:name="com.amap.api.location.APSService" />
 
-        <activity android:name=".MainActivity">
-
-        </activity>
-        <activity android:name=".module.login.LoginActivity" />
-        <activity android:name=".module.scenic.ScenicListActivity" />
-        <activity android:name=".MapActivity" />
+        <activity android:name=".MainLoginActivity" />
+        <activity android:name=".module.login.LoginLoginActivity" />
+        <activity android:name=".module.scenic.ScenicListLoginActivity" />
+        <activity android:name=".MapLoginActivity" />
         <activity android:name=".module.scenic.ScenicDetailsActivity" />
-        <activity android:name=".module.city.SelCityActivity" />
-        <activity android:name=".module.webview.LoadHtmlActivity" />
+        <activity android:name=".module.city.SelCityLoginActivity" />
+        <activity android:name=".module.webview.LoadHtmlLoginActivity" />
         <activity android:name=".module.scenic.SearchScenicActivity" />
         <activity android:name=".module.scenic.TicketListActivity" />
         <activity android:name=".module.welcome.WelcomeActivity">
@@ -49,6 +47,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".module.business.BusinessActivity" />
+        <activity android:name=".module.business.BusinessJoinActivity" />
+        <activity android:name=".module.map.SearchPoiActivity"></activity>
     </application>
 
 </manifest>

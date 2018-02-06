@@ -2,10 +2,7 @@ package com.bdlm.yytx.module.me;
 
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,8 +10,8 @@ import com.bdlm.yytx.R;
 import com.bdlm.yytx.base.BaseFragment;
 import com.bdlm.yytx.constant.Constant;
 import com.bdlm.yytx.entity.UserInfoBean;
-import com.bdlm.yytx.module.login.LoginActivity;
-import com.bdlm.yytx.module.webview.LoadHtmlActivity;
+import com.bdlm.yytx.module.login.LoginLoginActivity;
+import com.bdlm.yytx.module.webview.LoadHtmlLoginActivity;
 import com.orhanobut.logger.Logger;
 import com.trsoft.app.lib.inter.CommonCallback;
 import com.trsoft.app.lib.utils.DialogUtil;
@@ -23,9 +20,7 @@ import com.trsoft.app.lib.utils.PreferenceUtils;
 import com.trsoft.app.lib.utils.validator.ValidatorUtil;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 
 public class MeFragment extends BaseFragment<MePresenter> implements MeContact.IMeView {
@@ -77,7 +72,13 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
     @Override
     public void error(String msg) {
         Logger.e(msg);
-        DialogUtil.showAlert(mContext, msg, null);
+        DialogUtil.showAlert(mContext, msg, new CommonCallback<Boolean>() {
+            @Override
+            public void onCallBack(Boolean data) {
+                toActivity(LoginLoginActivity.class);
+            }
+        });
+
     }
 
     @Override
@@ -98,14 +99,14 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
             @Override
             public void onCallBack(Boolean data) {
                 PreferenceUtils.getInstance().clear();
-                toActivityNoClear(LoginActivity.class);
+                toActivityNoClear(LoginLoginActivity.class);
             }
         });
     }
 
     @OnClick({R.id.lin_exchange, R.id.tv_bind, R.id.tv_advance_record, R.id.tv_recommend, R.id.tv_qrcode, R.id.tv_order, R.id.tv_about, R.id.tv_opinion, R.id.tv_exit})
     public void onViewClicked(View view) {
-        Intent intent = new Intent(mContext, LoadHtmlActivity.class);
+        Intent intent = new Intent(mContext, LoadHtmlLoginActivity.class);
         String token = PreferenceUtils.getInstance().getString(Constant.TOKEN);
         switch (view.getId()) {
             case R.id.lin_exchange:

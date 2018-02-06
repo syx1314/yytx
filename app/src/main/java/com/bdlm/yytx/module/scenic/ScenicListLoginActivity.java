@@ -6,11 +6,9 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.RelativeLayout;
 
 import com.bdlm.yytx.R;
-import com.bdlm.yytx.base.BaseActivity;
-import com.bdlm.yytx.common.view.CommonTitle;
+import com.bdlm.yytx.base.BaseLoginActivity;
 import com.bdlm.yytx.constant.Constant;
 import com.bdlm.yytx.entity.Page;
 import com.bdlm.yytx.entity.PassportTypeBean;
@@ -34,7 +32,7 @@ import butterknife.BindView;
 /**
  * 景区列表
  */
-public class ScenicListActivity extends BaseActivity implements ScenicContact.IScenicView, OnLoadmoreListener, BaseRecycleViewAdapter.OnItemClickListener, TabLayout.OnTabSelectedListener {
+public class ScenicListLoginActivity extends BaseLoginActivity implements ScenicContact.IScenicView, OnLoadmoreListener, BaseRecycleViewAdapter.OnItemClickListener, TabLayout.OnTabSelectedListener {
     ScenicPresenter presenter;
     @BindView(R.id.rv)
     RecyclerView rv;

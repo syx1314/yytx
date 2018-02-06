@@ -84,9 +84,9 @@
                     <TextView
                         android:id="@+id/tv_balance"
                         style="@style/style_common_tv"
+                        android:drawablePadding="@dimen/drawable_paddind"
                         android:drawableRight="@mipmap/jinru"
                         android:gravity="center|right"
-                        android:drawablePadding="@dimen/drawable_paddind"
                         android:text="￥120" />
                 </LinearLayout>
 
@@ -103,12 +103,22 @@
                     android:text="@string/me_bind_card" />
             </LinearLayout>
 
+            <View
+                android:id="@+id/line1"
+                style="@style/style_hortical_line"
+                android:layout_below="@id/lin_exchange" />
+
+            <View
+                android:id="@+id/line2"
+                style="@style/style_hortical_line"
+                android:layout_below="@id/line1"
+                android:layout_marginTop="@dimen/paddind_left" />
+
             <LinearLayout
                 android:id="@+id/line3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/lin_exchange"
-                android:layout_marginTop="@dimen/paddind_left"
+                android:layout_below="@id/line2"
                 android:background="@color/white"
                 android:orientation="vertical">
 

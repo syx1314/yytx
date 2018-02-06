@@ -1,25 +1,22 @@
 package com.bdlm.yytx.module.scenic;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.bdlm.yytx.R;
-import com.bdlm.yytx.base.BaseActivity;
+import com.bdlm.yytx.base.BaseLoginActivity;
 import com.bdlm.yytx.constant.Constant;
 import com.bdlm.yytx.entity.Page;
 import com.bdlm.yytx.entity.TicketBean;
 import com.bdlm.yytx.entity.TicketListResponse;
-import com.bdlm.yytx.module.webview.LoadHtmlActivity;
+import com.bdlm.yytx.module.webview.LoadHtmlLoginActivity;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 import com.trsoft.app.lib.utils.DialogUtil;
 import com.trsoft.app.lib.utils.Validator;
-import com.trsoft.app.lib.utils.validator.ValidatorUtil;
 import com.trsoft.app.lib.view.recycleview.RecycleViewDivider;
 import com.trsoft.app.lib.view.recycleview.ViewHolder;
 import com.trsoft.app.lib.view.recycleview.adapter.BaseRecycleViewAdapter;
@@ -28,9 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
-public class TicketListActivity extends BaseActivity implements ScenicContact.ITicketView, OnRefreshLoadmoreListener {
+public class TicketListActivity extends BaseLoginActivity implements ScenicContact.ITicketView, OnRefreshLoadmoreListener {
 
     @BindView(R.id.rv)
     RecyclerView rv;
@@ -105,7 +101,7 @@ public class TicketListActivity extends BaseActivity implements ScenicContact.IT
 
     public void buyTicket(String scenic_id) {
         isLogin();
-        Intent intent = new Intent(activity, LoadHtmlActivity.class);
+        Intent intent = new Intent(activity, LoadHtmlLoginActivity.class);
         intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.buy_ticket));
         intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Ticket/showlist/senic_id/" + scenic_id + "/token/" + token);
         startActivity(intent);

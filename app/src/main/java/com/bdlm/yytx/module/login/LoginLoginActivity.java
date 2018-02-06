@@ -1,6 +1,5 @@
 package com.bdlm.yytx.module.login;
 
-import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.bdlm.yytx.R;
-import com.bdlm.yytx.base.BaseActivity;
+import com.bdlm.yytx.base.BaseLoginActivity;
 import com.bdlm.yytx.constant.Constant;
 import com.bdlm.yytx.entity.LoginResponse;
 import com.trsoft.app.lib.http.ApiResultBean;
@@ -24,11 +23,10 @@ import com.trsoft.app.lib.utils.Validator;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class LoginActivity extends BaseActivity implements LoginContact.ILoginView {
+public class LoginLoginActivity extends BaseLoginActivity implements LoginContact.ILoginView {
 
     @BindView(R.id.et_phone)
     EditText etPhone;

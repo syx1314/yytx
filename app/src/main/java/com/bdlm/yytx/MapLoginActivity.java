@@ -3,17 +3,14 @@ package com.bdlm.yytx;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.amap.api.maps.AMap;
 import com.amap.api.maps.MapView;
-import com.amap.api.maps.TextureMapView;
-import com.bdlm.yytx.base.BaseActivity;
+import com.bdlm.yytx.base.BaseLoginActivity;
 import com.bdlm.yytx.module.map.BaseMapImpl;
 
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
-public class MapActivity extends BaseActivity {
+public class MapLoginActivity extends BaseLoginActivity {
 
 
     @BindView(R.id.map)

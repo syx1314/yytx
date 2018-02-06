@@ -2,7 +2,6 @@ package com.bdlm.yytx.module.scenic;
 
 import android.content.Intent;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.GridLayoutManager;
@@ -20,14 +19,14 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bdlm.yytx.R;
-import com.bdlm.yytx.base.BaseActivity;
+import com.bdlm.yytx.base.BaseLoginActivity;
 import com.bdlm.yytx.common.view.CommonTitle;
 import com.bdlm.yytx.constant.Constant;
 import com.bdlm.yytx.entity.PassportTypeBean;
 import com.bdlm.yytx.entity.ScenicDetailResponse;
 import com.bdlm.yytx.entity.ScenicListResponse;
 import com.bdlm.yytx.entity.ScenicResponse;
-import com.bdlm.yytx.module.webview.LoadHtmlActivity;
+import com.bdlm.yytx.module.webview.LoadHtmlLoginActivity;
 import com.orhanobut.logger.Logger;
 import com.trsoft.app.lib.utils.DialogUtil;
 import com.trsoft.app.lib.utils.ImageLoader;
@@ -41,13 +40,12 @@ import com.trsoft.app.lib.view.recycleview.adapter.BaseRecycleViewAdapter;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
  * 景区详情
  */
-public class ScenicDetailsActivity extends BaseActivity implements ScenicContact.IScenicView, TabLayout.OnTabSelectedListener {
+public class ScenicDetailsActivity extends BaseLoginActivity implements ScenicContact.IScenicView, TabLayout.OnTabSelectedListener {
 
     @BindView(R.id.rl_header)
     RelativeLayout relativeLayout;
@@ -228,7 +226,7 @@ public class ScenicDetailsActivity extends BaseActivity implements ScenicContact
 
     @OnClick({R.id.btn_kf, R.id.btn_vr, R.id.btn_ticket_buy, R.id.btn_advance, R.id.ic_back})
     public void onViewClicked(View view) {
-        Intent intent = new Intent(activity, LoadHtmlActivity.class);
+        Intent intent = new Intent(activity, LoadHtmlLoginActivity.class);
         switch (view.getId()) {
             case R.id.btn_kf:
                 if (Validator.isNotEmpty(response.getTelephone()))

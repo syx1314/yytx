@@ -1,11 +1,9 @@
 package com.bdlm.yytx;
 
-import android.Manifest;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTabHost;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -13,7 +11,7 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 
-import com.bdlm.yytx.base.BaseActivity;
+import com.bdlm.yytx.base.BaseLoginActivity;
 import com.bdlm.yytx.module.find.FindFragment;
 import com.bdlm.yytx.module.home.HomeFragment;
 import com.bdlm.yytx.module.me.MeFragment;
@@ -21,10 +19,9 @@ import com.bdlm.yytx.module.specialty.SpecialtyFragment;
 
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 
-public class MainActivity extends BaseActivity {
+public class MainLoginActivity extends BaseLoginActivity {
     @BindView(R.id.realtabcontent)
     FrameLayout realtabcontent;
     @BindView(android.R.id.tabcontent)
@@ -75,6 +72,7 @@ public class MainActivity extends BaseActivity {
         imageView.setImageResource(mImages[index]);
 
         tv_tab.setText(mTextviewArray[index]);
+        tv_tab.setTextColor(R.drawable.sel_tab_red_bg);
         return view;
 
     }

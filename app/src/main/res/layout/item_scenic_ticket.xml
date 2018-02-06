@@ -22,31 +22,34 @@
         android:text="龙潭大峡谷"
         android:textColor="@color/color_text_main"
         android:textSize="15sp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tv_scenic_name"
         android:layout_toRightOf="@id/iv_scenic"
-        android:gravity="center_vertical"
-        android:layout_below="@id/tv_scenic_name">
-    <TextView
-        android:id="@+id/tv_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/paddings"
-        android:text="45.00"
-        android:textColor="@color/red"
-        android:textSize="@dimen/title_text_szie"
-        android:drawableLeft="@mipmap/icon_rmb"/>
-    <TextView
-        android:id="@+id/tv_scenic_grade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/paddings"
-        android:background="@drawable/shape_radio_green"
-        android:padding="@dimen/drawable_paddind"
-        android:text="5A级景区"
-        android:textColor="@color/color_green"
-        android:textSize="10sp" />
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/paddings"
+            android:drawableLeft="@mipmap/icon_rmb"
+            android:text="45.00"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_main" />
+
+        <TextView
+            android:id="@+id/tv_scenic_grade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/paddings"
+            android:background="@drawable/shape_radio_green"
+            android:padding="@dimen/drawable_paddind"
+            android:text="5A级景区"
+            android:textColor="@color/color_green"
+            android:textSize="9sp" />
     </LinearLayout>
 
     <TextView
@@ -57,10 +60,10 @@
         android:layout_below="@id/tv_scenic_type"
         android:layout_marginLeft="@dimen/paddings_8"
         android:layout_toRightOf="@id/iv_scenic"
+        android:drawableLeft="@mipmap/icon_position"
         android:ellipsize="end"
         android:gravity="bottom"
         android:maxLines="1"
-        android:drawableLeft="@mipmap/icon_position"
         android:text="简短描述"
         android:textColor="@color/color_text_gray"
         android:textSize="12sp" />
