@@ -95,7 +95,7 @@ public class LoginLoginActivity extends BaseLoginActivity implements LoginContac
                 DialogUtil.showAlert(activity, "手机号有误", null);
             }
         } else {
-            DialogUtil.showAlert(activity, "请输入手机号", null);
+            DialogUtil.showAlert(activity, "请输入验证码", null);
         }
 
 

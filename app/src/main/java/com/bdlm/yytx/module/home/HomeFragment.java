@@ -94,7 +94,7 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
             }
         };
         rv.setLayoutManager(new GridLayoutManager(mContext, 2));
-        mImmersionBar.titleBar(rlTitle);
+        mImmersionBar.fitsSystemWindows(true).statusBarColor(R.color.color_status_bar).init();
         dataAdapter.setOnItemClickListener(new BaseRecycleViewAdapter.OnItemClickListener() {
             @Override
             public void onClick(int position) {

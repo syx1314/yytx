@@ -37,17 +37,14 @@
             android:textSize="@dimen/text_main" />
 
         <View
-            style="@style/style_vertical_line"
+           android:layout_height="match_parent"
             android:layout_width="2dp"
-            android:layout_marginBottom="@dimen/drawable_paddind"
-            android:layout_marginTop="@dimen/drawable_paddind"
             android:background="@color/red" />
 
         <TextView
             android:id="@+id/tv_send_code"
             style="@style/style_common_tv"
             android:layout_width="wrap_content"
-
             android:text="@string/login_code" />
     </LinearLayout>
 
@@ -63,6 +60,7 @@
 
         <EditText
             android:id="@+id/et_code"
+            style="@style/style_common_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

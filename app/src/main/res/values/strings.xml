@@ -62,6 +62,8 @@
     <string name="specialty_title">特产</string>
     <string name="specialty_search">搜索</string>
 
+    <!--TODO: 发现-->
+    <string name="find_title">发现</string>
     <!--TODO：商家部分-->
     <string name="business_add">加盟</string>
     <string name="business_add_title">商家加盟</string>

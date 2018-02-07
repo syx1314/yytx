@@ -25,6 +25,10 @@
         <item name="android:textColor">@color/color_text_main</item>
         <item name="android:textSize">@dimen/text_main</item>
     </style>
+    <style name="style_common_sub_tv" parent="style_common_tv">
+        <item name="android:textColor">@color/color_text_gray</item>
+        <item name="android:textSize">@dimen/text_sub</item>
+    </style>
     <style name="style_common_tv_padding" parent="style_common_tv">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
