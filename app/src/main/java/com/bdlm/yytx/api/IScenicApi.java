@@ -4,6 +4,7 @@ import com.amap.api.maps.offlinemap.City;
 import com.bdlm.yytx.entity.CityBean;
 import com.bdlm.yytx.entity.ScenicDetailResponse;
 import com.bdlm.yytx.entity.ScenicListResponse;
+import com.bdlm.yytx.entity.ScenicPlaySortBean;
 import com.bdlm.yytx.entity.ScenicResponse;
 import com.bdlm.yytx.entity.TicketBean;
 import com.bdlm.yytx.entity.TicketListResponse;
@@ -50,4 +51,7 @@ public interface IScenicApi {
 
     @GET("Senic/recommend")
     Observable<ApiResultBean<List<ScenicResponse>>> recommend();
+    //景区游玩排行
+    @GET("Senic/advanceRank")
+    Observable<ApiResultBean<List<ScenicPlaySortBean>>> scenicPlaySort();
 }
