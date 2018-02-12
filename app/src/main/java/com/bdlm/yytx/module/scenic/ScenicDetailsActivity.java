@@ -28,6 +28,7 @@ import com.bdlm.yytx.entity.ScenicListResponse;
 import com.bdlm.yytx.entity.ScenicResponse;
 import com.bdlm.yytx.module.webview.LoadHtmlLoginActivity;
 import com.orhanobut.logger.Logger;
+import com.trsoft.app.lib.inter.CommonCallback;
 import com.trsoft.app.lib.utils.DialogUtil;
 import com.trsoft.app.lib.utils.ImageLoader;
 import com.trsoft.app.lib.utils.PreferenceUtils;
@@ -129,7 +130,13 @@ public class ScenicDetailsActivity extends BaseLoginActivity implements ScenicCo
 
     @Override
     public void error(String msg) {
-        DialogUtil.showAlert(activity, msg, null);
+        DialogUtil.showAlert(activity, msg, new CommonCallback<Boolean>() {
+            @Override
+            public void onCallBack(Boolean data) {
+                finish();
+            }
+        });
+
     }
 
     @Override
@@ -139,15 +146,24 @@ public class ScenicDetailsActivity extends BaseLoginActivity implements ScenicCo
 
     @Override
     public void getScenicList(final List<ScenicResponse> response) {
-            rv.setAdapter(new BaseRecycleViewAdapter<ScenicResponse>(response,R.layout.item_main_scenic){
-                @Override
-                public void onBindViewHolder(ViewHolder holder, int position) {
-                    super.onBindViewHolder(holder, position);
-                    ScenicResponse scenic = response.get(position);
-                    holder.setImage(R.id.iv_scenic,scenic.getThumbnail());
-                    holder.setText(R.id.tv_scenic_name, scenic.getName());
-                }
-            });
+        BaseRecycleViewAdapter adapter = new BaseRecycleViewAdapter<ScenicResponse>(response, R.layout.item_main_scenic) {
+            @Override
+            public void onBindViewHolder(ViewHolder holder, int position) {
+                super.onBindViewHolder(holder, position);
+                ScenicResponse scenic = response.get(position);
+                holder.setImage(R.id.iv_scenic, scenic.getThumbnail());
+                holder.setText(R.id.tv_scenic_name, scenic.getName());
+            }
+        };
+        rv.setAdapter(adapter);
+        adapter.setOnItemClickListener(new BaseRecycleViewAdapter.OnItemClickListener() {
+            @Override
+            public void onClick(int position) {
+                Intent intent = new Intent(activity, ScenicDetailsActivity.class);
+                intent.putExtra(Constant.SCENIC_ID, response.get(position).getSenic_id());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -199,10 +215,11 @@ public class ScenicDetailsActivity extends BaseLoginActivity implements ScenicCo
             String lat = PreferenceUtils.getInstance().getString(Constant.CURLAN);
             presenter.requestScenicList(lon, lat, scenic_id);
             View view = LayoutInflater.from(activity).inflate(R.layout.layout_recycleview, flContent);
-             rv = view.findViewById(R.id.rv);
-            GridLayoutManager manager = new GridLayoutManager(activity,2);
+            rv = view.findViewById(R.id.rv);
+            GridLayoutManager manager = new GridLayoutManager(activity, 2);
             rv.setLayoutManager(manager);
             rv.addItemDecoration(new RecycleViewDivider(activity, LinearLayoutManager.HORIZONTAL));
+
 
         }
     }
@@ -222,6 +239,7 @@ public class ScenicDetailsActivity extends BaseLoginActivity implements ScenicCo
     public void onTabReselected(TabLayout.Tab tab) {
 
     }
+
 
 
     @OnClick({R.id.btn_kf, R.id.btn_vr, R.id.btn_ticket_buy, R.id.btn_advance, R.id.ic_back})

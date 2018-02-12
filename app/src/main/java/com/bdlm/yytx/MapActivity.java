@@ -10,7 +10,7 @@ import com.bdlm.yytx.module.map.BaseMapImpl;
 
 import butterknife.BindView;
 
-public class MapLoginActivity extends BaseLoginActivity {
+public class MapActivity extends BaseLoginActivity {
 
 
     @BindView(R.id.map)

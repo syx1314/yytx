@@ -1,15 +1,14 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none">
-
-        <RelativeLayout
+        <LinearLayout
+           android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+
             android:background="@color/color_bg_gray">
 
             <RelativeLayout
@@ -44,7 +43,7 @@
                         android:layout_marginTop="@dimen/paddings_8"
                         android:gravity="center"
                         android:padding="0dp"
-                        android:text="111111"
+                        android:text=""
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_small_szie" />
 
@@ -54,7 +53,16 @@
 
                         android:gravity="center"
                         android:padding="0dp"
-                        android:text="111111"
+                        android:text=""
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_small_szie" />
+                    <TextView
+                        android:id="@+id/tv_passport_type"
+                        style="@style/style_common_tv"
+
+                        android:gravity="center"
+                        android:padding="0dp"
+                        android:text=""
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_small_szie" />
                 </LinearLayout>
@@ -229,6 +237,5 @@
                     android:textColor="@color/color_text_gray"
                     android:textSize="@dimen/text_sub" />
             </LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
-</LinearLayout>

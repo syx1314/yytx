@@ -21,6 +21,7 @@ import com.trsoft.app.lib.utils.validator.ValidatorUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.sharesdk.onekeyshare.OnekeyShare;
 
 
 public class MeFragment extends BaseFragment<MePresenter> implements MeContact.IMeView {
@@ -31,6 +32,8 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
     TextView tvName;
     @BindView(R.id.tv_passport_num)
     TextView tvPassportNum;
+    @BindView(R.id.tv_passport_type)
+    TextView tvPassportType;
     @BindView(R.id.tv_exchange)
     TextView tvExchange;
     @BindView(R.id.tv_balance)
@@ -88,6 +91,7 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
         if (userInfoBean != null) {
             ValidatorUtil.setTextVal(tvName, userInfoBean.getNick_name());
             ValidatorUtil.setTextVal(tvPassportNum, mContext.getString(R.string.me_passport_num) + userInfoBean.getPassport_num());
+            ValidatorUtil.setTextVal(tvPassportType,mContext.getString(R.string.me_passport_type)+userInfoBean.getType_name());
             tvBalance.setText("¥" + userInfoBean.getBalance());
             ImageLoader.displayCircleImage(mContext, userInfoBean.getAvatar(), ivHead);
         }
@@ -125,9 +129,12 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
                 startActivity(intent);
                 break;
             case R.id.tv_recommend:
-                intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.me_recommend_friends));
-                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Distribution/recommend?token=" + token);
-                startActivity(intent);
+
+
+//                intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.me_recommend_friends));
+//                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Distribution/recommend?token=" + token);
+//                startActivity(intent);
+                showShare( Constant.BASEURL2 + "/Distribution/recommend?token=" + token);
                 break;
             case R.id.tv_qrcode:
                 intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.me_qrcode));
@@ -151,4 +158,26 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
                 break;
         }
     }
+
+    private void showShare(String str) {
+        OnekeyShare oks = new OnekeyShare();
+        //关闭sso授权
+        oks.disableSSOWhenAuthorize();
+
+        // title标题，微信、QQ和QQ空间等平台使用
+        oks.setTitle("亿游天下");
+        // titleUrl QQ和QQ空间跳转链接
+        oks.setTitleUrl(str);
+        // text是分享文本，所有平台都需要这个字段
+        oks.setText("欢饮您加入亿游天下旅游网");
+        // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
+//        oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
+        // url在微信、微博，Facebook等平台中使用
+        oks.setUrl(str);
+        // comment是我对这条分享的评论，仅在人人网使用
+        oks.setComment("欢饮您加入亿游天下旅游网");
+        // 启动分享GUI
+        oks.show(getActivity());
+    }
+
 }

@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.bdlm.yytx.module.scenic.ScenicListLoginActivity">
+    tools:context="com.bdlm.yytx.module.scenic.ScenicListActivity">
 
     <com.bdlm.yytx.common.view.CommonTitle
         android:id="@+id/title"
         android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="@string/scenic_list_title" />
+        app:title="@string/scenic_list_title"
+        app:rightTvContent="@string/specialty_search"/>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tablayout"

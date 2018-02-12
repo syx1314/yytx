@@ -22,6 +22,7 @@
             android:imeOptions="actionSearch"
             android:background="@drawable/shape_big_radio_white"
             android:drawableLeft="@mipmap/icon_search"
+            android:textSize="@dimen/text_main"
             android:drawablePadding="@dimen/drawable_paddind"
             android:paddingBottom="3dp"
             android:paddingLeft="@dimen/paddind_rigt"

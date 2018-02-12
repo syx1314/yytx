@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
-
+// 添加插件
+apply plugin: "com.mob.sdk"
 android {
     signingConfigs {
         config {
@@ -37,7 +38,36 @@ android {
     productFlavors {
     }
 }
+// 在MobSDK的扩展中注册ShareSDK的相关信息
+MobSDK {
+    appKey "243ba6dacbc94"
+    appSecret "b2b9448fc82e6bf9262d50a22aaad3a5"
 
+    ShareSDK {
+        devInfo {
+            SinaWeibo {
+                appKey "568898243"
+                appSecret "38a4f8204cc784f81f9f0daaf31e02e3"
+                callbackUri "http://www.sharesdk.cn"
+                shareByAppClient false
+            }
+            Wechat {
+                appId "wx4868b35061f87885"
+                appSecret "64020361b8ec4c99936c0e3999a9f249"
+            }
+            QQ {
+                appId "1106025433"
+                appKey "2V0zuEAahCCejwft"
+            }
+            QZone {
+                appId "1106025433"
+                appKey "2V0zuEAahCCejwft"
+            }
+
+
+        }
+    }
+}
 dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:support-v4:26.1.0'
@@ -62,4 +92,5 @@ dependencies {
     compile 'com.amap.api:location:3.7.0'
     //搜索
     compile 'com.amap.api:search:5.7.0'
+
 }

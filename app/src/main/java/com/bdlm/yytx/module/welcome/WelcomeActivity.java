@@ -3,7 +3,7 @@ package com.bdlm.yytx.module.welcome;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 
-import com.bdlm.yytx.MainLoginActivity;
+import com.bdlm.yytx.MainActivity;
 import com.bdlm.yytx.R;
 import com.bdlm.yytx.base.SimpleBaseActivity;
 import com.bdlm.yytx.entity.AppVersion;
@@ -32,7 +32,7 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
         if(!appVersion.getIs_update().equals("1")){
             try {
                 Thread.sleep(2000);
-                toActivity(MainLoginActivity.class);
+                toActivity(MainActivity.class);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -48,7 +48,7 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
                     if (appVersion.getIs_forced_update().equals("1")) {
                         finish();
                     } else {
-                        toActivity(MainLoginActivity.class);
+                        toActivity(MainActivity.class);
                     }
 
                 }
@@ -60,7 +60,7 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
     @Override
     public void error(String msg) {
         DialogUtil.showAlert(activity, msg, null);
-        toActivity(MainLoginActivity.class);
+        toActivity(MainActivity.class);
     }
 
     @Override

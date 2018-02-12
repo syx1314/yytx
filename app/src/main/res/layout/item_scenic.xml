@@ -36,6 +36,7 @@
         android:layout_marginLeft="@dimen/paddings_8"
         android:layout_toRightOf="@id/fl"
         android:text="龙潭大峡谷"
+        android:singleLine="true"
         android:layout_marginBottom="@dimen/drawable_paddind"
         android:textColor="@color/color_text_main"
         android:textSize="15sp" />

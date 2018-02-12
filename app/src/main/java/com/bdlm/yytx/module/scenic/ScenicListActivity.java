@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.bdlm.yytx.R;
 import com.bdlm.yytx.base.BaseLoginActivity;
+import com.bdlm.yytx.common.view.CommonTitle;
 import com.bdlm.yytx.constant.Constant;
 import com.bdlm.yytx.entity.Page;
 import com.bdlm.yytx.entity.PassportTypeBean;
@@ -24,6 +25,7 @@ import com.trsoft.app.lib.view.recycleview.RecycleViewDivider;
 import com.trsoft.app.lib.view.recycleview.ViewHolder;
 import com.trsoft.app.lib.view.recycleview.adapter.BaseRecycleViewAdapter;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +34,7 @@ import butterknife.BindView;
 /**
  * 景区列表
  */
-public class ScenicListLoginActivity extends BaseLoginActivity implements ScenicContact.IScenicView, OnLoadmoreListener, BaseRecycleViewAdapter.OnItemClickListener, TabLayout.OnTabSelectedListener {
+public class ScenicListActivity extends BaseLoginActivity implements ScenicContact.IScenicView, OnLoadmoreListener, BaseRecycleViewAdapter.OnItemClickListener, TabLayout.OnTabSelectedListener {
     ScenicPresenter presenter;
     @BindView(R.id.rv)
     RecyclerView rv;
@@ -40,6 +42,8 @@ public class ScenicListLoginActivity extends BaseLoginActivity implements Scenic
     SmartRefreshLayout refreshLayout;
     @BindView(R.id.tablayout)
     TabLayout tablayout;
+    @BindView(R.id.title)
+    CommonTitle title;
     private Page pageInfo;
     private List<ScenicResponse> senicList;
     private BaseRecycleViewAdapter<ScenicResponse> adapter;
@@ -72,6 +76,17 @@ public class ScenicListLoginActivity extends BaseLoginActivity implements Scenic
         tablayout.addOnTabSelectedListener(this);
         lon = PreferenceUtils.getInstance().getString(Constant.CURLON);
         lat = PreferenceUtils.getInstance().getString(Constant.CURLAN);
+        title.setClickFun(new CommonTitle.IClickFun() {
+            @Override
+            public void leftOclick() {
+
+            }
+
+            @Override
+            public void rightOclick() {
+                toActivityNoClear(SearchScenicActivity.class);
+            }
+        });
     }
 
     @Override
@@ -93,7 +108,9 @@ public class ScenicListLoginActivity extends BaseLoginActivity implements Scenic
                     }
                     holder.setImage(R.id.iv_scenic, response.getThumbnail());
                     holder.setText(R.id.tv_scenic_name, response.getName());
-                    holder.setText(R.id.tv_distance, response.getDistance() + "km");
+                    DecimalFormat df = new DecimalFormat("#.0");
+
+                    holder.setText(R.id.tv_distance, df.format(response.getDistance()) + "km");
                     holder.setText(R.id.tv_scenic_type, response.getCate_name());
                     holder.setText(R.id.tv_scenic_grade, response.getLevel_name());
                     holder.setText(R.id.tv_passport_type, response.getPassport_type_name());
@@ -109,6 +126,7 @@ public class ScenicListLoginActivity extends BaseLoginActivity implements Scenic
 
 
     }
+
 
     @Override
     public void error(String msg) {

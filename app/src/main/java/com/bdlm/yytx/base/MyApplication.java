@@ -2,6 +2,7 @@ package com.bdlm.yytx.base;
 
 
 import com.bdlm.yytx.constant.Constant;
+import com.mob.MobSDK;
 import com.trsoft.app.lib.BaseApplication;
 import com.trsoft.app.lib.entity.ILoginConfig;
 import com.trsoft.app.lib.utils.PreferenceUtils;
@@ -20,6 +21,12 @@ public class MyApplication extends BaseApplication {
     @Override
     public void quit(boolean isClearData) {
 
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        MobSDK.init(this);
     }
 
     @Override

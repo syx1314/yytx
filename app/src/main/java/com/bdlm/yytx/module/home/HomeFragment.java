@@ -24,7 +24,7 @@ import com.bdlm.yytx.entity.ScenicResponse;
 import com.bdlm.yytx.module.business.BusinessActivity;
 import com.bdlm.yytx.module.city.SelCityLoginActivity;
 import com.bdlm.yytx.module.scenic.ScenicDetailsActivity;
-import com.bdlm.yytx.module.scenic.ScenicListLoginActivity;
+import com.bdlm.yytx.module.scenic.ScenicListActivity;
 import com.bdlm.yytx.module.scenic.SearchScenicActivity;
 import com.bdlm.yytx.module.scenic.TicketListActivity;
 import com.trsoft.app.lib.utils.DialogUtil;
@@ -127,7 +127,7 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
     @Override
     public void resultScenic(final List<ScenicResponse> responses) {
 
-        if (responses != null && responses.size() > 1) {
+        if (responses != null && responses.size() >=1) {
             headViewHolder.lin_recomend.setVisibility(View.VISIBLE);
             ImageLoader.display(responses.get(0).getThumbnail(), headViewHolder.ivScenic1);
             ImageLoader.display(responses.get(1).getThumbnail(), headViewHolder.ivScenic2);
@@ -229,7 +229,7 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
                     context.startActivity(new Intent(context, TicketListActivity.class));
                     break;
                 case R.id.tv_scenic_spot:
-                    context.startActivity(new Intent(context, ScenicListLoginActivity.class));
+                    context.startActivity(new Intent(context, ScenicListActivity.class));
                     break;
                 case R.id.tv_tourist_goods:
 

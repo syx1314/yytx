@@ -21,7 +21,7 @@ import com.bdlm.yytx.module.specialty.SpecialtyFragment;
 import butterknife.BindView;
 
 
-public class MainLoginActivity extends BaseLoginActivity {
+public class MainActivity extends BaseLoginActivity {
     @BindView(R.id.realtabcontent)
     FrameLayout realtabcontent;
     @BindView(android.R.id.tabcontent)
@@ -30,14 +30,18 @@ public class MainLoginActivity extends BaseLoginActivity {
     FragmentTabHost tabhost;
 
     //定义数组来存放Fragment界面
-    private Class fragmentArray[] = {HomeFragment.class, SpecialtyFragment.class, FindFragment.class, MeFragment.class};
+//    private Class fragmentArray[] = {HomeFragment.class, SpecialtyFragment.class, FindFragment.class, MeFragment.class};
+    private Class fragmentArray[] = {HomeFragment.class,  FindFragment.class, MeFragment.class};
 
     //定义数组来存放按钮图片
-    private int mImages[] = {R.drawable.bt_home_selector, R.drawable.bt_tab2_selector, R.drawable.bt_tab3_selector,
+//    private int mImages[] = {R.drawable.bt_home_selector, R.drawable.bt_tab2_selector, R.drawable.bt_tab3_selector,
+//            R.drawable.bt_tab4_selector};
+    private int mImages[] = {R.drawable.bt_home_selector, R.drawable.bt_tab3_selector,
             R.drawable.bt_tab4_selector};
 
     //Tab选项卡的文字
-    private String mTextviewArray[] = {"首页", "特产", "发现", "我的"};
+//    private String mTextviewArray[] = {"首页", "特产", "发现", "我的"};
+    private String mTextviewArray[] = {"首页", "发现", "我的"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,7 +76,7 @@ public class MainLoginActivity extends BaseLoginActivity {
         imageView.setImageResource(mImages[index]);
 
         tv_tab.setText(mTextviewArray[index]);
-        tv_tab.setTextColor(R.drawable.sel_tab_red_bg);
+//        tv_tab.setTextColor(R.drawable.sel_tab_red_bg);
         return view;
 
     }

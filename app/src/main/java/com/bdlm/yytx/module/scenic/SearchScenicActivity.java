@@ -17,10 +17,12 @@ import com.bdlm.yytx.entity.ScenicDetailResponse;
 import com.bdlm.yytx.entity.ScenicListResponse;
 import com.bdlm.yytx.entity.ScenicResponse;
 import com.trsoft.app.lib.utils.DialogUtil;
+import com.trsoft.app.lib.utils.Validator;
 import com.trsoft.app.lib.view.recycleview.RecycleViewDivider;
 import com.trsoft.app.lib.view.recycleview.ViewHolder;
 import com.trsoft.app.lib.view.recycleview.adapter.BaseRecycleViewAdapter;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import butterknife.BindView;
@@ -94,7 +96,10 @@ public class SearchScenicActivity extends BaseLoginActivity implements ScenicCon
                 }
                 holder.setImage(R.id.iv_scenic, response.getThumbnail());
                 holder.setText(R.id.tv_scenic_name, response.getName());
-                holder.setText(R.id.tv_distance, response.getDistance() + "km");
+                DecimalFormat df = new DecimalFormat("#.0");
+
+                holder.setText(R.id.tv_distance, df.format(response.getDistance()) + "km");
+
                 holder.setText(R.id.tv_scenic_type, response.getCate_name());
                 holder.setText(R.id.tv_scenic_grade, response.getLevel_name());
                 holder.setText(R.id.tv_passport_type, response.getPassport_type_name());

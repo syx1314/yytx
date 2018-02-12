@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/home_bg_light_gray">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        android:layout_marginLeft="@dimen/button_height_medium"
+        android:layout_marginRight="@dimen/button_height_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:background="@drawable/shape_big_radio_white">
+
+        <TextView
+            style="@style/style_common_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/find_scenic_sort" />
+
+        <View style="@style/style_vertical_line"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_width="1dp"/>
+
+        <TextView
+            style="@style/style_common_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/red"
+            android:text="@string/find_info" />
+    </LinearLayout>
+</LinearLayout>
