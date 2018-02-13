@@ -34,6 +34,9 @@ public class FindMutilRvAdapter extends RecyclerView.Adapter<ViewHolder> {
     private RecyclerView recyclerView;
     private OnItemClickListener onItemClickListener;
 
+    List<ScenicResponse> recommendScenic;
+    private int recommendIndex=0;
+
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
@@ -41,6 +44,10 @@ public class FindMutilRvAdapter extends RecyclerView.Adapter<ViewHolder> {
     public FindMutilRvAdapter(Map<Integer, Object> map, RecyclerView recyclerView) {
         this.map = map;
         this.recyclerView = recyclerView;
+        recommendScenic = (List<ScenicResponse>) map.get(FIRST);
+        if(recommendScenic!=null){
+            recommendIndex=recommendScenic.size();
+        }
     }
 
     @Override
@@ -58,13 +65,14 @@ public class FindMutilRvAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        if (position <= 3) {
+
+
+        if (position < recommendIndex) {
             if (position == 0) {
                 holder.visable(R.id.tv_recommend_tips, View.VISIBLE);
             } else {
                 holder.visable(R.id.tv_recommend_tips, View.GONE);
             }
-            List<ScenicResponse> recommendScenic = (List<ScenicResponse>) map.get(FIRST);
             if (recommendScenic != null) {
                 HeaderViewHolder headerViewHolder = (HeaderViewHolder) holder;
                 ScenicResponse scenicResponse = recommendScenic.get(position);
@@ -82,12 +90,12 @@ public class FindMutilRvAdapter extends RecyclerView.Adapter<ViewHolder> {
                 });
 
             }
-        } else if (position == 4) {
+        } else if (position == recommendIndex) {
 
         } else {
             List<ScenicPlaySortBean> playSortBeans = (List<ScenicPlaySortBean>) map.get(THREE);
             if (playSortBeans != null) {
-                ScenicPlaySortBean playSortBean = playSortBeans.get(position -5);
+                ScenicPlaySortBean playSortBean = playSortBeans.get(position -recommendIndex-1);
                 if (playSortBean != null) {
                     ThreeViewHolder threeViewHolder = (ThreeViewHolder) holder;
                     threeViewHolder.setImage(R.id.iv_scenic, playSortBean.getThumbnail());
@@ -111,9 +119,9 @@ public class FindMutilRvAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        if (position <= 3) {
+        if (position <recommendIndex) {
             return FIRST;
-        } else if (position == 4) {
+        } else if (position == recommendIndex) {
             return SECOND;
         } else {
             return THREE;
@@ -122,7 +130,7 @@ public class FindMutilRvAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public int getItemCount() {
-        int i = (map.get(FIRST) != null ? 4: 0) + (map.get(THREE) != null ? ((List<ScenicPlaySortBean>) map.get(THREE)).size() : 0) + 1;
+        int i = (map.get(FIRST) != null ? recommendIndex: 0) + (map.get(THREE) != null ? ((List<ScenicPlaySortBean>) map.get(THREE)).size() : 0) + 1;
         return i;
     }
 

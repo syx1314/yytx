@@ -1,6 +1,8 @@
 package com.bdlm.yytx.base;
 
 
+import android.app.Activity;
+
 import com.bdlm.yytx.constant.Constant;
 import com.mob.MobSDK;
 import com.trsoft.app.lib.BaseApplication;
@@ -20,7 +22,9 @@ public class MyApplication extends BaseApplication {
 
     @Override
     public void quit(boolean isClearData) {
-
+        for (Activity activity : activityList) {
+            activity.finish();
+        }
     }
 
     @Override
@@ -48,6 +52,7 @@ public class MyApplication extends BaseApplication {
     public void saveLoginConfig(ILoginConfig mLoginConfig) {
 
     }
+
 
 
 }

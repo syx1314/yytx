@@ -78,6 +78,9 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
     @Override
     protected void createPresenter() {
         requestPermissoin("权限获得", "没有获得权限", "您禁止了权限,可能导致某些功能无法使用是否去开启", needPermissions);
+        if(tempScenic!=null){
+            tempScenic.clear();
+        }
         persenter = new HomePersenter(this);
         persenter.getNotice();
         persenter.getPosition();

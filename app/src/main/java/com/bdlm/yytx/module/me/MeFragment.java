@@ -10,7 +10,7 @@ import com.bdlm.yytx.R;
 import com.bdlm.yytx.base.BaseFragment;
 import com.bdlm.yytx.constant.Constant;
 import com.bdlm.yytx.entity.UserInfoBean;
-import com.bdlm.yytx.module.login.LoginLoginActivity;
+import com.bdlm.yytx.module.login.LoginActivity;
 import com.bdlm.yytx.module.webview.LoadHtmlLoginActivity;
 import com.orhanobut.logger.Logger;
 import com.trsoft.app.lib.inter.CommonCallback;
@@ -78,7 +78,7 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
         DialogUtil.showAlert(mContext, msg, new CommonCallback<Boolean>() {
             @Override
             public void onCallBack(Boolean data) {
-                toActivity(LoginLoginActivity.class);
+                toActivity(LoginActivity.class);
             }
         });
 
@@ -103,7 +103,7 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
             @Override
             public void onCallBack(Boolean data) {
                 PreferenceUtils.getInstance().clear();
-                toActivityNoClear(LoginLoginActivity.class);
+                toActivityNoClear(LoginActivity.class);
             }
         });
     }
@@ -134,6 +134,8 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
 //                intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.me_recommend_friends));
 //                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Distribution/recommend?token=" + token);
 //                startActivity(intent);
+//                String[] aa={"aaaa","bbbb"};
+//                DialogUtil.showAlertMenuCust(mContext,"aa",aa,0,null);
                 showShare( Constant.BASEURL2 + "/Distribution/recommend?token=" + token);
                 break;
             case R.id.tv_qrcode:
@@ -169,13 +171,13 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
         // titleUrl QQ和QQ空间跳转链接
         oks.setTitleUrl(str);
         // text是分享文本，所有平台都需要这个字段
-        oks.setText("欢饮您加入亿游天下旅游网");
+        oks.setText("欢迎您加入亿游天下旅游网");
         // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
 //        oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
         // url在微信、微博，Facebook等平台中使用
         oks.setUrl(str);
         // comment是我对这条分享的评论，仅在人人网使用
-        oks.setComment("欢饮您加入亿游天下旅游网");
+        oks.setComment("欢迎您加入亿游天下旅游网");
         // 启动分享GUI
         oks.show(getActivity());
     }

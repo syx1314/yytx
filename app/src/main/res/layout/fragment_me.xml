@@ -95,7 +95,7 @@
                         android:drawablePadding="@dimen/drawable_paddind"
                         android:drawableRight="@mipmap/jinru"
                         android:gravity="center|right"
-                        android:text="￥120" />
+                        android:text="" />
                 </LinearLayout>
 
                 <View

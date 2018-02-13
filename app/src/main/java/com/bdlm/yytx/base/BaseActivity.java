@@ -5,19 +5,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
 
 import com.bdlm.yytx.constant.Constant;
-import com.bdlm.yytx.module.login.LoginLoginActivity;
 import com.gyf.barlibrary.ImmersionBar;
-import com.orhanobut.logger.Logger;
 import com.tbruyelle.rxpermissions.Permission;
 import com.tbruyelle.rxpermissions.RxPermissions;
 import com.trsoft.app.lib.ActivitySupport;
 import com.trsoft.app.lib.mvp.IBasePresenter;
 import com.trsoft.app.lib.mvp.IBaseView;
 import com.trsoft.app.lib.utils.DialogUtil;
-import com.trsoft.app.lib.utils.PreferenceUtils;
 
 import butterknife.ButterKnife;
 import rx.functions.Action1;

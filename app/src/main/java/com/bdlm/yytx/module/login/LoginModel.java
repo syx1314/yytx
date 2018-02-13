@@ -2,6 +2,7 @@ package com.bdlm.yytx.module.login;
 
 import com.bdlm.yytx.api.ILoginApi;
 import com.bdlm.yytx.entity.LoginResponse;
+import com.orhanobut.logger.Logger;
 import com.trsoft.app.lib.http.ApiResultBean;
 import com.trsoft.app.lib.http.IApiReturn;
 
@@ -23,7 +24,7 @@ public class LoginModel extends LoginContact.ILoginModel {
         Subscribe(getApiService(ILoginApi.class).sendCode(phone), new IApiReturn<List<String>>() {
             @Override
             public void run(ApiResultBean<List<String>> apiResult) {
-                if (loginListener != null) {
+            if (loginListener != null) {
                     if (isSuccess(apiResult.getCode())) {
                         loginListener.codeResponse(apiResult);
                     } else {
@@ -47,8 +48,10 @@ public class LoginModel extends LoginContact.ILoginModel {
         Subscribe(getApiService(ILoginApi.class).login(phone, code), new IApiReturn<LoginResponse>() {
             @Override
             public void run(ApiResultBean<LoginResponse> apiResult) {
-                if (loginListener != null) {
+                if (isSuccess(apiResult.getCode())&&loginListener != null) {
                     loginListener.loginResule(apiResult.getData());
+                }else {
+                    loginListener.error(apiResult.getMsg());
                 }
             }
 

@@ -26,7 +26,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 
-public class LoginLoginActivity extends BaseLoginActivity implements LoginContact.ILoginView {
+public class LoginActivity extends BaseLoginActivity implements LoginContact.ILoginView {
 
     @BindView(R.id.et_phone)
     EditText etPhone;
@@ -80,10 +80,14 @@ public class LoginLoginActivity extends BaseLoginActivity implements LoginContac
             @Override
             public void onTick(long l) {
                 tvSendCode.setText(l / 1000 + "");
+                tvSendCode.setEnabled(false);
+                tvSendCode.setClickable(false);
             }
             @Override
             public void onFinish() {
+                tvSendCode.setClickable(true);
                 tvSendCode.setEnabled(true);
+                tvSendCode.setText(getString(R.string.login_code));
             }
         };
         String phone = etPhone.getText().toString();

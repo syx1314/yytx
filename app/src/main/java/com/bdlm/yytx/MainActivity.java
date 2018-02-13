@@ -4,6 +4,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTabHost;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -16,6 +17,7 @@ import com.bdlm.yytx.module.find.FindFragment;
 import com.bdlm.yytx.module.home.HomeFragment;
 import com.bdlm.yytx.module.me.MeFragment;
 import com.bdlm.yytx.module.specialty.SpecialtyFragment;
+import com.trsoft.app.lib.utils.DialogUtil;
 
 
 import butterknife.BindView;
@@ -31,7 +33,7 @@ public class MainActivity extends BaseLoginActivity {
 
     //定义数组来存放Fragment界面
 //    private Class fragmentArray[] = {HomeFragment.class, SpecialtyFragment.class, FindFragment.class, MeFragment.class};
-    private Class fragmentArray[] = {HomeFragment.class,  FindFragment.class, MeFragment.class};
+    private Class fragmentArray[] = {HomeFragment.class, FindFragment.class, MeFragment.class};
 
     //定义数组来存放按钮图片
 //    private int mImages[] = {R.drawable.bt_home_selector, R.drawable.bt_tab2_selector, R.drawable.bt_tab3_selector,
@@ -95,5 +97,24 @@ public class MainActivity extends BaseLoginActivity {
     @Override
     protected boolean isImmersionBarEnabled() {
         return false;
+    }
+
+    private long time = 0;
+
+    //重写onkeydown方法
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+       //点击的为返回键
+        if (keyCode == event.KEYCODE_BACK) {
+            if (System.currentTimeMillis() - time > 2000) {
+         //获得当前的时间
+                time = System.currentTimeMillis();
+                DialogUtil.showToastCust("再点击一次退出应用程序");
+
+            } else {
+                //点击在两秒以内
+                mBaseApplication.quit(true);
+            }
+        }
+        return true;
     }
 }

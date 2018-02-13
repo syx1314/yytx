@@ -52,16 +52,27 @@ MobSDK {
                 shareByAppClient false
             }
             Wechat {
-                appId "wx4868b35061f87885"
-                appSecret "64020361b8ec4c99936c0e3999a9f249"
+                appId "1106025433"
+                appSecret "2V0zuEAahCCejwft"
+                shareByAppClient true;
+
             }
             QQ {
                 appId "1106025433"
                 appKey "2V0zuEAahCCejwft"
+                shareByAppClient true;
             }
             QZone {
                 appId "1106025433"
                 appKey "2V0zuEAahCCejwft"
+                shareByAppClient true;
+
+            }
+            WechatMoments {
+                appId "1106025433"
+                appKey "2V0zuEAahCCejwft"
+                shareByAppClient true;
+
             }
 
 

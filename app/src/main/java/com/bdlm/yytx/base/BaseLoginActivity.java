@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 import com.bdlm.yytx.constant.Constant;
-import com.bdlm.yytx.module.login.LoginLoginActivity;
+import com.bdlm.yytx.module.login.LoginActivity;
 import com.gyf.barlibrary.ImmersionBar;
 import com.orhanobut.logger.Logger;
 
@@ -45,8 +45,8 @@ public abstract class BaseLoginActivity<P extends IBasePresenter, V extends IBas
         token = PreferenceUtils.getInstance().getString(Constant.TOKEN);
         Logger.e(token);
         if (TextUtils.isEmpty(token)) {
-            if (activity != null && activity.getClass() != LoginLoginActivity.class) {
-                startActivity(new Intent(this, LoginLoginActivity.class));
+            if (activity != null && activity.getClass() != LoginActivity.class) {
+                startActivity(new Intent(this, LoginActivity.class));
             }
             return;
         }
@@ -150,6 +150,8 @@ public abstract class BaseLoginActivity<P extends IBasePresenter, V extends IBas
         }
 
     }
+
+
 
     public void toCallPhone(String phone){
         Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phone));

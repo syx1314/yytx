@@ -34,8 +34,8 @@
         <service android:name="com.amap.api.location.APSService" />
 
         <activity android:name=".MainActivity"
-            android:launchMode="singleTop"/>
-        <activity android:name=".module.login.LoginLoginActivity" />
+            android:screenOrientation="portrait"/>
+        <activity android:name=".module.login.LoginActivity" />
         <activity android:name=".module.scenic.ScenicListActivity" />
         <activity android:name=".MapActivity" />
         <activity android:name=".module.scenic.ScenicDetailsActivity" />
