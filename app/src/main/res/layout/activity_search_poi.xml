@@ -15,8 +15,8 @@
         android:paddingLeft="@dimen/paddind_left"
         android:paddingRight="@dimen/paddind_rigt">
 
-        <EditText
-            android:id="@+id/et_search_key"
+        <TextView
+            android:id="@+id/tv_search_key"
             style="@style/style_common_view"
             android:layout_width="0dp"
             android:layout_marginLeft="@dimen/paddind_rigt"
@@ -24,12 +24,13 @@
             android:background="@drawable/shape_big_radio_white"
             android:drawableLeft="@mipmap/icon_search"
             android:drawablePadding="@dimen/drawable_paddind"
+            android:textSize="@dimen/text_main"
             android:hint="@string/poi_hint"
             android:imeOptions="actionSearch"
             android:inputType="text"
-            android:paddingBottom="3dp"
+            android:paddingBottom="@dimen/drawable_paddind"
             android:paddingLeft="@dimen/paddind_rigt"
-            android:paddingTop="3dp"
+            android:paddingTop="@dimen/drawable_paddind"
             android:singleLine="true" />
 
         <TextView

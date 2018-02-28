@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@mipmap/bg_tip"
+    android:gravity="center">
+
+
+    <TextView
+        android:id="@+id/addr_tv"
+        style="@style/style_common_tv"
+        android:textSize="11sp"
+        />
+
+</LinearLayout>

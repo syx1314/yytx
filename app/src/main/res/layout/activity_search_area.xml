@@ -44,10 +44,12 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
+                android:textSize="@dimen/text_main"
                 android:background="@drawable/shape_big_radio_white"
                 android:imeOptions="actionSearch"
                 android:paddingLeft="9dp"
                 android:paddingRight="40dp"
+                android:hint="@string/poi_hint"
                 android:singleLine="true" />
             <!--清除按钮-->
             <ImageView
@@ -58,13 +60,14 @@
                 android:layout_centerVertical="true"
                 android:paddingLeft="5dp"
                 android:paddingRight="12dp"
-                android:src="@mipmap/ic_common_single_close" />
+                android:src="@mipmap/ic_clear" />
         </RelativeLayout>
     </LinearLayout>
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

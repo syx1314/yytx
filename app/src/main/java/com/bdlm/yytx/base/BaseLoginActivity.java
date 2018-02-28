@@ -128,14 +128,13 @@ public abstract class BaseLoginActivity<P extends IBasePresenter, V extends IBas
 
     }
 
-    public  void toActivityOneDataNoClear(Class activityClass,String data){
-        if(activity!=null){
+    public void toActivityOneDataNoClear(Class activityClass, String data) {
+        if (activity != null) {
             Intent intent = new Intent(activity, activityClass);
-            intent.putExtra(Constant.BUNDLE_STRING,data);
+            intent.putExtra(Constant.BUNDLE_STRING, data);
             startActivity(intent);
         }
     }
-
 
 
     /**
@@ -148,16 +147,20 @@ public abstract class BaseLoginActivity<P extends IBasePresenter, V extends IBas
             Intent intent = new Intent(activity, activityClass);
             startActivity(intent);
         }
+    }
 
+    public void toActicityResultNoClear(int requestCode, Class activityClass) {
+        Intent intent = new Intent(activity, activityClass);
+        startActivityForResult(intent, requestCode);
     }
 
 
-
-    public void toCallPhone(String phone){
+    public void toCallPhone(String phone) {
         Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phone));
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
+
     @Override
     protected void onDestroy() {
         if (persenter != null) {

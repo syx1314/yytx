@@ -112,6 +112,7 @@ public class CommonTitle extends LinearLayout {
                 clickFun.rightOclick();
                 break;
             case R.id.tv_right:
+                if(clickFun!=null)
                 clickFun.rightOclick();
                 break;
         }

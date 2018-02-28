@@ -14,6 +14,7 @@ public class Constant {
     public final  static String BUNDLE_URL="BUNDLE_URL";//景区id
     public final  static String CURLON="CURLON";//d当前的经纬度
     public final  static String CURLAN="CURLAN";//d当前的经纬度
+    public final  static float DEFADLT_MAP_ZOOM=15;//地图默认缩放级别
 
 
 }
