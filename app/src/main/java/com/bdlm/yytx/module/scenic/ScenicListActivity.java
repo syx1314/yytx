@@ -171,7 +171,7 @@ public class ScenicListActivity extends BaseLoginActivity implements ScenicConta
 
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
-        if (pageInfo.getCurPage() < pageInfo.getCountPage()) {
+        if (pageInfo!=null&&pageInfo.getCurPage() < pageInfo.getCountPage()) {
             presenter.requestScenicList(lon, lat, passPortType, 0, pageInfo.getNextPage());
         } else {
             refreshlayout.finishLoadmoreWithNoMoreData();

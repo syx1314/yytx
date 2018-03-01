@@ -29,6 +29,7 @@ import android.widget.TextView;
 
 import com.bdlm.yytx.R;
 import com.bdlm.yytx.base.BaseLoginActivity;
+import com.bdlm.yytx.constant.Constant;
 import com.bdlm.yytx.entity.BusinessBean;
 import com.bdlm.yytx.entity.ManagerTypeBean;
 import com.bdlm.yytx.entity.UploadPicRespon;
@@ -37,13 +38,18 @@ import com.bdlm.yytx.module.map.SearchPoiActivity;
 import com.trsoft.app.lib.BaseApplication;
 import com.trsoft.app.lib.inter.CommonCallback;
 import com.trsoft.app.lib.utils.DialogUtil;
+import com.trsoft.app.lib.utils.DisplayUtil;
+import com.trsoft.app.lib.utils.ImageLoader;
 import com.trsoft.app.lib.utils.MyLog;
 import com.trsoft.app.lib.utils.Validator;
 import com.trsoft.app.lib.utils.validator.ValidatorUtil;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -144,16 +150,26 @@ public class BusinessJoinActivity extends BaseLoginActivity implements BusinessC
             }
         } else if (requestCode == PICTURE_CUT) {
 
-            persenter.uploadFile("shoplicense", mUploadPicFile);
+
             Bitmap bitmap = null;
             try {
-                bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(outputUri));
+                InputStream inputStream = getContentResolver().openInputStream(outputUri);
+                bitmap = BitmapFactory.decodeStream(inputStream);
+                inputStream.close();
 
+//                mUploadPicFile=new File(getExternalCacheDir(),"uploadImg.jpg");
+//                compressImageToFile(bitmap, mUploadPicFile);
+////
+////                mUploadPicFile = new File(getImagePath(outputUri, null));
+                persenter.uploadFile("shoplogo", mUploadPicFile);
             } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
             if (bitmap != null)
                 ivBusinessBanner.setImageBitmap(bitmap);
+
         }
 
         if (resultCode == 1000) {
@@ -195,7 +211,7 @@ public class BusinessJoinActivity extends BaseLoginActivity implements BusinessC
             return;
         }
         businessBean.setAddress(address);
-        businessBean.setDescribe(feature);
+        businessBean.setSpecial_explain(feature);
         businessBean.setDiscount_info(discount);
         businessBean.setMobile(phone);
         businessBean.setShop_name(name);
@@ -212,10 +228,17 @@ public class BusinessJoinActivity extends BaseLoginActivity implements BusinessC
 
     @Override
     public void error(String msg) {
+        DialogUtil.showAlert(activity, msg,null);
     }
 
     @Override
     public void resultApprove(String msg) {
+        DialogUtil.showAlert(activity, msg, new CommonCallback<Boolean>() {
+            @Override
+            public void onCallBack(Boolean data) {
+                finish();
+            }
+        });
     }
 
     @Override
@@ -232,7 +255,11 @@ public class BusinessJoinActivity extends BaseLoginActivity implements BusinessC
     @Override
     public void reultUploadFile(UploadPicRespon respon) {
         //上传照片的结果
-        MyLog.e("上传照片的结果"+respon.getPath());
+        MyLog.e("上传照片的结果" + respon.getPath());
+        if (respon != null && respon.getPath() != null) {
+            businessBean.setLogo_img(respon.getPath());
+            ImageLoader.display(Constant.IMAGE_URL+""+respon.getPath(), ivBusinessBanner);
+        }
     }
 
     public void openAlbum(Activity context) {
@@ -319,17 +346,16 @@ public class BusinessJoinActivity extends BaseLoginActivity implements BusinessC
      */
     private void cropPhoto(Uri uri) {
         // 创建File对象，用于存储裁剪后的图片，避免更改原图
-        File file = new File(getExternalCacheDir(), "crop_image.jpg");
+        mUploadPicFile = new File(getExternalCacheDir(), "crop_image.jpg");
         try {
-            if (file.exists()) {
-                file.delete();
+            if (mUploadPicFile.exists()) {
+                mUploadPicFile.delete();
             }
-            file.createNewFile();
+            mUploadPicFile.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        mUploadPicFile = new File(getImagePath(uri, null));
-        outputUri = Uri.fromFile(file);
+        outputUri = Uri.fromFile(mUploadPicFile);
         Intent intent = new Intent("com.android.camera.action.CROP");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -348,5 +374,21 @@ public class BusinessJoinActivity extends BaseLoginActivity implements BusinessC
         intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());//输出图片格式
         intent.putExtra("noFaceDetection", true);//取消人脸识别
         startActivityForResult(intent, PICTURE_CUT);
+    }
+
+    public static void compressImageToFile(Bitmap bmp, File file) {
+        // 0-100 100为不压缩
+        int options = 100;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        // 把压缩后的数据存放到baos中
+        bmp.compress(Bitmap.CompressFormat.JPEG, options, baos);
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(baos.toByteArray());
+            fos.flush();
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

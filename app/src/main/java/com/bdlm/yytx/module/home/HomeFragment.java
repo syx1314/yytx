@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.bdlm.yytx.R;
 import com.bdlm.yytx.base.BaseFragment;
+import com.bdlm.yytx.constant.BussinessTypeEnum;
 import com.bdlm.yytx.constant.Constant;
 import com.bdlm.yytx.entity.PositionBean;
 import com.bdlm.yytx.entity.ScenicResponse;
@@ -238,19 +239,27 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
 
                     break;
                 case R.id.tv_chi:
-                    context.startActivity(new Intent(context, BusinessActivity.class));
+                    Intent intent = new Intent(context, BusinessActivity.class);
+                    intent.putExtra("title", BussinessTypeEnum.EAT);
+                    context.startActivity(intent);
 
                     break;
                 case R.id.tv_live:
-                    context.startActivity(new Intent(context, BusinessActivity.class));
+                    Intent intent1 = new Intent(context, BusinessActivity.class);
+                    intent1.putExtra("title", BussinessTypeEnum.HOTEL);
+                    context.startActivity(intent1);
 
                     break;
                 case R.id.tv_play:
-                    context.startActivity(new Intent(context, BusinessActivity.class));
+                    Intent intent2 = new Intent(context, BusinessActivity.class);
+                    intent2.putExtra("title", BussinessTypeEnum.PLAY);
+                    context.startActivity(intent2);
 
                     break;
                 case R.id.tv_travel_agency:
-                    context.startActivity(new Intent(context, BusinessActivity.class));
+                    Intent intent3 = new Intent(context, BusinessActivity.class);
+                    intent3.putExtra("title", BussinessTypeEnum.TRAVEL);
+                    context.startActivity(intent3);
 
                     break;
 

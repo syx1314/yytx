@@ -14,6 +14,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 
 import com.bdlm.yytx.entity.BusinessBean;
+import com.bdlm.yytx.entity.BusinessListResponse;
 import com.bdlm.yytx.entity.ManagerTypeBean;
 import com.bdlm.yytx.entity.UploadPicRespon;
 import com.trsoft.app.lib.BaseApplication;
@@ -31,11 +32,17 @@ public class BusinessPersenter extends BasePresenter implements BusinessContact.
 
 
     BusinessContact.IBusinessView businessView;
+    BusinessContact.IBussinessListView bussinessListView;
     BussinessModel model;
 
     public BusinessPersenter(BusinessContact.IBusinessView businessView) {
         this.businessView = businessView;
         attachV(businessView);
+        model = new BussinessModel();
+    }
+    public BusinessPersenter(BusinessContact.IBussinessListView bussinessListView) {
+        this.bussinessListView = bussinessListView;
+        attachV(bussinessListView);
         model = new BussinessModel();
     }
 
@@ -48,6 +55,9 @@ public class BusinessPersenter extends BasePresenter implements BusinessContact.
         model.requestManagerType(this);
     }
 
+    public void requestBussinessList(String manage_type,String longitude,String latitude,String page){
+        model.requestBussinessList(manage_type,longitude,latitude,page,this);
+    }
     public void uploadFile(String type,File file){
         model.uploadFile(type,file,this);
     }
@@ -75,6 +85,13 @@ public class BusinessPersenter extends BasePresenter implements BusinessContact.
         if(businessView!=null){
             businessView.reultUploadFile(respon);
         }
+    }
+
+    @Override
+    public void bussinessList(BusinessListResponse response) {
+     if(bussinessListView!=null){
+         bussinessListView.resultBussinessList(response);
+     }
     }
 
 

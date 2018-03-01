@@ -20,14 +20,14 @@ public class BusinessBean {
     private String special_explain;
     private String manage_type_name;
     private String distance;
-    private String describe;
+    private String register_time;
 
-    public String getDescribe() {
-        return describe;
+    public String getRegister_time() {
+        return register_time;
     }
 
-    public void setDescribe(String describe) {
-        this.describe = describe;
+    public void setRegister_time(String register_time) {
+        this.register_time = register_time;
     }
 
     public String getId() {

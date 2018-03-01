@@ -1,6 +1,7 @@
 package com.bdlm.yytx.module.business;
 
 import com.bdlm.yytx.entity.BusinessBean;
+import com.bdlm.yytx.entity.BusinessListResponse;
 import com.bdlm.yytx.entity.ManagerTypeBean;
 import com.bdlm.yytx.entity.UploadPicRespon;
 import com.trsoft.app.lib.mvp.BaseModel;
@@ -21,6 +22,7 @@ public interface BusinessContact {
         void submitApprove(String msg);
         void managerType(List<ManagerTypeBean> managerTypeBeanList);
         void uploadFile(UploadPicRespon respon);
+        void bussinessList(BusinessListResponse response);
     }
 
     interface IBusinessView extends IBaseView {
@@ -29,9 +31,13 @@ public interface BusinessContact {
         void reultUploadFile(UploadPicRespon respon);
     }
 
+    interface IBussinessListView extends IBaseView{
+        void  resultBussinessList(BusinessListResponse response);
+    }
     abstract class BaseBussinessModel extends BaseModel {
         abstract void submitApprove(BusinessBean businessBean, IBusinessListener listener);
         abstract void requestManagerType( IBusinessListener listener);
         abstract void uploadFile(String type, File file,IBusinessListener listener);
+        abstract void requestBussinessList(String manage_type,String longitude,String latitude,String page,IBusinessListener listener);
     }
 }

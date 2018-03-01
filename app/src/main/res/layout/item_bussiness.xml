@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/spacing_medium"
+    android:paddingRight="@dimen/spacing_medium"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/spacing_medium">
+
+        <ImageView
+            android:id="@+id/iv_shop"
+            android:layout_width="100dp"
+            android:layout_height="75dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/test_scenic" />
+
+        <TextView
+            android:id="@+id/tv_shop_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_medium"
+            android:layout_toRightOf="@id/iv_shop"
+            android:text="魔饭大叔"
+            android:textColor="@color/color_text_main"
+            android:textSize="@dimen/sp_content"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_bussiness_phone"
+            style="@style/style_common_tv"
+            android:layout_below="@id/tv_shop_name"
+            android:layout_toRightOf="@id/iv_shop"
+            android:drawableLeft="@mipmap/dianhua_chi"
+            android:drawablePadding="@dimen/drawable_paddind"
+            android:text="14324242"
+            android:textColor="@color/color_text_gray"
+            android:textSize="@dimen/text_sub" />
+
+        <LinearLayout
+            android:id="@+id/item_lin_bussiness"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_bussiness_phone"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:layout_marginLeft="@dimen/spacing_medium"
+            android:layout_toRightOf="@id/iv_shop"
+            android:gravity="center_vertical"
+            android:drawableLeft="@mipmap/dianhua_chi">
+
+            <TextView
+                android:id="@+id/tv_diatance"
+                style="@style/style_common_tv"
+                android:layout_width="wrap_content"
+                android:drawableLeft="@mipmap/dingwei_chi"
+                android:drawablePadding="@dimen/drawable_paddind"
+                android:padding="0dp"
+                android:text="12km"
+                android:textColor="@color/color_text_gray"
+                android:textSize="@dimen/text_sub" />
+
+            <View
+                style="@style/style_vertical_line"
+                android:layout_width="2dp"
+                android:layout_height="14dp"
+                android:layout_marginLeft="@dimen/drawable_paddind"
+                android:layout_marginRight="@dimen/drawable_paddind" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                style="@style/style_common_tv"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:padding="0dp"
+                android:text="天津市西青区海苔发簪6道K1座6门"
+                android:textColor="@color/color_text_gray"
+                android:textSize="@dimen/text_sub" />
+        </LinearLayout>
+
+    <View
+        style="@style/style_hortical_line"
+        android:layout_below="@id/item_lin_bussiness"/>
+</RelativeLayout>

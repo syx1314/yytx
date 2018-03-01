@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 
 import com.bdlm.yytx.R;
+import com.trsoft.app.lib.utils.Validator;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -126,6 +127,10 @@ public class CommonTitle extends LinearLayout {
     }
 
     public void setTvTitle(String title) {
-        tvTitle.setText(title);
+        if(Validator.isNotEmpty(title)) {
+            tvTitle.setText(title);
+        }else {
+            tvTitle.setText("");
+        }
     }
 }

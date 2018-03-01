@@ -20,7 +20,7 @@
     <dimen name="text_sub">12sp</dimen>
     <dimen name="text_small">10sp</dimen>
 
-    <dimen name="banner_height">160dp</dimen>
+    <dimen name="banner_height">120dp</dimen>
     <dimen name="details_img_height">260dp</dimen>
     <dimen name="spacing_medium">10dp</dimen>
 </resources>
