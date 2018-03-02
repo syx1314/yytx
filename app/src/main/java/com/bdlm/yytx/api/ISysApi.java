@@ -34,4 +34,8 @@ public interface ISysApi {
     @FormUrlEncoded
     @POST("App/upVer")
     Observable<ApiResultBean<AppVersion>> checkAppVersion(@Field("version") String version);
+
+    @FormUrlEncoded
+    @POST("User/feedback")
+    Observable<ApiResultBean<String>> feedBack(@Field("content") String content,@Field("mobile") String mobile);
 }

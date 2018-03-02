@@ -33,8 +33,9 @@
         <!-- 高德定位Service -->
         <service android:name="com.amap.api.location.APSService" />
 
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".module.login.LoginActivity" />
         <activity android:name=".module.scenic.ScenicListActivity" />
         <activity android:name=".MapActivity" />
@@ -52,8 +53,9 @@
         </activity>
         <activity android:name=".module.business.BusinessActivity" />
         <activity android:name=".module.business.BusinessJoinActivity" />
-        <activity android:name=".module.map.SearchPoiActivity"></activity>
-        <activity android:name=".module.map.SearchAreaActivity"/>
+        <activity android:name=".module.map.SearchPoiActivity" />
+        <activity android:name=".module.map.SearchAreaActivity" />
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.bdlm.yytx.fileprovider"
@@ -61,8 +63,10 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
+                android:resource="@xml/file_paths" />
         </provider>
+
+        <activity android:name=".module.me.FeedBackActivity"></activity>
     </application>
 
 </manifest>

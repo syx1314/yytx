@@ -1,9 +1,11 @@
 package com.bdlm.yytx.module.me;
 
+import com.bdlm.yytx.api.ISysApi;
 import com.bdlm.yytx.api.IUserApi;
 import com.bdlm.yytx.entity.UserInfoBean;
 import com.trsoft.app.lib.http.ApiResultBean;
 import com.trsoft.app.lib.http.IApiReturn;
+import com.trsoft.app.lib.utils.MyLog;
 
 /**
  * Created by yyj on 2018/1/4.
@@ -52,6 +54,29 @@ public class MeModel extends MeContact.IMeModel {
             public void error(String message) {
                 if(listener!=null)
                 listener.error(message);
+            }
+        });
+    }
+
+    @Override
+    void submitFeedBack(String mobile, String content, final MeContact.IMeListener listener) {
+        Subscribe(getApiService(ISysApi.class).feedBack(content, mobile), new IApiReturn<String>() {
+            @Override
+            public void run(ApiResultBean<String> apiResult) {
+
+                if (listener != null) {
+                    if (isSuccess(apiResult.getCode())) {
+                        listener.feedBack(apiResult.getMsg());
+                    }else {
+                        listener.error(apiResult.getMsg());
+                    }
+                }
+            }
+
+            @Override
+            public void error(String message) {
+                if(listener!=null)
+                    listener.error(message);
             }
         });
     }

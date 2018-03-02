@@ -6,6 +6,15 @@ package com.bdlm.yytx.entity;
 
 public class LoginResponse {
     private String token;
+    private String mobile;
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
 
     public String getToken() {
         return token;

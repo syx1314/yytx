@@ -38,6 +38,8 @@
     <string name="me_order">我的订单</string>
     <string name="me_about_me">关于我们</string>
     <string name="me_opinion">意见反馈</string>
+    <string name="me_hand_opinion">提交</string>
+    <string name="me_hand_opinion_tips">请填写意见内容</string>
     <string name="me_exit">退出</string>
     <string name="me_kf_phone">全国统一客服:400-881-0662</string>
     <string name="me_company">北京亿游天下旅游发展有限公司</string>

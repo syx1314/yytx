@@ -4,6 +4,7 @@ package com.bdlm.yytx.module.me;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bdlm.yytx.R;
@@ -25,7 +26,8 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
 
 
 public class MeFragment extends BaseFragment<MePresenter> implements MeContact.IMeView {
-
+    @BindView(R.id.sv)
+    ScrollView sv;
     @BindView(R.id.iv_head)
     ImageView ivHead;
     @BindView(R.id.tv_name)
@@ -58,7 +60,9 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
 
     @Override
     protected void createPresenter() {
-        presenter = new MePresenter(this);
+
+
+        sv.smoothScrollTo(0, 20);
     }
 
     @Override
@@ -69,6 +73,11 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
     @Override
     public void onResume() {
         super.onResume();
+        boolean login = isLogin();
+        if (!login) {
+            return;
+        }
+        presenter = new MePresenter(this);
         presenter.userInfo();
     }
 
@@ -91,7 +100,7 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
         if (userInfoBean != null) {
             ValidatorUtil.setTextVal(tvName, userInfoBean.getNick_name());
             ValidatorUtil.setTextVal(tvPassportNum, mContext.getString(R.string.me_passport_num) + userInfoBean.getPassport_num());
-            ValidatorUtil.setTextVal(tvPassportType,mContext.getString(R.string.me_passport_type)+userInfoBean.getType_name());
+            ValidatorUtil.setTextVal(tvPassportType, mContext.getString(R.string.me_passport_type) + userInfoBean.getType_name());
             tvBalance.setText("¥" + userInfoBean.getBalance());
             ImageLoader.displayCircleImage(mContext, userInfoBean.getAvatar(), ivHead);
         }
@@ -136,7 +145,7 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
 //                startActivity(intent);
 //                String[] aa={"aaaa","bbbb"};
 //                DialogUtil.showAlertMenuCust(mContext,"aa",aa,0,null);
-                showShare( Constant.BASEURL2 + "/Distribution/recommend?token=" + token);
+                showShare(Constant.BASEURL2 + "/Distribution/recommend?token=" + token);
                 break;
             case R.id.tv_qrcode:
                 intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.me_qrcode));
@@ -154,6 +163,7 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
                 startActivity(intent);
                 break;
             case R.id.tv_opinion:
+                startActivity(new Intent(mContext, FeedBackActivity.class));
                 break;
             case R.id.tv_exit:
                 presenter.requestLogout();

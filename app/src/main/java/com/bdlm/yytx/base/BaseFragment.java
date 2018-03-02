@@ -48,15 +48,16 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
 
     protected abstract int getLayout();
 
-    public void isLogin() {
+    public boolean isLogin() {
         token = PreferenceUtils.getInstance().getString(Constant.TOKEN);
         Logger.e(token);
         if (TextUtils.isEmpty(token)) {
             if (mContext != null && mContext.getClass() != LoginActivity.class) {
                 startActivity(new Intent(mContext, LoginActivity.class));
             }
-            return;
+            return false;
         }
+        return  true;
 
     }
 

@@ -30,7 +30,7 @@ public class BussinessMutilRvAdapter extends RecyclerView.Adapter<ViewHolder> {
     private final List<BusinessBean> businessBeans;
     private RecyclerView recyclerView;
     private OnItemClickListener onItemClickListener;
-    DecimalFormat df = new DecimalFormat("#.0");
+    DecimalFormat df = new DecimalFormat("#0.0");
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
@@ -104,4 +104,6 @@ public class BussinessMutilRvAdapter extends RecyclerView.Adapter<ViewHolder> {
     public interface OnItemClickListener {
         void onItemClick(int position);
     }
+
+
 }

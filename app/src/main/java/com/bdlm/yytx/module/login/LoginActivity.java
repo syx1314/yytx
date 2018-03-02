@@ -145,6 +145,7 @@ public class LoginActivity extends BaseLoginActivity implements LoginContact.ILo
                 }
             });
             PreferenceUtils.getInstance().saveData(Constant.TOKEN, loginResponse.getToken());
+            PreferenceUtils.getInstance().saveData(Constant.MOBILE, loginResponse.getMobile());
 
         }
 
