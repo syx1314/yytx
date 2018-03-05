@@ -18,7 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-//一键
+//意见反馈
 public class FeedBackActivity extends BaseLoginActivity implements MeContact.IFeedBackView {
 
     @BindView(R.id.tv_phone)

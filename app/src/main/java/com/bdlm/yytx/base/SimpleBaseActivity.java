@@ -3,14 +3,21 @@ package com.bdlm.yytx.base;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 
 import com.bdlm.yytx.constant.Constant;
 import com.gyf.barlibrary.ImmersionBar;
+import com.tbruyelle.rxpermissions.Permission;
+import com.tbruyelle.rxpermissions.RxPermissions;
 import com.trsoft.app.lib.ActivitySupport;
+import com.trsoft.app.lib.inter.CommonCallback;
+import com.trsoft.app.lib.utils.DialogUtil;
 
 import butterknife.ButterKnife;
+import rx.functions.Action1;
 
 /**
  * Created by Adim on 2018/1/22.
@@ -88,4 +95,6 @@ public abstract class SimpleBaseActivity extends ActivitySupport {
         intent.setData(content_url);
         startActivity(intent);
     }
+
+
 }

@@ -56,16 +56,7 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
     HomePersenter persenter;
     @BindView(R.id.rv)
     RecyclerView rv;
-    /**
-     * 高德定位需要进行检测的权限数组
-     */
-    protected String[] needPermissions = {
-            Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.READ_PHONE_STATE
-    };
+
     private static List<ScenicResponse> tempScenic = new ArrayList<>();
     private BaseRecycleViewAdapter<ScenicResponse> dataAdapter;
     private HeaderAndFooterRecycleViewAdapter adapter;
@@ -78,14 +69,13 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
 
     @Override
     protected void createPresenter() {
-        requestPermissoin("权限获得", "没有获得权限", "您禁止了权限,可能导致某些功能无法使用是否去开启", needPermissions);
         if(tempScenic!=null){
             tempScenic.clear();
         }
         persenter = new HomePersenter(this);
         persenter.getNotice();
         persenter.getPosition();
-        persenter.recommendScenic();
+
 
         dataAdapter = new BaseRecycleViewAdapter<ScenicResponse>(tempScenic, R.layout.item_main_scenic) {
             @Override
@@ -125,6 +115,10 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
         if (positionBean != null) {
             PreferenceUtils.getInstance().saveData(Constant.CURLAN, positionBean.getLatitude() + "");
             PreferenceUtils.getInstance().saveData(Constant.CURLON, positionBean.getLongitude() + "");
+            //拿到位置信息 请求 附近景区
+            String lon = PreferenceUtils.getInstance().getString(Constant.CURLON);
+            String lat = PreferenceUtils.getInstance().getString(Constant.CURLAN);
+            persenter.requestScenicList(lon,lat,null);
         }
     }
 

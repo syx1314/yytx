@@ -148,7 +148,7 @@
                 android:layout_height="wrap_content"
                 android:background="@mipmap/juxing_sy"
                 android:gravity="center"
-                android:text="景区推荐"
+                android:text="附近景区"
                 android:textColor="@color/white" />
         </RelativeLayout>
 

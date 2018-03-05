@@ -115,50 +115,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         createPresenter();
     }
 
-    /**
-     * 请求权限
-     *
-     * @param permission  权限
-     * @param okTips      授权提示
-     * @param noTips      拒绝权限
-     * @param noAgainTips 点击不在提醒 提示用户如何操作
-     */
-    protected void requestPermissoin(final String okTips, final String noTips, final String noAgainTips, String... permission) {
-        if (Build.VERSION.SDK_INT < 23) {
-            return;
-        }
-        if (mContext == null) {
-            return;
-        }
-        RxPermissions rxPermissions = new RxPermissions(mContext);
-        rxPermissions.requestEach(permission).subscribe(new Action1<Permission>() {
-            @Override
-            public void call(Permission permission) {
-                if (permission.granted) {
-                    // 用户已经同意该权限
-//                    DialogUtil.showAlert(mContext, okTips, null);
-
-                } else if (permission.shouldShowRequestPermissionRationale) {
-                    // 用户拒绝了该权限，没有选中『不再询问』（Never ask again）,那么下次再次启动时，还会提示请求权限的对话框
-
-//                    DialogUtil.showAlert(mContext, noTips, null);
-                } else {
-                    // 用户拒绝了该权限，并且选中『不再询问』，提醒用户手动打开权限
-                   DialogUtil.showAlertCusTitlel(mContext,"温馨提示",noAgainTips,"是","否", new CommonCallback<Boolean>() {
-                        @Override
-                        public void onCallBack(Boolean data) {
-                            if(data){
-                                Uri packageURI = Uri.parse("package:" + mContext.getPackageName());
-                                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageURI);
-                                startActivity(intent);
-                            }
-                        }
-                    });
-
-                }
-            }
-        });
-    }
 
 
     /**

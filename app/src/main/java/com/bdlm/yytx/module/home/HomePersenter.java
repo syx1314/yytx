@@ -41,6 +41,13 @@ public class HomePersenter extends BasePresenter<IHomeContact.IHomeView> impleme
         });
         location.startLocation();
     }
+    public void requestScenicList(String longitude, String latitude, String scenic_id) {
+        if (longitude != null & latitude != null) {
+            model.requestScenicList(longitude, latitude, null, this);
+        } else {
+            model.requestScenicList(null, null, scenic_id, this);
+        }
+    }
 
     public void recommendScenic() {
         model.requestRecommendScenic(this);

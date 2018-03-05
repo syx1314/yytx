@@ -5,6 +5,7 @@ import android.app.Activity;
 
 import com.bdlm.yytx.constant.Constant;
 import com.mob.MobSDK;
+import com.tencent.bugly.crashreport.CrashReport;
 import com.trsoft.app.lib.BaseApplication;
 import com.trsoft.app.lib.entity.ILoginConfig;
 import com.trsoft.app.lib.utils.PreferenceUtils;
@@ -30,6 +31,8 @@ public class MyApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        //腾讯的奔溃分析
+        CrashReport.initCrashReport(getApplicationContext(), "7c9508ba6a", false);
         MobSDK.init(this);
     }
 
@@ -52,7 +55,6 @@ public class MyApplication extends BaseApplication {
     public void saveLoginConfig(ILoginConfig mLoginConfig) {
 
     }
-
 
 
 }

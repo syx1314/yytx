@@ -44,3 +44,6 @@
 
 #搜索
 -keep   class com.amap.api.services.**{*;}
+#腾讯的bugly
+-dontwarn com.tencent.bugly.**
+-keep public class com.tencent.bugly.**{*;}
