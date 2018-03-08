@@ -17,6 +17,7 @@ import com.bdlm.yytx.module.find.FindFragment;
 import com.bdlm.yytx.module.home.HomeFragment;
 import com.bdlm.yytx.module.me.MeFragment;
 import com.bdlm.yytx.module.specialty.SpecialtyFragment;
+import com.taobao.sophix.SophixManager;
 import com.trsoft.app.lib.utils.DialogUtil;
 
 
@@ -49,6 +50,8 @@ public class MainActivity extends BaseLoginActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         init();
+        //检查是否有新的补丁
+        SophixManager.getInstance().queryAndLoadNewPatch();
     }
 
 

@@ -29,15 +29,14 @@
             android:textColor="@color/white" />
 
 
-
         <TextView
             android:id="@+id/tv_gonggao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/drawable_paddind"
-            android:singleLine="true"
             android:ellipsize="marquee"
             android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
             android:text=""
             android:textColor="@color/color_text_main" />
     </LinearLayout>
@@ -130,18 +129,36 @@
         android:id="@+id/lin_recomend"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin">
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="@dimen/spacing_medium">
 
         <RelativeLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_weight="4">
 
             <ImageView
                 android:id="@+id/iv_scenic1"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:layout_marginTop="@dimen/spacing_medium"
                 android:scaleType="fitXY" />
+
+
+            <TextView
+                android:id="@+id/tv_scenic1_name"
+                style="@style/style_common_tv"
+                android:layout_width="wrap_content"
+
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/spacing_medium"
+                android:background="@mipmap/zhuangshi"
+                android:padding="@dimen/drawable_paddind"
+                android:textColor="@color/white"
+                android:layout_marginBottom="@dimen/drawable_paddind"
+                android:textSize="@dimen/text_sub" />
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -152,14 +169,15 @@
                 android:textColor="@color/white" />
         </RelativeLayout>
 
-        <FrameLayout
+        <RelativeLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_weight="3">
 
             <ImageView
                 android:id="@+id/iv_scenic2"
                 android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/spacing_medium"
                 android:layout_height="100dp"
                 android:layout_marginLeft="1dp"
                 android:scaleType="fitXY" />
@@ -167,12 +185,18 @@
             <TextView
                 android:id="@+id/tv_scenic2"
                 style="@style/style_common_tv"
+                android:padding="@dimen/drawable_paddind"
                 android:layout_width="match_parent"
-                android:layout_gravity="bottom"
-                android:gravity="right"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:ellipsize="end"
+                android:gravity="right|center_vertical"
+                android:maxLines="1"
                 android:text="@string/home_play"
-                android:textColor="@color/white" />
+                android:layout_marginBottom="@dimen/drawable_paddind"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_sub" />
 
-        </FrameLayout>
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

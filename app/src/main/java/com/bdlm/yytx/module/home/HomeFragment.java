@@ -128,6 +128,7 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
         if (responses != null && responses.size() >=1) {
             headViewHolder.lin_recomend.setVisibility(View.VISIBLE);
             ImageLoader.display(responses.get(0).getThumbnail(), headViewHolder.ivScenic1);
+            ValidatorUtil.setTextVal(headViewHolder.tvScenic1Name,responses.get(0).getName());
             ImageLoader.display(responses.get(1).getThumbnail(), headViewHolder.ivScenic2);
             ValidatorUtil.setTextVal(headViewHolder.tvScenic2, responses.get(1).getName());
             headViewHolder.ivScenic1.setOnClickListener(new View.OnClickListener() {
@@ -204,6 +205,8 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
         LinearLayout lin_recomend;
         @BindView(R.id.iv_scenic1)
         ImageView ivScenic1;
+        @BindView(R.id.tv_scenic1_name)
+        TextView tvScenic1Name;
         @BindView(R.id.iv_scenic2)
         ImageView ivScenic2;
         @BindView(R.id.tv_scenic2)
