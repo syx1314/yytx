@@ -42,7 +42,7 @@
         <activity android:name=".MapActivity" />
         <activity android:name=".module.scenic.ScenicDetailsActivity" />
         <activity android:name=".module.city.SelCityLoginActivity" />
-        <activity android:name=".module.webview.LoadHtmlLoginActivity" />
+        <activity android:name=".module.webview.LoadHtmlActivity" />
         <activity android:name=".module.scenic.SearchScenicActivity" />
         <activity android:name=".module.scenic.TicketListActivity" />
         <activity android:name=".module.welcome.WelcomeActivity">
@@ -67,7 +67,8 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".module.me.FeedBackActivity"></activity>
+        <activity android:name=".module.me.FeedBackActivity" />
+        <activity android:name=".module.find.TravelInfoListActivity"></activity>
     </application>
 
 </manifest>

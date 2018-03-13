@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:fitsSystemWindows="true"
-    tools:context="com.bdlm.yytx.module.webview.LoadHtmlActivity">
+    tools:context="com.bdlm.yytx.module.find.TravelInfoListActivity">
 
     <com.bdlm.yytx.common.view.CommonTitle
-        android:id="@+id/ct_title"
-
+        android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <include layout="@layout/layout_webview"/>
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        app:title="@string/find_info" />
+
+    <include layout="@layout/layout_refresh" />
 </LinearLayout>

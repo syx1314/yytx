@@ -1,11 +1,14 @@
 package com.bdlm.yytx.module.find;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.bdlm.yytx.R;
 import com.bdlm.yytx.entity.ScenicPlaySortBean;
@@ -17,7 +20,9 @@ import com.trsoft.app.lib.view.recycleview.adapter.BaseRecycleViewAdapter;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static com.trsoft.app.lib.BaseApplication.mContext;
 
@@ -35,8 +40,8 @@ public class FindMutilRvAdapter extends RecyclerView.Adapter<ViewHolder> {
     private OnItemClickListener onItemClickListener;
 
     List<ScenicResponse> recommendScenic;
-    private int recommendIndex=0;
-
+    private int recommendIndex = 0;
+private Context mContext;
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
@@ -45,13 +50,14 @@ public class FindMutilRvAdapter extends RecyclerView.Adapter<ViewHolder> {
         this.map = map;
         this.recyclerView = recyclerView;
         recommendScenic = (List<ScenicResponse>) map.get(FIRST);
-        if(recommendScenic!=null){
-            recommendIndex=recommendScenic.size();
+        if (recommendScenic != null) {
+            recommendIndex = recommendScenic.size();
         }
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        mContext=parent.getContext();
         if (viewType == FIRST) {
             return new HeaderViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_find_header, null));
         } else if (viewType == SECOND) {
@@ -95,7 +101,7 @@ public class FindMutilRvAdapter extends RecyclerView.Adapter<ViewHolder> {
         } else {
             List<ScenicPlaySortBean> playSortBeans = (List<ScenicPlaySortBean>) map.get(THREE);
             if (playSortBeans != null) {
-                ScenicPlaySortBean playSortBean = playSortBeans.get(position -recommendIndex-1);
+                ScenicPlaySortBean playSortBean = playSortBeans.get(position - recommendIndex - 1);
                 if (playSortBean != null) {
                     ThreeViewHolder threeViewHolder = (ThreeViewHolder) holder;
                     threeViewHolder.setImage(R.id.iv_scenic, playSortBean.getThumbnail());
@@ -119,7 +125,7 @@ public class FindMutilRvAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        if (position <recommendIndex) {
+        if (position < recommendIndex) {
             return FIRST;
         } else if (position == recommendIndex) {
             return SECOND;
@@ -130,7 +136,7 @@ public class FindMutilRvAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public int getItemCount() {
-        int i = (map.get(FIRST) != null ? recommendIndex: 0) + (map.get(THREE) != null ? ((List<ScenicPlaySortBean>) map.get(THREE)).size() : 0) + 1;
+        int i = (map.get(FIRST) != null ? recommendIndex : 0) + (map.get(THREE) != null ? ((List<ScenicPlaySortBean>) map.get(THREE)).size() : 0) + 1;
         return i;
     }
 
@@ -145,10 +151,23 @@ public class FindMutilRvAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     class SecondViewHolder extends ViewHolder {
 
+
         public SecondViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(itemView);
+            itemView.findViewById(R.id.tv_tour_info).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mContext.startActivity(new Intent(mContext, TravelInfoListActivity.class));
+
+                }
+            });
         }
+
+//        @OnClick(R.id.tv_tour_info)
+//        public void toTourInfo(View view) {
+//            mContext.startActivity(new Intent(mContext, TravelInfoListActivity.class));
+//        }
     }
 
     class ThreeViewHolder extends ViewHolder {

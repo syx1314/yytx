@@ -1,10 +1,13 @@
 package com.bdlm.yytx.module.me;
 
+import com.bdlm.yytx.entity.UploadPicRespon;
 import com.bdlm.yytx.entity.UserInfoBean;
 import com.trsoft.app.lib.mvp.BaseModel;
 import com.trsoft.app.lib.mvp.IBaseListener;
 import com.trsoft.app.lib.mvp.IBaseModel;
 import com.trsoft.app.lib.mvp.IBaseView;
+
+import java.io.File;
 
 /**
  * Created by yyj on 2018/1/4.
@@ -16,10 +19,12 @@ public interface MeContact {
         void userInfo(UserInfoBean userInfoBean);
         void logoutResult(String msg);
         void feedBack(String msg);
+        void headImg(UploadPicRespon respon);
     }
 
     interface IMeView extends IBaseView {
         void getUserInfo(UserInfoBean userInfoBean);
+        void uploadHeadImg(UploadPicRespon respon);
         void responseLogout(String msg);
     }
    interface  IFeedBackView extends IBaseView
@@ -30,6 +35,7 @@ public interface MeContact {
         abstract void getUserInfo(IMeListener listener);
         abstract void logout(IMeListener listener);
         abstract void submitFeedBack(String mobile,String content,IMeListener listener);
+        abstract  void  uploadHeadImg(File file,IMeListener listener);
     }
 
 

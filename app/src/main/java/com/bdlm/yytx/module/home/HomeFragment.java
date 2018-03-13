@@ -1,7 +1,6 @@
 package com.bdlm.yytx.module.home;
 
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +19,7 @@ import com.bdlm.yytx.R;
 import com.bdlm.yytx.base.BaseFragment;
 import com.bdlm.yytx.constant.BussinessTypeEnum;
 import com.bdlm.yytx.constant.Constant;
+import com.bdlm.yytx.entity.HomeURLBean;
 import com.bdlm.yytx.entity.PositionBean;
 import com.bdlm.yytx.entity.ScenicResponse;
 import com.bdlm.yytx.module.business.BusinessActivity;
@@ -28,6 +28,7 @@ import com.bdlm.yytx.module.scenic.ScenicDetailsActivity;
 import com.bdlm.yytx.module.scenic.ScenicListActivity;
 import com.bdlm.yytx.module.scenic.SearchScenicActivity;
 import com.bdlm.yytx.module.scenic.TicketListActivity;
+import com.bdlm.yytx.module.webview.LoadHtmlActivity;
 import com.trsoft.app.lib.utils.DialogUtil;
 import com.trsoft.app.lib.utils.ImageLoader;
 import com.trsoft.app.lib.utils.PreferenceUtils;
@@ -57,6 +58,7 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
     @BindView(R.id.rv)
     RecyclerView rv;
 
+
     private static List<ScenicResponse> tempScenic = new ArrayList<>();
     private BaseRecycleViewAdapter<ScenicResponse> dataAdapter;
     private HeaderAndFooterRecycleViewAdapter adapter;
@@ -69,14 +71,10 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
 
     @Override
     protected void createPresenter() {
-        if(tempScenic!=null){
+        if (tempScenic != null) {
             tempScenic.clear();
         }
         persenter = new HomePersenter(this);
-        persenter.getNotice();
-        persenter.getPosition();
-
-
         dataAdapter = new BaseRecycleViewAdapter<ScenicResponse>(tempScenic, R.layout.item_main_scenic) {
             @Override
             public void onBindViewHolder(ViewHolder holder, int position) {
@@ -97,6 +95,9 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
                 startActivity(intent);
             }
         });
+        persenter.getNotice();
+        persenter.getPosition();
+        persenter.requestShopUrl();
     }
 
     @Override
@@ -118,17 +119,17 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
             //拿到位置信息 请求 附近景区
             String lon = PreferenceUtils.getInstance().getString(Constant.CURLON);
             String lat = PreferenceUtils.getInstance().getString(Constant.CURLAN);
-            persenter.requestScenicList(lon,lat,null);
+            persenter.requestScenicList(lon, lat, null);
         }
     }
 
     @Override
     public void resultScenic(final List<ScenicResponse> responses) {
 
-        if (responses != null && responses.size() >=1) {
+        if (responses != null && responses.size() >= 1) {
             headViewHolder.lin_recomend.setVisibility(View.VISIBLE);
             ImageLoader.display(responses.get(0).getThumbnail(), headViewHolder.ivScenic1);
-            ValidatorUtil.setTextVal(headViewHolder.tvScenic1Name,responses.get(0).getName());
+            ValidatorUtil.setTextVal(headViewHolder.tvScenic1Name, responses.get(0).getName());
             ImageLoader.display(responses.get(1).getThumbnail(), headViewHolder.ivScenic2);
             ValidatorUtil.setTextVal(headViewHolder.tvScenic2, responses.get(1).getName());
             headViewHolder.ivScenic1.setOnClickListener(new View.OnClickListener() {
@@ -162,6 +163,12 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
     public void resultNotice(String noticeStr) {
         headViewHolder.tvGonggao.setSelected(true);
         headViewHolder.tvGonggao.setText(noticeStr);
+    }
+
+    @Override
+    public void resultTourGoodsUrl(HomeURLBean urlBean) {
+
+        headViewHolder.setUrlBean(urlBean);
     }
 
     @Override
@@ -212,6 +219,11 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
         @BindView(R.id.tv_scenic2)
         TextView tvScenic2;
         private Context context;
+        private HomeURLBean urlBean;
+
+        public void setUrlBean(HomeURLBean urlBean) {
+            this.urlBean = urlBean;
+        }
 
         HeadViewHolder(View view, Context context) {
             ButterKnife.bind(this, view);
@@ -233,7 +245,11 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
                     context.startActivity(new Intent(context, ScenicListActivity.class));
                     break;
                 case R.id.tv_tourist_goods:
+                    Intent i = new Intent(context, LoadHtmlActivity.class);
 
+                    i.putExtra(Constant.BUNDLE_STRING, "旅游用品");
+                    i.putExtra(Constant.BUNDLE_URL, urlBean.getUrl());
+                    context.startActivity(i);
                     break;
                 case R.id.tv_chi:
                     Intent intent = new Intent(context, BusinessActivity.class);

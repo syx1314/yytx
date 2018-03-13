@@ -26,7 +26,7 @@ import com.bdlm.yytx.entity.PassportTypeBean;
 import com.bdlm.yytx.entity.ScenicDetailResponse;
 import com.bdlm.yytx.entity.ScenicListResponse;
 import com.bdlm.yytx.entity.ScenicResponse;
-import com.bdlm.yytx.module.webview.LoadHtmlLoginActivity;
+import com.bdlm.yytx.module.webview.LoadHtmlActivity;
 import com.orhanobut.logger.Logger;
 import com.trsoft.app.lib.inter.CommonCallback;
 import com.trsoft.app.lib.utils.DialogUtil;
@@ -244,7 +244,7 @@ public class ScenicDetailsActivity extends BaseLoginActivity implements ScenicCo
 
     @OnClick({R.id.btn_kf, R.id.btn_vr, R.id.btn_ticket_buy, R.id.btn_advance, R.id.ic_back})
     public void onViewClicked(View view) {
-        Intent intent = new Intent(activity, LoadHtmlLoginActivity.class);
+        Intent intent = new Intent(activity, LoadHtmlActivity.class);
         switch (view.getId()) {
             case R.id.btn_kf:
                 if (Validator.isNotEmpty(response.getTelephone()))

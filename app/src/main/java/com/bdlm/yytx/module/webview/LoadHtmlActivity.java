@@ -13,7 +13,7 @@ import com.trsoft.app.lib.utils.Validator;
 
 import butterknife.BindView;
 
-public class LoadHtmlLoginActivity extends BaseLoginActivity {
+public class LoadHtmlActivity extends BaseLoginActivity {
 
     @BindView(R.id.ct_title)
     CommonTitle ctTitle;

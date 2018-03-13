@@ -28,6 +28,7 @@
             android:layout_width="1dp"/>
 
         <TextView
+            android:id="@+id/tv_tour_info"
             style="@style/style_common_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

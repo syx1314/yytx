@@ -1,6 +1,7 @@
 package com.bdlm.yytx.module.home;
 
 import com.bdlm.yytx.api.IScenicApi;
+import com.bdlm.yytx.entity.HomeURLBean;
 import com.bdlm.yytx.entity.PositionBean;
 import com.bdlm.yytx.entity.ScenicResponse;
 import com.bdlm.yytx.module.scenic.ScenicContact;
@@ -22,13 +23,14 @@ public interface IHomeContact {
 
         void resultScenic(List<ScenicResponse> responses);
         void notice(String noticeStr);
+        void resultTourGoodsUrl(HomeURLBean urlBean);
     }
 
     interface  IHomeView extends IBaseView{
         void resultPosition(PositionBean positionBean);
         void resultScenic(List<ScenicResponse> responses);
         void resultNotice(String noticeStr);
-
+        void resultTourGoodsUrl(HomeURLBean urlBean);
     }
 
 

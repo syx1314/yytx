@@ -3,6 +3,8 @@ package com.bdlm.yytx.module.find;
 import com.bdlm.yytx.api.IScenicApi;
 import com.bdlm.yytx.entity.ScenicPlaySortBean;
 import com.bdlm.yytx.entity.ScenicResponse;
+import com.bdlm.yytx.entity.TourInfoListBean;
+import com.bdlm.yytx.entity.TourInfoListResponse;
 import com.bdlm.yytx.module.find.IFindContact.BaseFindModel;
 import com.trsoft.app.lib.http.ApiResultBean;
 import com.trsoft.app.lib.http.IApiReturn;
@@ -54,5 +56,25 @@ public class FindModel extends BaseFindModel {
                 }
             }
         });
+    }
+
+    @Override
+    protected void requestTourInfoList(String page, final IFindContact.IFindListener listener) {
+     Subscribe(getApiService(IScenicApi.class).getTourInfoList(page), new IApiReturn<TourInfoListResponse>() {
+         @Override
+         public void run(ApiResultBean<TourInfoListResponse> apiResult) {
+             if (isSuccess(apiResult.getCode()) && apiResult.getData() != null) {
+                 if (listener != null)
+                     listener.resultTourInfoList(apiResult.getData());
+             }
+         }
+
+         @Override
+         public void error(String message) {
+             if (listener != null) {
+                 listener.error(message);
+             }
+         }
+     });
     }
 }

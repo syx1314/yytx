@@ -1,5 +1,6 @@
 package com.bdlm.yytx.module.home;
 
+import com.bdlm.yytx.entity.HomeURLBean;
 import com.bdlm.yytx.entity.PositionBean;
 import com.bdlm.yytx.entity.ScenicResponse;
 import com.bdlm.yytx.module.map.GdLocation;
@@ -53,6 +54,9 @@ public class HomePersenter extends BasePresenter<IHomeContact.IHomeView> impleme
         model.requestRecommendScenic(this);
     }
 
+    public void requestShopUrl(){
+        model.resultTourGoodsUrl(this);
+    }
     //获取公告
     public void getNotice() {
       model.getNotice(this);
@@ -82,5 +86,12 @@ public class HomePersenter extends BasePresenter<IHomeContact.IHomeView> impleme
     @Override
     public void notice(String noticeStr) {
         homeView.resultNotice(noticeStr);
+    }
+
+    @Override
+    public void resultTourGoodsUrl(HomeURLBean urlBean) {
+        if(homeView!=null){
+            homeView.resultTourGoodsUrl(urlBean);
+        }
     }
 }

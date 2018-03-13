@@ -1,6 +1,8 @@
 package com.bdlm.yytx;
 
+import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 
 import android.os.Bundle;
@@ -19,6 +21,7 @@ import com.bdlm.yytx.module.me.MeFragment;
 import com.bdlm.yytx.module.specialty.SpecialtyFragment;
 import com.taobao.sophix.SophixManager;
 import com.trsoft.app.lib.utils.DialogUtil;
+import com.trsoft.app.lib.utils.MyLog;
 
 
 import butterknife.BindView;
@@ -101,6 +104,8 @@ public class MainActivity extends BaseLoginActivity {
     protected boolean isImmersionBarEnabled() {
         return false;
     }
+
+
 
     private long time = 0;
 

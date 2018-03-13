@@ -2,10 +2,17 @@ package com.bdlm.yytx.module.me;
 
 import com.bdlm.yytx.api.ISysApi;
 import com.bdlm.yytx.api.IUserApi;
+import com.bdlm.yytx.entity.UploadPicRespon;
 import com.bdlm.yytx.entity.UserInfoBean;
 import com.trsoft.app.lib.http.ApiResultBean;
 import com.trsoft.app.lib.http.IApiReturn;
+import com.trsoft.app.lib.utils.DialogUtil;
 import com.trsoft.app.lib.utils.MyLog;
+
+import java.io.File;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 /**
  * Created by yyj on 2018/1/4.
@@ -20,9 +27,9 @@ public class MeModel extends MeContact.IMeModel {
             @Override
             public void run(ApiResultBean<UserInfoBean> apiResult) {
                 if (listener != null) {
-                    if (isSuccess(apiResult.getCode())&&apiResult.getData() != null) {
+                    if (isSuccess(apiResult.getCode()) && apiResult.getData() != null) {
                         listener.userInfo(apiResult.getData());
-                    }else {
+                    } else {
                         listener.error(apiResult.getMsg());
                     }
                 }
@@ -44,7 +51,7 @@ public class MeModel extends MeContact.IMeModel {
                 if (listener != null) {
                     if (isSuccess(apiResult.getCode())) {
                         listener.logoutResult(apiResult.getMsg());
-                    }else {
+                    } else {
                         listener.error(apiResult.getMsg());
                     }
                 }
@@ -52,8 +59,8 @@ public class MeModel extends MeContact.IMeModel {
 
             @Override
             public void error(String message) {
-                if(listener!=null)
-                listener.error(message);
+                if (listener != null)
+                    listener.error(message);
             }
         });
     }
@@ -67,7 +74,7 @@ public class MeModel extends MeContact.IMeModel {
                 if (listener != null) {
                     if (isSuccess(apiResult.getCode())) {
                         listener.feedBack(apiResult.getMsg());
-                    }else {
+                    } else {
                         listener.error(apiResult.getMsg());
                     }
                 }
@@ -75,7 +82,37 @@ public class MeModel extends MeContact.IMeModel {
 
             @Override
             public void error(String message) {
-                if(listener!=null)
+                if (listener != null)
+                    listener.error(message);
+            }
+        });
+    }
+
+    @Override
+    void uploadHeadImg(File file, final MeContact.IMeListener listener) {
+        RequestBody userNameBody = RequestBody.create(MediaType.parse("form-data"), "head");
+        RequestBody upFile = null;
+        try {
+            upFile = RequestBody.create(MediaType.parse("application/otcet-stream"), file);
+        } catch (Exception e) {
+            e.printStackTrace();
+            DialogUtil.showToastCust("图片文件为空");
+        }
+        Subscribe(getApiService(ISysApi.class).uploadPic(upFile), new IApiReturn<UploadPicRespon>() {
+            @Override
+            public void run(ApiResultBean<UploadPicRespon> apiResult) {
+                if (listener != null) {
+                    if (isSuccess(apiResult.getCode())) {
+                        listener.headImg(apiResult.getData());
+                    } else {
+                        listener.error(apiResult.getMsg());
+                    }
+                }
+            }
+
+            @Override
+            public void error(String message) {
+                if (listener != null)
                     listener.error(message);
             }
         });

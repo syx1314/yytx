@@ -2,6 +2,7 @@ package com.bdlm.yytx.module.home;
 
 import com.bdlm.yytx.api.IScenicApi;
 import com.bdlm.yytx.api.ISysApi;
+import com.bdlm.yytx.entity.HomeURLBean;
 import com.bdlm.yytx.entity.ScenicResponse;
 import com.bdlm.yytx.module.scenic.ScenicContact;
 import com.trsoft.app.lib.http.ApiResultBean;
@@ -56,6 +57,7 @@ public class HomeModel extends BaseModel {
             }
         });
     }
+
     public void getNotice(final IHomeContact.IHomeListener listener) {
         Subscribe(getApiService(ISysApi.class).systemNotice("SYSTEMNOTICE"), new IApiReturn<String>() {
             @Override
@@ -80,4 +82,26 @@ public class HomeModel extends BaseModel {
         });
     }
 
+    public void resultTourGoodsUrl(final IHomeContact.IHomeListener listener) {
+        Subscribe(getApiService(ISysApi.class).getShopUrl(), new IApiReturn<HomeURLBean>() {
+            @Override
+            public void run(ApiResultBean<HomeURLBean> apiResult) {
+                if (isSuccess(apiResult.getCode()) && apiResult.getData() != null) {
+                    if (listener != null)
+                        listener.resultTourGoodsUrl(apiResult.getData());
+                } else {
+                    if (listener != null) {
+                        listener.error(apiResult.getMsg());
+                    }
+                }
+            }
+
+            @Override
+            public void error(String message) {
+                if (listener != null) {
+                    listener.error(message);
+                }
+            }
+        });
+    }
 }

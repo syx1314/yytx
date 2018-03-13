@@ -69,6 +69,7 @@
     <string name="find_title">发现</string>
     <string name="find_scenic_sort">景区游玩排行榜</string>
     <string name="find_info">景区资讯</string>
+    <string name="find_info_details">资讯详情</string>
     <!--TODO：商家部分-->
     <string name="business_add">加盟</string>
     <string name="business_add_title">商家加盟</string>

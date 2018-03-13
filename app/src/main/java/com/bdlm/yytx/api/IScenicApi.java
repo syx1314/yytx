@@ -8,6 +8,8 @@ import com.bdlm.yytx.entity.ScenicPlaySortBean;
 import com.bdlm.yytx.entity.ScenicResponse;
 import com.bdlm.yytx.entity.TicketBean;
 import com.bdlm.yytx.entity.TicketListResponse;
+import com.bdlm.yytx.entity.TourInfoListBean;
+import com.bdlm.yytx.entity.TourInfoListResponse;
 import com.trsoft.app.lib.http.ApiResultBean;
 
 
@@ -54,4 +56,8 @@ public interface IScenicApi {
     //景区游玩排行
     @GET("Senic/advanceRank")
     Observable<ApiResultBean<List<ScenicPlaySortBean>>> scenicPlaySort();
+
+    //旅游资讯列表接口
+    @GET("App/getTourInfoList")
+    Observable<ApiResultBean<TourInfoListResponse>> getTourInfoList(@Query("page") String page);
 }

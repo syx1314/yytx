@@ -1,10 +1,13 @@
 package com.bdlm.yytx.module.me;
 
+import com.bdlm.yytx.entity.UploadPicRespon;
 import com.bdlm.yytx.entity.UserInfoBean;
 import com.trsoft.app.lib.mvp.BasePresenter;
 import com.trsoft.app.lib.mvp.IBasePresenter;
 import com.trsoft.app.lib.mvp.IBaseView;
 import com.trsoft.app.lib.utils.MyLog;
+
+import java.io.File;
 
 /**
  * Created by yyj on 2018/1/4.
@@ -18,7 +21,7 @@ public class MePresenter extends BasePresenter implements MeContact.IMeListener 
 
     public MePresenter(MeContact.IMeView view) {
         this.meModel = new MeModel();
-        meView=view;
+        meView = view;
         attachV(view);
     }
 
@@ -39,6 +42,10 @@ public class MePresenter extends BasePresenter implements MeContact.IMeListener 
 
     public void requestLogout() {
         meModel.logout(this);
+    }
+
+    public void uploadHeadImg(File file) {
+        meModel.uploadHeadImg(file, this);
     }
 
     @Override
@@ -62,9 +69,16 @@ public class MePresenter extends BasePresenter implements MeContact.IMeListener 
 
     @Override
     public void feedBack(String msg) {
-        MyLog.e(msg+"");
+        MyLog.e(msg + "");
         if (feedBackView != null) {
             feedBackView.resultFeedBack(msg);
+        }
+    }
+
+    @Override
+    public void headImg(UploadPicRespon respon) {
+        if (meView != null) {
+            meView.uploadHeadImg(respon);
         }
     }
 }

@@ -11,7 +11,7 @@ import com.bdlm.yytx.constant.Constant;
 import com.bdlm.yytx.entity.Page;
 import com.bdlm.yytx.entity.TicketBean;
 import com.bdlm.yytx.entity.TicketListResponse;
-import com.bdlm.yytx.module.webview.LoadHtmlLoginActivity;
+import com.bdlm.yytx.module.webview.LoadHtmlActivity;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
@@ -101,7 +101,7 @@ public class TicketListActivity extends BaseLoginActivity implements ScenicConta
 
     public void buyTicket(String scenic_id) {
         isLogin();
-        Intent intent = new Intent(activity, LoadHtmlLoginActivity.class);
+        Intent intent = new Intent(activity, LoadHtmlActivity.class);
         intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.buy_ticket));
         intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Ticket/showlist/senic_id/" + scenic_id + "/token/" + token);
         startActivity(intent);
