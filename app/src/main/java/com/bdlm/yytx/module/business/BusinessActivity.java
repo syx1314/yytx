@@ -1,5 +1,6 @@
 package com.bdlm.yytx.module.business;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -40,6 +41,7 @@ public class BusinessActivity extends BaseActivity implements BusinessContact.IB
     private String lat;
     private String lon;
     private String manage_type;
+    private BussinessTypeEnum bussinessTypeEnum;
 
     @Override
     protected int getLayout() {
@@ -50,7 +52,7 @@ public class BusinessActivity extends BaseActivity implements BusinessContact.IB
     protected void createPersenter() {
         mImmersionBar.fitsSystemWindows(true).statusBarColor(R.color.color_status_bar).init();
         persenter = new BusinessPersenter(this);
-        BussinessTypeEnum bussinessTypeEnum = (BussinessTypeEnum) getIntent().getSerializableExtra("title");
+        bussinessTypeEnum = (BussinessTypeEnum) getIntent().getSerializableExtra("title");
         manage_type = bussinessTypeEnum.getCode() + "";
         ctTitle.setTvTitle(bussinessTypeEnum.getName());
         ctTitle.setClickFun(new CommonTitle.IClickFun() {
@@ -61,7 +63,10 @@ public class BusinessActivity extends BaseActivity implements BusinessContact.IB
 
             @Override
             public void rightOclick() {
-                toActivityNoClear(BusinessJoinActivity.class);
+                Intent intent = new Intent(activity, BusinessJoinActivity.class);
+                intent.putExtra("title", bussinessTypeEnum);
+                startActivity(intent);
+
             }
         });
         lat = PreferenceUtils.getInstance().getString(Constant.CURLAN);

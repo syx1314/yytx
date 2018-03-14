@@ -29,6 +29,7 @@ import android.widget.TextView;
 
 import com.bdlm.yytx.R;
 import com.bdlm.yytx.base.BaseLoginActivity;
+import com.bdlm.yytx.constant.BussinessTypeEnum;
 import com.bdlm.yytx.constant.Constant;
 import com.bdlm.yytx.entity.BusinessBean;
 import com.bdlm.yytx.entity.ManagerTypeBean;
@@ -93,6 +94,8 @@ public class BusinessJoinActivity extends BaseLoginActivity implements BusinessC
     public int PICTURE_CUT = 12;
     private Uri outputUri;//裁剪之后返回的图片Uri
     private Uri imageCameraUri;//相机拍摄完照片的Uri
+    private BussinessTypeEnum bussinessTypeEnum;
+
 
     @Override
     protected int getLayout() {
@@ -104,7 +107,11 @@ public class BusinessJoinActivity extends BaseLoginActivity implements BusinessC
         mImmersionBar.fitsSystemWindows(true).statusBarColor(R.color.color_status_bar).init();
         persenter = new BusinessPersenter(this);
         persenter.requestManagerType();//请求经营类型
-
+        selManagerTypeId = getIntent().getStringExtra(Constant.BUNDLE_STRING);
+        bussinessTypeEnum = (BussinessTypeEnum) getIntent().getSerializableExtra("title");
+        if (bussinessTypeEnum != null) {
+            selManagerTypeId = bussinessTypeEnum.getCode() + "";
+        }
     }
 
     //选择店铺招牌
@@ -228,7 +235,7 @@ public class BusinessJoinActivity extends BaseLoginActivity implements BusinessC
 
     @Override
     public void error(String msg) {
-        DialogUtil.showAlert(activity, msg,null);
+        DialogUtil.showAlert(activity, msg, null);
     }
 
     @Override
@@ -248,7 +255,14 @@ public class BusinessJoinActivity extends BaseLoginActivity implements BusinessC
             this.managerTypeBeanList = managerTypeBeanList;
             ArrayAdapter<ManagerTypeBean> adapter = new ArrayAdapter<ManagerTypeBean>(activity, android.R.layout.simple_list_item_1, managerTypeBeanList);
             spJoinType.setAdapter(adapter);
-            spJoinType.setSelection(0);
+
+            for (int i=0;i<managerTypeBeanList.size();i++){
+                if(managerTypeBeanList.get(i).getId().equals(selManagerTypeId)){
+                    spJoinType.setSelection(i);
+                    break;
+                }
+            }
+
         }
     }
 
@@ -258,7 +272,7 @@ public class BusinessJoinActivity extends BaseLoginActivity implements BusinessC
         MyLog.e("上传照片的结果" + respon.getPath());
         if (respon != null && respon.getPath() != null) {
             businessBean.setLogo_img(respon.getPath());
-            ImageLoader.display(Constant.IMAGE_URL+""+respon.getPath(), ivBusinessBanner);
+            ImageLoader.display(Constant.IMAGE_URL + "" + respon.getPath(), ivBusinessBanner);
         }
     }
 

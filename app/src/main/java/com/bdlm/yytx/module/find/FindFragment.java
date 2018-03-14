@@ -31,7 +31,7 @@ import butterknife.Unbinder;
 public class FindFragment extends BaseFragment implements IFindContact.IFindView {
 
     FindPersenter persenter;
-    @BindView(R.id.rv_find)
+    @BindView(R.id.rv)
     RecyclerView rv;
     private final int RECOMEDSCENIC = 0x1;
     private final int PLAYSORTSCENIC = 0x3;

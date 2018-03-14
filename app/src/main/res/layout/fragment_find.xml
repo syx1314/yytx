@@ -13,9 +13,10 @@
         app:leftVisibility="false"
         app:title="@string/find_title" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_find"
+    <include
+        layout="@layout/layout_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/spacing_medium" />
+
 </LinearLayout>
