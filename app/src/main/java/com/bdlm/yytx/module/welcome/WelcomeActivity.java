@@ -1,23 +1,34 @@
 package com.bdlm.yytx.module.welcome;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.widget.ImageView;
 
 import com.bdlm.yytx.MainActivity;
 import com.bdlm.yytx.R;
 import com.bdlm.yytx.base.SimpleBaseActivity;
 import com.bdlm.yytx.entity.AppVersion;
+import com.bdlm.yytx.entity.ImageBean;
 import com.tbruyelle.rxpermissions.Permission;
 import com.tbruyelle.rxpermissions.RxPermissions;
 import com.trsoft.app.lib.inter.CommonCallback;
 import com.trsoft.app.lib.utils.DeviceUtils;
 import com.trsoft.app.lib.utils.DialogUtil;
+import com.youth.banner.Banner;
+import com.youth.banner.loader.ImageLoader;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
 import rx.Subscriber;
 import rx.functions.Action1;
 
@@ -35,6 +46,9 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
     };
     private boolean gojump;
     private int flag;
+    @BindView(R.id.banner)
+    Banner banner;
+    private List<String> imgStr = new ArrayList<>();
 
     @Override
     protected int getLayout() {
@@ -46,7 +60,7 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
         super.onCreate(savedInstanceState);
         model = new WelcomeModel();
         model.setListener(this);
-        requestPermissoin("权限获得", "您禁止了权限可能影响应用的使用", "您禁止了权限,可能导致某些功能无法使用是否去开启", needPermissions);
+        model.getAdvList("1");
     }
 
     @Override
@@ -80,6 +94,48 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
     }
 
     @Override
+    public void adList(final List<ImageBean> beanList) {
+        for (ImageBean img : beanList) {
+            imgStr.add(img.getAd_img());
+        }
+        banner.setImages(imgStr);
+        banner.isAutoPlay(false);
+        //设置轮播时
+        banner.setImageLoader(new ImageLoader() {
+            @Override
+            public void displayImage(Context context, Object path, ImageView imageView) {
+                com.trsoft.app.lib.utils.ImageLoader.display((String) path,imageView);
+            }
+        });
+        banner.setDelayTime(1500);
+        banner.start();
+        banner.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+             if(position==beanList.size()-1){
+                 try {
+                     Thread.sleep(2000);
+                 } catch (InterruptedException e) {
+                     e.printStackTrace();
+                 }
+                 requestPermissoin("权限获得", "您禁止了权限可能影响应用的使用", "您禁止了权限,可能导致某些功能无法使用是否去开启", needPermissions);
+             }
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+    }
+
+    @Override
     public void error(String msg) {
         DialogUtil.showAlert(activity, msg, null);
         toActivity(MainActivity.class);
@@ -110,9 +166,11 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
                     checkVersion();
                 }
             }
+
             @Override
             public void onError(Throwable e) {
             }
+
             @Override
             public void onNext(Permission permission) {
                 if (permission.granted) {

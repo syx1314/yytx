@@ -27,7 +27,7 @@ public interface ISysApi {
 
     @FormUrlEncoded
     @POST("Ad/getAdList")
-    Observable<ApiResultBean<List<ImageBean>>> adList(String position_id);
+    Observable<ApiResultBean<List<ImageBean>>> adList(@Field("position_id") String position_id);
 
     @GET("User/get_system_config")
     Observable<ApiResultBean<String>> systemConfig(@Query("type") String type);
@@ -51,4 +51,6 @@ public interface ISysApi {
     @Multipart
     @POST("User/editAvatar")
     Observable<ApiResultBean<UploadPicRespon>>  uploadPic(@Part("ad_img\"; filename=\"head_icon.png") RequestBody file );
+
+
 }

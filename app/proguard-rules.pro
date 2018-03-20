@@ -217,3 +217,8 @@
 #腾讯的bugly
 -dontwarn com.tencent.bugly.**
 -keep public class com.tencent.bugly.**{*;}
+
+# banner 的混淆代码
+-keep class com.youth.banner.** {
+    *;
+ }

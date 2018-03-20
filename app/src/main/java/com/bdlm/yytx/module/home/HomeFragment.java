@@ -19,7 +19,9 @@ import com.bdlm.yytx.R;
 import com.bdlm.yytx.base.BaseFragment;
 import com.bdlm.yytx.constant.BussinessTypeEnum;
 import com.bdlm.yytx.constant.Constant;
+import com.bdlm.yytx.entity.AppVersion;
 import com.bdlm.yytx.entity.HomeURLBean;
+import com.bdlm.yytx.entity.ImageBean;
 import com.bdlm.yytx.entity.PositionBean;
 import com.bdlm.yytx.entity.ScenicResponse;
 import com.bdlm.yytx.module.business.BusinessActivity;
@@ -29,6 +31,7 @@ import com.bdlm.yytx.module.scenic.ScenicListActivity;
 import com.bdlm.yytx.module.scenic.SearchScenicActivity;
 import com.bdlm.yytx.module.scenic.TicketListActivity;
 import com.bdlm.yytx.module.webview.LoadHtmlActivity;
+import com.bdlm.yytx.module.welcome.WelcomeModel;
 import com.trsoft.app.lib.utils.DialogUtil;
 import com.trsoft.app.lib.utils.ImageLoader;
 import com.trsoft.app.lib.utils.PreferenceUtils;
@@ -49,7 +52,7 @@ import butterknife.OnClick;
  * A simple {@link Fragment} subclass.
  */
 
-public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView {
+public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView, WelcomeModel.WelResultListener {
     @BindView(R.id.rl_title)
     RelativeLayout rlTitle;
     @BindView(R.id.title)
@@ -63,6 +66,8 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
     private BaseRecycleViewAdapter<ScenicResponse> dataAdapter;
     private HeaderAndFooterRecycleViewAdapter adapter;
     private HeadViewHolder headViewHolder;
+    private WelcomeModel model;
+    private List<String> imgStr=new ArrayList<>();
 
     @Override
     protected int getLayout() {
@@ -98,6 +103,9 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
         persenter.getNotice();
         persenter.getPosition();
         persenter.requestShopUrl();
+        model = new WelcomeModel();
+        model.setListener(this);
+
     }
 
     @Override
@@ -108,6 +116,7 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
         adapter = new HeaderAndFooterRecycleViewAdapter(dataAdapter);
         adapter.addHeaderView(headerView);
         rv.setAdapter(adapter);
+        model.getAdvList("2");
     }
 
     @Override
@@ -169,6 +178,29 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
     public void resultTourGoodsUrl(HomeURLBean urlBean) {
 
         headViewHolder.setUrlBean(urlBean);
+    }
+
+    @Override
+    public void appInfo(AppVersion appVersion) {
+
+    }
+
+    @Override
+    public void adList(List<ImageBean> beanList) {
+        for (ImageBean img : beanList) {
+            imgStr.add(img.getAd_img());
+        }
+        headViewHolder.banner.setDelayTime(1500);
+        headViewHolder.banner.setImages(imgStr);
+        //设置轮播时间
+        headViewHolder.banner.setImageLoader(new com.youth.banner.loader.ImageLoader() {
+            @Override
+            public void displayImage(Context context, Object path, ImageView imageView) {
+                com.trsoft.app.lib.utils.ImageLoader.display((String) path,imageView);
+            }
+        });
+        headViewHolder.banner.setDelayTime(1500);
+        headViewHolder.banner.start();
     }
 
     @Override
