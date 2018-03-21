@@ -33,8 +33,8 @@ public class PreferenceUtils {
             edit.putString(key, object + "");
         } else if (object instanceof Integer) {
             edit.putInt(key, (Integer) object);
-        }else {
-
+        } else if (object instanceof Boolean) {
+            edit.putBoolean(key, (Boolean) object);
         }
         edit.commit();
     }
@@ -46,8 +46,12 @@ public class PreferenceUtils {
     public int getInt(String key) {
         return instance.getInt(key, 0);
     }
+
     public double getDouble(String key) {
         return instance.getLong(key, 0);
+    }
+    public boolean getBoolean(String key) {
+        return instance.getBoolean(key, false);
     }
 
     public void clear() {

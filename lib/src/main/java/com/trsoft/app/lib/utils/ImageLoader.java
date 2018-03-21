@@ -29,6 +29,7 @@ public class ImageLoader {
                         view.setBackground(resource.getCurrent());
             }
         });
+
     }
 
     public static void displayCircleImage(Activity activity, String url, ImageView imageView) {

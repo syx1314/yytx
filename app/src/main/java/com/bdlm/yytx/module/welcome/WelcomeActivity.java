@@ -10,6 +10,7 @@ import com.bdlm.yytx.entity.AppVersion;
 import com.trsoft.app.lib.inter.CommonCallback;
 import com.trsoft.app.lib.utils.DeviceUtils;
 import com.trsoft.app.lib.utils.DialogUtil;
+import com.trsoft.app.lib.utils.PreferenceUtils;
 
 public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.WelResultListener {
     WelcomeModel model;
@@ -25,6 +26,13 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
         model = new WelcomeModel();
         model.checkAppVersion(DeviceUtils.getVersionCode(activity));
         model.setListener(this);
+        boolean isFirst = PreferenceUtils.getInstance().getBoolean("isFirst");
+        if(isFirst){
+
+        }else {
+            PreferenceUtils.getInstance().saveData("isFirst",true);
+        }
+
     }
 
     @Override
