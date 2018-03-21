@@ -6,11 +6,14 @@ import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Handler;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bdlm.yytx.MainActivity;
 import com.bdlm.yytx.R;
@@ -22,13 +25,17 @@ import com.tbruyelle.rxpermissions.RxPermissions;
 import com.trsoft.app.lib.inter.CommonCallback;
 import com.trsoft.app.lib.utils.DeviceUtils;
 import com.trsoft.app.lib.utils.DialogUtil;
+import com.trsoft.app.lib.utils.PreferenceUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.loader.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import rx.Subscriber;
 import rx.functions.Action1;
 
@@ -48,7 +55,12 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
     private int flag;
     @BindView(R.id.banner)
     Banner banner;
+    @BindView(R.id.tv_jump)
+    TextView tvJump;
     private List<String> imgStr = new ArrayList<>();
+    private boolean isFirst;
+    private int i = 3;
+    private static Handler handler = new Handler();
 
     @Override
     protected int getLayout() {
@@ -58,9 +70,17 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mImmersionBar.statusBarView(R.id.banner).init();
         model = new WelcomeModel();
         model.setListener(this);
-        model.getAdvList("1");
+
+        isFirst = PreferenceUtils.getInstance().getBoolean("isFirst");
+        if (!isFirst) {
+            model.getAdvList("6");//欢迎页
+        } else {
+            PreferenceUtils.getInstance().saveData("isFirst", false);
+            model.getAdvList("1");//轮播图
+        }
     }
 
     @Override
@@ -104,22 +124,26 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
         banner.setImageLoader(new ImageLoader() {
             @Override
             public void displayImage(Context context, Object path, ImageView imageView) {
-                com.trsoft.app.lib.utils.ImageLoader.display((String) path,imageView);
+                com.trsoft.app.lib.utils.ImageLoader.display((String) path, imageView);
             }
         });
         banner.setDelayTime(1500);
         banner.start();
+        if (!isFirst) {
+            tvJump.setVisibility(View.VISIBLE);
+            handler.postDelayed(runnable, 1000);
+        }
         banner.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-             if(position==beanList.size()-1){
-                 try {
-                     Thread.sleep(2000);
-                 } catch (InterruptedException e) {
-                     e.printStackTrace();
-                 }
-                 requestPermissoin("权限获得", "您禁止了权限可能影响应用的使用", "您禁止了权限,可能导致某些功能无法使用是否去开启", needPermissions);
-             }
+                if (position == beanList.size() - 1) {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    requestPermissoin("权限获得", "您禁止了权限可能影响应用的使用", "您禁止了权限,可能导致某些功能无法使用是否去开启", needPermissions);
+                }
             }
 
             @Override
@@ -135,10 +159,29 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
 
     }
 
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+
+            tvJump.setText(i + "  跳过");
+            i--;
+            if (i == 0) {
+                handler.removeCallbacks(runnable);
+                requestPermissoin("权限获得", "您禁止了权限可能影响应用的使用", "您禁止了权限,可能导致某些功能无法使用是否去开启", needPermissions);
+            }
+            handler.postDelayed(runnable, 1000);
+        }
+    };
+
     @Override
     public void error(String msg) {
         DialogUtil.showAlert(activity, msg, null);
         toActivity(MainActivity.class);
+    }
+
+    @OnClick(R.id.tv_jump)
+    public void jump(View view) {
+        requestPermissoin("权限获得", "您禁止了权限可能影响应用的使用", "您禁止了权限,可能导致某些功能无法使用是否去开启", needPermissions);
     }
 
     @Override
@@ -146,6 +189,8 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
         super.onDestroy();
         model.cancelRequest();
         model = null;
+        handler.removeCallbacks(runnable);
+
     }
 
     /**
