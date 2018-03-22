@@ -90,6 +90,7 @@ public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView
                 holder.setText(R.id.tv_zc, scenicResponse.getPassport_type_name());
             }
         };
+        rv.setHasFixedSize(true);
         rv.setLayoutManager(new GridLayoutManager(mContext, 2));
         mImmersionBar.fitsSystemWindows(true).statusBarColor(R.color.color_status_bar).init();
         dataAdapter.setOnItemClickListener(new BaseRecycleViewAdapter.OnItemClickListener() {

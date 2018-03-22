@@ -29,6 +29,8 @@
     <!-- TODO: 我的 -->
     <string name="me_title">我的</string>
     <string name="me_exchange">充值代金券</string>
+    <string name="me_xufei">续费升级</string>
+    <string name="me_buy">年卡购买</string>
     <string name="me_bind_card">绑定年卡</string>
     <string name="me_passport_num">年卡号:</string>
     <string name="me_passport_type">等级:</string>

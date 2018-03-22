@@ -1,242 +1,286 @@
-<ScrollView android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/sv"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:scrollbars="none"
     android:fillViewport="true"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_bg_gray"
+
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+
+                android:src="@mipmap/beijing" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_head"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/shape_big_circle_white_bg" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    style="@style/style_common_tv"
+                    android:layout_marginTop="@dimen/paddings_8"
+                    android:gravity="center"
+                    android:padding="0dp"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_small_szie" />
+
+                <TextView
+                    android:id="@+id/tv_passport_num"
+                    style="@style/style_common_tv"
+
+                    android:gravity="center"
+                    android:padding="0dp"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_small_szie" />
+
+                <TextView
+                    android:id="@+id/tv_passport_type"
+                    style="@style/style_common_tv"
+
+                    android:gravity="center"
+                    android:padding="0dp"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_small_szie" />
+            </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
-           android:orientation="vertical"
+            android:id="@+id/lin_exchange"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl1"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_exchange"
+                    style="@style/style_common_tv"
+                    android:layout_width="wrap_content"
+                    android:drawableLeft="@mipmap/daijinquan"
+                    android:drawablePadding="@dimen/drawable_paddind"
+                    android:text="@string/me_exchange" />
+
+                <TextView
+                    android:id="@+id/tv_balance"
+                    style="@style/style_common_tv"
+                    android:drawablePadding="@dimen/drawable_paddind"
+                    android:drawableRight="@mipmap/jinru"
+                    android:gravity="center|right"
+                    android:text="" />
+            </LinearLayout>
+
+            <View
+                style="@style/style_hortical_line"
+                android:layout_marginLeft="@dimen/paddind_left" />
+
+            <TextView
+                android:id="@+id/tv_bind"
+                style="@style/style_common_tv"
+                android:drawableLeft="@mipmap/nianka"
+                android:drawablePadding="@dimen/drawable_paddind"
+                android:drawableRight="@mipmap/jinru"
+                android:text="@string/me_bind_card" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/line10"
+            style="@style/style_hortical_line"
+            android:layout_below="@id/lin_exchange" />
+
+        <View
+            android:id="@+id/line101"
+            style="@style/style_hortical_line"
+            android:layout_below="@id/line10"
+            android:layout_marginTop="@dimen/paddind_left" />
+
+        <LinearLayout
+            android:id="@+id/lin_nianka"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:background="@color/color_bg_gray">
+            android:background="@color/white"
+            android:orientation="vertical">
 
-            <RelativeLayout
-                android:id="@+id/rl1"
+            <TextView
+                android:id="@+id/tv_xufei"
+                style="@style/style_common_tv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
-
-                    android:src="@mipmap/beijing" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/iv_head"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:background="@drawable/shape_big_circle_white_bg" />
-
-                    <TextView
-                        android:id="@+id/tv_name"
-                        style="@style/style_common_tv"
-                        android:layout_marginTop="@dimen/paddings_8"
-                        android:gravity="center"
-                        android:padding="0dp"
-                        android:text=""
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_small_szie" />
-
-                    <TextView
-                        android:id="@+id/tv_passport_num"
-                        style="@style/style_common_tv"
-
-                        android:gravity="center"
-                        android:padding="0dp"
-                        android:text=""
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_small_szie" />
-                    <TextView
-                        android:id="@+id/tv_passport_type"
-                        style="@style/style_common_tv"
-
-                        android:gravity="center"
-                        android:padding="0dp"
-                        android:text=""
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_small_szie" />
-                </LinearLayout>
-            </RelativeLayout>
-
-            <LinearLayout
-                android:id="@+id/lin_exchange"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/rl1"
-                android:background="@color/white"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tv_exchange"
-                        style="@style/style_common_tv"
-                        android:layout_width="wrap_content"
-                        android:drawableLeft="@mipmap/daijinquan"
-                        android:drawablePadding="@dimen/drawable_paddind"
-                        android:text="@string/me_exchange" />
-
-                    <TextView
-                        android:id="@+id/tv_balance"
-                        style="@style/style_common_tv"
-                        android:drawablePadding="@dimen/drawable_paddind"
-                        android:drawableRight="@mipmap/jinru"
-                        android:gravity="center|right"
-                        android:text="" />
-                </LinearLayout>
-
-                <View
-                    style="@style/style_hortical_line"
-                    android:layout_marginLeft="@dimen/paddind_left" />
-
-                <TextView
-                    android:id="@+id/tv_bind"
-                    style="@style/style_common_tv"
-                    android:drawableLeft="@mipmap/nianka"
-                    android:drawablePadding="@dimen/drawable_paddind"
-                    android:drawableRight="@mipmap/jinru"
-                    android:text="@string/me_bind_card" />
-            </LinearLayout>
+                android:drawableLeft="@mipmap/icon_xufei"
+                android:drawableRight="@mipmap/jinru"
+                android:drawablePadding="@dimen/drawable_paddind"
+                android:text="@string/me_xufei" />
 
             <View
-                android:id="@+id/line1"
                 style="@style/style_hortical_line"
-                android:layout_below="@id/lin_exchange" />
+                android:layout_marginLeft="@dimen/paddind_left" />
 
-            <View
-                android:id="@+id/line2"
-                style="@style/style_hortical_line"
-                android:layout_below="@id/line1"
-                android:layout_marginTop="@dimen/paddind_left" />
-
-            <LinearLayout
-                android:id="@+id/line3"
+            <TextView
+                android:id="@+id/tv_buy"
+                style="@style/style_common_tv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/line2"
-                android:background="@color/white"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_advance_record"
-                    style="@style/style_common_tv"
-                    android:drawableLeft="@mipmap/jilu"
-                    android:drawablePadding="@dimen/drawable_paddind"
-                    android:drawableRight="@mipmap/jinru"
-                    android:text="@string/me_addvance_recored" />
-
-                <View
-                    style="@style/style_hortical_line"
-                    android:layout_marginLeft="@dimen/paddind_left" />
-
-                <TextView
-                    android:id="@+id/tv_recommend"
-                    style="@style/style_common_tv"
-                    android:drawableLeft="@mipmap/haoyou"
-                    android:drawablePadding="@dimen/drawable_paddind"
-                    android:drawableRight="@mipmap/jinru"
-                    android:text="@string/me_recommend_friends" />
-
-                <View
-                    style="@style/style_hortical_line"
-                    android:layout_marginLeft="@dimen/paddind_left" />
-
-                <TextView
-                    android:id="@+id/tv_qrcode"
-                    style="@style/style_common_tv"
-                    android:drawableLeft="@mipmap/erweima"
-                    android:drawablePadding="@dimen/drawable_paddind"
-                    android:drawableRight="@mipmap/jinru"
-                    android:text="@string/me_qrcode" />
-
-                <View
-                    style="@style/style_hortical_line"
-                    android:layout_marginLeft="@dimen/paddind_left" />
-
-                <TextView
-                    android:id="@+id/tv_order"
-                    style="@style/style_common_tv"
-                    android:drawableLeft="@mipmap/dingdan"
-                    android:drawablePadding="@dimen/drawable_paddind"
-                    android:drawableRight="@mipmap/jinru"
-                    android:text="@string/me_order" />
-
-                <View
-                    style="@style/style_hortical_line"
-                    android:layout_marginLeft="@dimen/paddind_left" />
-
-                <TextView
-                    android:id="@+id/tv_about"
-                    style="@style/style_common_tv"
-                    android:drawableLeft="@mipmap/guanyuwomwem"
-                    android:drawablePadding="@dimen/drawable_paddind"
-                    android:drawableRight="@mipmap/jinru"
-                    android:text="@string/me_about_me" />
-
-                <View
-                    style="@style/style_hortical_line"
-                    android:layout_marginLeft="@dimen/paddind_left" />
-
-                <TextView
-                    android:id="@+id/tv_opinion"
-                    style="@style/style_common_tv"
-                    android:drawableLeft="@mipmap/yijianfankui"
-                    android:drawablePadding="@dimen/drawable_paddind"
-                    android:drawableRight="@mipmap/jinru"
-                    android:text="@string/me_opinion" />
-
-                <View
-                    style="@style/style_hortical_line"
-                    android:layout_marginLeft="@dimen/paddind_left" />
-
-                <TextView
-                    android:id="@+id/tv_exit"
-                    style="@style/style_common_tv"
-                    android:drawableLeft="@mipmap/tuichu"
-                    android:drawablePadding="@dimen/drawable_paddind"
-                    android:drawableRight="@mipmap/jinru"
-                    android:text="@string/me_exit" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_below="@id/line3"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/paddind_left"
-                    android:gravity="center"
-                    android:text="@string/me_kf_phone"
-                    android:textColor="@color/color_text_gray"
-                    android:textSize="@dimen/text_sub" />
-
-                <TextView
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/me_company"
-                    android:textColor="@color/color_text_gray"
-                    android:textSize="@dimen/text_sub" />
-            </LinearLayout>
+                android:drawableRight="@mipmap/jinru"
+                android:drawableLeft="@mipmap/icon_buy"
+                android:drawablePadding="@dimen/drawable_paddind"
+                android:text="@string/me_buy" />
         </LinearLayout>
-    </ScrollView>
+
+        <View
+            android:id="@+id/line1"
+            style="@style/style_hortical_line"
+            android:layout_below="@id/lin_nianka" />
+
+        <View
+            android:id="@+id/line2"
+            style="@style/style_hortical_line"
+            android:layout_below="@id/line1"
+            android:layout_marginTop="@dimen/paddind_left" />
+
+        <LinearLayout
+            android:id="@+id/line3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line2"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_advance_record"
+                style="@style/style_common_tv"
+                android:drawableLeft="@mipmap/jilu"
+                android:drawablePadding="@dimen/drawable_paddind"
+                android:drawableRight="@mipmap/jinru"
+                android:text="@string/me_addvance_recored" />
+
+            <View
+                style="@style/style_hortical_line"
+                android:layout_marginLeft="@dimen/paddind_left" />
+
+            <TextView
+                android:id="@+id/tv_recommend"
+                style="@style/style_common_tv"
+                android:drawableLeft="@mipmap/haoyou"
+                android:drawablePadding="@dimen/drawable_paddind"
+                android:drawableRight="@mipmap/jinru"
+                android:text="@string/me_recommend_friends" />
+
+            <View
+                style="@style/style_hortical_line"
+                android:layout_marginLeft="@dimen/paddind_left" />
+
+            <TextView
+                android:id="@+id/tv_qrcode"
+                style="@style/style_common_tv"
+                android:drawableLeft="@mipmap/erweima"
+                android:drawablePadding="@dimen/drawable_paddind"
+                android:drawableRight="@mipmap/jinru"
+                android:text="@string/me_qrcode" />
+
+            <View
+                style="@style/style_hortical_line"
+                android:layout_marginLeft="@dimen/paddind_left" />
+
+            <TextView
+                android:id="@+id/tv_order"
+                style="@style/style_common_tv"
+                android:drawableLeft="@mipmap/dingdan"
+                android:drawablePadding="@dimen/drawable_paddind"
+                android:drawableRight="@mipmap/jinru"
+                android:text="@string/me_order" />
+
+            <View
+                style="@style/style_hortical_line"
+                android:layout_marginLeft="@dimen/paddind_left" />
+
+            <TextView
+                android:id="@+id/tv_about"
+                style="@style/style_common_tv"
+                android:drawableLeft="@mipmap/guanyuwomwem"
+                android:drawablePadding="@dimen/drawable_paddind"
+                android:drawableRight="@mipmap/jinru"
+                android:text="@string/me_about_me" />
+
+            <View
+                style="@style/style_hortical_line"
+                android:layout_marginLeft="@dimen/paddind_left" />
+
+            <TextView
+                android:id="@+id/tv_opinion"
+                style="@style/style_common_tv"
+                android:drawableLeft="@mipmap/yijianfankui"
+                android:drawablePadding="@dimen/drawable_paddind"
+                android:drawableRight="@mipmap/jinru"
+                android:text="@string/me_opinion" />
+
+            <View
+                style="@style/style_hortical_line"
+                android:layout_marginLeft="@dimen/paddind_left" />
+
+            <TextView
+                android:id="@+id/tv_exit"
+                style="@style/style_common_tv"
+                android:drawableLeft="@mipmap/tuichu"
+                android:drawablePadding="@dimen/drawable_paddind"
+                android:drawableRight="@mipmap/jinru"
+                android:text="@string/me_exit" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/line3"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/paddind_left"
+                android:gravity="center"
+                android:text="@string/me_kf_phone"
+                android:textColor="@color/color_text_gray"
+                android:textSize="@dimen/text_sub" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/me_company"
+                android:textColor="@color/color_text_gray"
+                android:textSize="@dimen/text_sub" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

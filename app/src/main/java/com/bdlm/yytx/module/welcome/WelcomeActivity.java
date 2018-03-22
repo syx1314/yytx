@@ -70,7 +70,7 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mImmersionBar.statusBarView(R.id.banner).init();
+        mImmersionBar.titleBar(R.id.banner).init();
         model = new WelcomeModel();
         model.setListener(this);
 
