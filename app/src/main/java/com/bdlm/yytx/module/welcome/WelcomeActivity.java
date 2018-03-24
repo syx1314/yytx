@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bdlm.yytx.MainActivity;
@@ -25,8 +26,10 @@ import com.tbruyelle.rxpermissions.RxPermissions;
 import com.trsoft.app.lib.inter.CommonCallback;
 import com.trsoft.app.lib.utils.DeviceUtils;
 import com.trsoft.app.lib.utils.DialogUtil;
+import com.trsoft.app.lib.utils.MyLog;
 import com.trsoft.app.lib.utils.PreferenceUtils;
 import com.youth.banner.Banner;
+import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.loader.ImageLoader;
 
 import java.util.ArrayList;
@@ -57,6 +60,8 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
     Banner banner;
     @BindView(R.id.tv_jump)
     TextView tvJump;
+    @BindView(R.id.linBanner)
+    RelativeLayout linBanner;
     private List<String> imgStr = new ArrayList<>();
     private boolean isFirst;
     private int i = 3;
@@ -70,13 +75,14 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mImmersionBar.titleBar(R.id.banner).init();
         model = new WelcomeModel();
         model.setListener(this);
-
+        checkVersion();
         isFirst = PreferenceUtils.getInstance().getBoolean("isFirst");
+        MyLog.e("isFirst--"+isFirst);
         if (!isFirst) {
             model.getAdvList("6");//欢迎页
+            linBanner.setFitsSystemWindows(true);
         } else {
             PreferenceUtils.getInstance().saveData("isFirst", false);
             model.getAdvList("1");//轮播图
@@ -85,13 +91,9 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
 
     @Override
     public void appInfo(final AppVersion appVersion) {
+
         if (!appVersion.getIs_update().equals("1")) {
-            try {
-                Thread.sleep(2000);
-                toActivity(MainActivity.class);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            requestPermissoin("权限获得", "您禁止了权限可能影响应用的使用", "您禁止了权限,可能导致某些功能无法使用是否去开启", needPermissions);
             return;
         }
         DialogUtil.showAlertCusTitle(activity, "版本提示", appVersion.getExplain(), "更新", "忽略", new CommonCallback<Boolean>() {
@@ -104,7 +106,7 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
                     if (appVersion.getIs_forced_update().equals("1")) {
                         finish();
                     } else {
-                        toActivity(MainActivity.class);
+                        requestPermissoin("权限获得", "您禁止了权限可能影响应用的使用", "您禁止了权限,可能导致某些功能无法使用是否去开启", needPermissions);
                     }
 
                 }
@@ -118,42 +120,35 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
         for (ImageBean img : beanList) {
             imgStr.add(img.getAd_img());
         }
-        banner.setImages(imgStr);
-        banner.isAutoPlay(false);
-        //设置轮播时
-        banner.setImageLoader(new ImageLoader() {
-            @Override
-            public void displayImage(Context context, Object path, ImageView imageView) {
-                com.trsoft.app.lib.utils.ImageLoader.display((String) path, imageView);
-            }
-        });
-        banner.setDelayTime(1500);
-        banner.start();
+
         if (!isFirst) {
-            tvJump.setVisibility(View.VISIBLE);
+            com.trsoft.app.lib.utils.ImageLoader.display(imgStr!=null?imgStr.get(0):"",linBanner);
+
             handler.postDelayed(runnable, 1000);
+        }else {
+            banner.setImages(imgStr);
+            banner.isAutoPlay(false);
+            //设置轮播时
+            banner.setImageLoader(new ImageLoader() {
+                @Override
+                public void displayImage(Context context, Object path, ImageView imageView) {
+                    com.trsoft.app.lib.utils.ImageLoader.display((String) path, imageView);
+                }
+            });
+            banner.setDelayTime(1500);
+            banner.start();
         }
-        banner.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        banner.setOnBannerListener(new OnBannerListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            public void OnBannerClick(int position) {
                 if (position == beanList.size() - 1) {
                     try {
                         Thread.sleep(2000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    requestPermissoin("权限获得", "您禁止了权限可能影响应用的使用", "您禁止了权限,可能导致某些功能无法使用是否去开启", needPermissions);
+                    toActivity(MainActivity.class);
                 }
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
             }
         });
 
@@ -162,12 +157,12 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
-
+            tvJump.setVisibility(View.VISIBLE);
             tvJump.setText(i + "  跳过");
             i--;
             if (i == 0) {
                 handler.removeCallbacks(runnable);
-                requestPermissoin("权限获得", "您禁止了权限可能影响应用的使用", "您禁止了权限,可能导致某些功能无法使用是否去开启", needPermissions);
+                toActivity(MainActivity.class);
             }
             handler.postDelayed(runnable, 1000);
         }
@@ -181,7 +176,7 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
 
     @OnClick(R.id.tv_jump)
     public void jump(View view) {
-        requestPermissoin("权限获得", "您禁止了权限可能影响应用的使用", "您禁止了权限,可能导致某些功能无法使用是否去开启", needPermissions);
+        handler.removeCallbacks(runnable);
     }
 
     @Override
@@ -208,7 +203,7 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
             @Override
             public void onCompleted() {
                 if (gojump) {
-                    checkVersion();
+//                    toActivity(MainActivity.class);
                 }
             }
 
@@ -231,7 +226,7 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
                     DialogUtil.showAlert(activity, noTips, new CommonCallback<Boolean>() {
                         @Override
                         public void onCallBack(Boolean data) {
-                            checkVersion();
+//                            toActivity(MainActivity.class);
                         }
                     });
 
@@ -248,7 +243,7 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
                                 intent.setData(uri);
                                 startActivityForResult(intent, 0);
                             } else {
-                                checkVersion();
+//                                toActivity(MainActivity.class);
                             }
                         }
                     });
@@ -265,7 +260,7 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 0) {
-            checkVersion();
+//            toActivity(MainActivity.class);
         }
     }
 }

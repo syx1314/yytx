@@ -25,6 +25,7 @@ import com.trsoft.app.lib.utils.MyLog;
 
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 
 public class MainActivity extends BaseLoginActivity {
@@ -90,6 +91,7 @@ public class MainActivity extends BaseLoginActivity {
     }
 
 
+
     @Override
     protected int getLayout() {
         return R.layout.activity_main;
@@ -106,15 +108,14 @@ public class MainActivity extends BaseLoginActivity {
     }
 
 
-
     private long time = 0;
 
     //重写onkeydown方法
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-       //点击的为返回键
+        //点击的为返回键
         if (keyCode == event.KEYCODE_BACK) {
             if (System.currentTimeMillis() - time > 2000) {
-         //获得当前的时间
+                //获得当前的时间
                 time = System.currentTimeMillis();
                 DialogUtil.showToastCust("再点击一次退出应用程序");
 

@@ -24,6 +24,7 @@
             android:drawableLeft="@mipmap/icon_search"
             android:textSize="@dimen/text_main"
             android:drawablePadding="@dimen/drawable_paddind"
+            android:hint="请输入景区名字"
             android:paddingBottom="3dp"
             android:paddingLeft="@dimen/paddind_rigt"
             android:paddingTop="3dp"

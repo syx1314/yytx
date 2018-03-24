@@ -3,7 +3,11 @@ package com.bdlm.yytx.module.scenic;
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.bdlm.yytx.R;
 import com.bdlm.yytx.base.BaseLoginActivity;
@@ -25,9 +29,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class TicketListActivity extends BaseLoginActivity implements ScenicContact.ITicketView, OnRefreshLoadmoreListener {
-
+    @BindView(R.id.et_search_key)
+    EditText etSearchKey;
     @BindView(R.id.rv)
     RecyclerView rv;
     @BindView(R.id.refreshLayout)
@@ -36,6 +42,7 @@ public class TicketListActivity extends BaseLoginActivity implements ScenicConta
     private BaseRecycleViewAdapter<TicketBean> adapter;
     private List<TicketBean> ticketBeanList;
     private Page pageInfo;
+    private String searchKey;
 
     @Override
     protected int getLayout() {
@@ -51,7 +58,29 @@ public class TicketListActivity extends BaseLoginActivity implements ScenicConta
         LinearLayoutManager manager = new LinearLayoutManager(activity);
         rv.setLayoutManager(manager);
         rv.addItemDecoration(new RecycleViewDivider(activity, LinearLayoutManager.HORIZONTAL));
-        presenter.requestTicketList("1");
+        presenter.requestTicketList("", "1");
+        etSearchKey.setOnKeyListener(new View.OnKeyListener() {
+
+            @Override
+
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    if (ticketBeanList != null) {
+                        ticketBeanList.clear();
+                        adapter.notifyDataSetChanged();
+                    }
+                    // 先隐藏键盘
+                    ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
+                            .hideSoftInputFromWindow(TicketListActivity.this.getCurrentFocus()
+                                    .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                    //进行搜索操作的方法，在该方法中可以加入mEditSearchUser的非空判断
+                    searchKey = etSearchKey.getText().toString();
+                    presenter.requestTicketList(searchKey, "1");
+                }
+                return false;
+            }
+        });
         ticketBeanList = new ArrayList<>();
         adapter = new BaseRecycleViewAdapter<TicketBean>(ticketBeanList, R.layout.item_scenic_ticket) {
             @Override
@@ -83,6 +112,11 @@ public class TicketListActivity extends BaseLoginActivity implements ScenicConta
         });
     }
 
+    @OnClick(R.id.et_cancel)
+    public void onViewClicked() {
+        onBackPressed();
+    }
+
     @Override
     public void error(String msg) {
         DialogUtil.showAlert(activity, msg, null);
@@ -110,7 +144,7 @@ public class TicketListActivity extends BaseLoginActivity implements ScenicConta
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
         if (pageInfo.getCurPage() < pageInfo.getCountPage()) {
-            presenter.requestTicketList(pageInfo.getNextPage() + "");
+            presenter.requestTicketList(searchKey, pageInfo.getNextPage() + "");
         } else {
             refreshlayout.finishLoadmoreWithNoMoreData();
         }

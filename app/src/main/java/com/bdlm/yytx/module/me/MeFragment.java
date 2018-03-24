@@ -204,7 +204,7 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
 
     }
 
-    @OnClick({R.id.iv_head, R.id.lin_exchange, R.id.tv_bind, R.id.tv_advance_record, R.id.tv_recommend, R.id.tv_qrcode, R.id.tv_order, R.id.tv_about, R.id.tv_opinion, R.id.tv_exit})
+    @OnClick({R.id.iv_head, R.id.lin_exchange, R.id.tv_bind,R.id.tv_xufei,R.id.tv_buy,R.id.tv_advance_record, R.id.tv_recommend, R.id.tv_qrcode, R.id.tv_order, R.id.tv_about, R.id.tv_opinion, R.id.tv_exit})
     public void onViewClicked(View view) {
         Intent intent = new Intent(mContext, LoadHtmlActivity.class);
         String token = PreferenceUtils.getInstance().getString(Constant.TOKEN);
@@ -234,12 +234,12 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
                 break;
             case R.id.tv_xufei:
                 intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.me_xufei));
-                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Index/bindPassport?token=" + token);
+                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Passport/uplevel/?token=" + token);
                 startActivity(intent);
                 break;
             case R.id.tv_buy:
                 intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.me_buy));
-                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Index/bindPassport?token=" + token);
+                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Passport/renewUpgrade/?token=" + token);
                 startActivity(intent);
                 break;
             case R.id.tv_advance_record:

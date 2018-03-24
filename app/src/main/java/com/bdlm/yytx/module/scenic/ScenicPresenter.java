@@ -62,8 +62,8 @@ public class ScenicPresenter extends BasePresenter<IBaseView> implements ScenicC
         }
     }
 
-    public void requestTicketList(String page) {
-        scenicModel.requestTicketList(page,this);
+    public void requestTicketList(String search_name,String page) {
+        scenicModel.requestTicketList(search_name,page,this);
     }
 
     public void cancelRequest() {

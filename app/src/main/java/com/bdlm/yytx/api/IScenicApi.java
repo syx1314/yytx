@@ -49,7 +49,7 @@ public interface IScenicApi {
     Observable<ApiResultBean<List<ScenicResponse>>>  nearByScenic(@Query("longitude") String longitude,@Query("latitude") String latitude,@Query("senic_id") String senic_id);
 
     @GET("Ticket/getList")
-    Observable<ApiResultBean<TicketListResponse>> ticketList(@Query("page")String  page);
+    Observable<ApiResultBean<TicketListResponse>> ticketList(@Query("search_name") String search_name,@Query("page")String  page);
 
     @GET("Senic/recommend")
     Observable<ApiResultBean<List<ScenicResponse>>> recommend();

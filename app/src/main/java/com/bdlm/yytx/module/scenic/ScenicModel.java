@@ -139,8 +139,8 @@ public class ScenicModel extends ScenicContact.IScenicModel {
     }
 
     @Override
-    void requestTicketList(String page,final ScenicContact.IScenicListener listener) {
-        Subscribe(getApiService(IScenicApi.class).ticketList(page), new IApiReturn<TicketListResponse>() {
+    void requestTicketList(String search_name,String page,final ScenicContact.IScenicListener listener) {
+        Subscribe(getApiService(IScenicApi.class).ticketList(search_name,page), new IApiReturn<TicketListResponse>() {
             @Override
             public void run(ApiResultBean<TicketListResponse> apiResult) {
                 if (isSuccess(apiResult.getCode()) && apiResult.getData() != null) {

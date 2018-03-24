@@ -42,7 +42,7 @@ public interface ScenicContact {
         abstract void  requestPassportType(IScenicListener listener);
         abstract void  requestSearchScenic(String search_name,IScenicListener listener);
         abstract void requestScenicList(String longitude,  String latitude,String scenic_id,IScenicListener listener);
-        abstract void requestTicketList(String page,IScenicListener listener);
+        abstract void requestTicketList(String search_name,String page,IScenicListener listener);
 
     }
 }
