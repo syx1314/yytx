@@ -142,11 +142,6 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
             @Override
             public void OnBannerClick(int position) {
                 if (position == beanList.size() - 1) {
-                    try {
-                        Thread.sleep(2000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
                     toActivity(MainActivity.class);
                 }
             }
@@ -177,6 +172,7 @@ public class WelcomeActivity extends SimpleBaseActivity implements WelcomeModel.
     @OnClick(R.id.tv_jump)
     public void jump(View view) {
         handler.removeCallbacks(runnable);
+        toActivity(MainActivity.class);
     }
 
     @Override
