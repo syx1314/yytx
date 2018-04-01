@@ -17,6 +17,7 @@ import com.bdlm.yytx.entity.ScenicPlaySortBean;
 import com.bdlm.yytx.entity.ScenicResponse;
 import com.bdlm.yytx.module.scenic.ScenicDetailsActivity;
 import com.orhanobut.logger.Logger;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import java.util.List;
 import java.util.Map;
@@ -31,6 +32,8 @@ import butterknife.Unbinder;
 public class FindFragment extends BaseFragment implements IFindContact.IFindView {
 
     FindPersenter persenter;
+    @BindView(R.id.refreshLayout)
+    SmartRefreshLayout refreshLayout;
     @BindView(R.id.rv)
     RecyclerView rv;
     private final int RECOMEDSCENIC = 0x1;
@@ -44,6 +47,8 @@ public class FindFragment extends BaseFragment implements IFindContact.IFindView
         persenter = new FindPersenter(this);
         map = new ArrayMap<>();
         persenter.requestRecommendScenic();
+        refreshLayout.setEnableRefresh(false);
+        refreshLayout.setEnableLoadmore(false);
     }
 
     @Override

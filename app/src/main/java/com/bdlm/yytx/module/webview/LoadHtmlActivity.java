@@ -1,5 +1,7 @@
 package com.bdlm.yytx.module.webview;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -9,6 +11,7 @@ import com.bdlm.yytx.R;
 import com.bdlm.yytx.base.BaseLoginActivity;
 import com.bdlm.yytx.common.view.CommonTitle;
 import com.bdlm.yytx.constant.Constant;
+import com.trsoft.app.lib.utils.MyLog;
 import com.trsoft.app.lib.utils.Validator;
 
 import butterknife.BindView;
@@ -50,6 +53,16 @@ public class LoadHtmlActivity extends BaseLoginActivity {
         webView.setWebViewClient(new WebViewClient(){
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                MyLog.e("跳转的URL"+url);
+                if (url.startsWith("alipays://")) {
+//                    Intent intent = new Intent();
+//                    intent.setAction(Intent.ACTION_VIEW);
+//                    intent.setData(Uri.parse(url));
+//                    startActivity(intent);
+                    return true;
+                }else if(url.startsWith("intent://smartbanner?params=")){
+                    return true;
+                }
                 view.loadUrl(url);
                 return false;
             }

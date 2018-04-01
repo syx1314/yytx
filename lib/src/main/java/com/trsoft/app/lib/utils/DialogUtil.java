@@ -215,7 +215,9 @@ public class DialogUtil {
      * @param callback
      */
     public static void showAlert(Activity ctx, String msg, CommonCallback<Boolean> callback) {
-        showAlert(ctx, ctx.getString(R.string.warn), msg, callback);
+        if (ctx != null) {
+            showAlert(ctx, ctx.getString(R.string.warn), msg, callback);
+        }
     }
 
     /**

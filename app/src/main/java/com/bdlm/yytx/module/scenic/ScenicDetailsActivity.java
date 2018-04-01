@@ -179,7 +179,7 @@ public class ScenicDetailsActivity extends BaseLoginActivity implements ScenicCo
                 tvIsAddvance.setTextSize(14);
                 ValidatorUtil.setTextVal(tvIsAddvance, getString(R.string.scenic_addvance));
                 tvPrice.setVisibility(View.GONE);
-                tvAddvanceEndDate.setText(String.format(getString(R.string.scenic_addvance_end_date), response.getAdvance_enddate()));
+                tvAddvanceEndDate.setText(getString(R.string.scenic_addvance_date)+response.getAdvance_startdate() + "至" + response.getAdvance_enddate());
             } else {
                 ValidatorUtil.setTextVal(tvIsAddvance, getString(R.string.scenic_hand_passport));
             }
@@ -239,7 +239,6 @@ public class ScenicDetailsActivity extends BaseLoginActivity implements ScenicCo
     public void onTabReselected(TabLayout.Tab tab) {
 
     }
-
 
 
     @OnClick({R.id.btn_kf, R.id.btn_vr, R.id.btn_ticket_buy, R.id.btn_advance, R.id.ic_back})

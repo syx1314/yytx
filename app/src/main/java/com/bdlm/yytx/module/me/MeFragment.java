@@ -234,12 +234,14 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContact.I
                 break;
             case R.id.tv_xufei:
                 intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.me_xufei));
-                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Passport/uplevel/?token=" + token);
+                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Passport/renewUpgrade/?token=" + token);
+
                 startActivity(intent);
                 break;
             case R.id.tv_buy:
                 intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.me_buy));
-                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Passport/renewUpgrade/?token=" + token);
+                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Passport/uplevel/?token=" + token);
+
                 startActivity(intent);
                 break;
             case R.id.tv_advance_record:

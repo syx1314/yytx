@@ -53,8 +53,6 @@ import butterknife.OnClick;
  */
 
 public class HomeFragment extends BaseFragment implements IHomeContact.IHomeView, WelcomeModel.WelResultListener {
-    @BindView(R.id.rl_title)
-    RelativeLayout rlTitle;
     @BindView(R.id.title)
     TextView title;
     HomePersenter persenter;

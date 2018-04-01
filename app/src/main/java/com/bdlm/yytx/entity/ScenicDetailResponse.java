@@ -26,6 +26,7 @@ public class ScenicDetailResponse {
     private String long_title;
     private String short_title;
     private String vr_url;
+    private String advance_startdate;
     private String advance_enddate;
     private String discount_info;
     private String level_name;
@@ -190,6 +191,14 @@ public class ScenicDetailResponse {
 
     public void setVr_url(String vr_url) {
         this.vr_url = vr_url;
+    }
+
+    public String getAdvance_startdate() {
+        return advance_startdate;
+    }
+
+    public void setAdvance_startdate(String advance_startdate) {
+        this.advance_startdate = advance_startdate;
     }
 
     public String getAdvance_enddate() {

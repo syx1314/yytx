@@ -128,8 +128,8 @@
         android:id="@+id/lin_recomend"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="@dimen/spacing_medium">
+        android:layout_marginBottom="@dimen/spacing_medium"
+        android:layout_marginTop="5dp">
 
         <RelativeLayout
             android:layout_width="0dp"
@@ -148,14 +148,14 @@
                 android:id="@+id/tv_scenic1_name"
                 style="@style/style_common_tv"
                 android:layout_width="wrap_content"
-
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
+                android:layout_marginBottom="@dimen/drawable_paddind"
                 android:layout_marginRight="@dimen/spacing_medium"
                 android:background="@mipmap/zhuangshi"
+                android:gravity="center"
                 android:padding="@dimen/drawable_paddind"
                 android:textColor="@color/white"
-                android:layout_marginBottom="@dimen/drawable_paddind"
                 android:textSize="@dimen/text_sub" />
 
 
@@ -176,23 +176,23 @@
             <ImageView
                 android:id="@+id/iv_scenic2"
                 android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/spacing_medium"
                 android:layout_height="100dp"
                 android:layout_marginLeft="1dp"
+                android:layout_marginTop="@dimen/spacing_medium"
                 android:scaleType="fitXY" />
 
             <TextView
                 android:id="@+id/tv_scenic2"
                 style="@style/style_common_tv"
-                android:padding="@dimen/drawable_paddind"
                 android:layout_width="match_parent"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
+                android:layout_marginBottom="@dimen/drawable_paddind"
                 android:ellipsize="end"
                 android:gravity="right|center_vertical"
                 android:maxLines="1"
+                android:padding="@dimen/drawable_paddind"
                 android:text="@string/home_play"
-                android:layout_marginBottom="@dimen/drawable_paddind"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_sub" />
 

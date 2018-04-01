@@ -57,7 +57,7 @@
     <string name="scenic_yhzc">优惠政策</string>
     <string name="scenic_traffic">交通信息</string>
     <string name="scenic_note">注意事项</string>
-    <string name="scenic_addvance_end_date">最晚预约至:%s</string>
+    <string name="scenic_addvance_date">今日可预约</string>
     <string name="scenic_hand_passport">持卡享优惠</string>
     <string name="scenic_addvance">需预约</string>
 
