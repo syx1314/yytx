@@ -179,7 +179,7 @@ public class ScenicDetailsActivity extends BaseLoginActivity implements ScenicCo
                 tvIsAddvance.setTextSize(14);
                 ValidatorUtil.setTextVal(tvIsAddvance, getString(R.string.scenic_addvance));
                 tvPrice.setVisibility(View.GONE);
-                tvAddvanceEndDate.setText(getString(R.string.scenic_addvance_date)+response.getAdvance_startdate() + "至" + response.getAdvance_enddate());
+                tvAddvanceEndDate.setText(getString(R.string.scenic_addvance_date) + response.getAdvance_startdate() + "至" + response.getAdvance_enddate());
             } else {
                 ValidatorUtil.setTextVal(tvIsAddvance, getString(R.string.scenic_hand_passport));
             }
@@ -207,7 +207,7 @@ public class ScenicDetailsActivity extends BaseLoginActivity implements ScenicCo
         } else if (tab.getText().equals("图文详情")) {
             View view = LayoutInflater.from(activity).inflate(R.layout.layout_webview, flContent);
             WebView webView = view.findViewById(R.id.webView);
-            if (response.getSenic_id() != null) {
+            if (response != null && response.getSenic_id() != null) {
                 webView.loadUrl(Constant.BASEURL + "/Senic/getDescription/senic_id/" + response.getSenic_id());
             }
         } else {
@@ -263,7 +263,9 @@ public class ScenicDetailsActivity extends BaseLoginActivity implements ScenicCo
             case R.id.btn_advance:
                 isLogin();
                 intent.putExtra(Constant.BUNDLE_STRING, getString(R.string.advance));
-                intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Advance/index/token/" + token + "/sid/" + response.getSenic_id());
+                if (response != null) {
+                    intent.putExtra(Constant.BUNDLE_URL, Constant.BASEURL2 + "/Advance/index/token/" + token + "/sid/" + response.getSenic_id());
+                }
                 startActivity(intent);
                 break;
             case R.id.ic_back:
