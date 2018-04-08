@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     android:background="@color/base_bg"
     android:orientation="vertical"
-    tools:context="com.bdlm.yytx.module.business.BusinessJoinActivity">
+    tools:context="com.bdlm.yytx.com.bdlm.zlsp.module.business.BusinessJoinActivity">
 
-    <com.bdlm.yytx.common.view.CommonTitle
+    <com.bdlm.zlsp.common.view.CommonTitle
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:rightTvContent="@string/business_add_cancel_upload"

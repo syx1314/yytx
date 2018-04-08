@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <com.bdlm.yytx.common.view.CommonTitle
+    <com.bdlm.zlsp.common.view.CommonTitle
         android:id="@+id/ct_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
             android:id="@+id/tv_protocal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="《亿游天下用户协议》"
+            android:text="@string/login_cb_tips"
             android:textColor="@color/red" />
     </LinearLayout>
 

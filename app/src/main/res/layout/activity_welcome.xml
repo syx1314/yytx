@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bdlm.yytx.module.welcome.WelcomeActivity">
+    tools:context="com.bdlm.yytx.com.bdlm.zlsp.module.welcome.WelcomeActivity">
     <TextView
         android:id="@+id/tv_jump"
         android:layout_width="wrap_content"

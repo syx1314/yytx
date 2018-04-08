@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.bdlm.yytx.module.find.FindFragment">
+    tools:context="com.bdlm.yytx.com.bdlm.zlsp.module.find.FindFragment">
 
-    <com.bdlm.yytx.common.view.CommonTitle
+    <com.bdlm.zlsp.common.view.CommonTitle
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

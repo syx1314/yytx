@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib/lib.iml" filepath="$PROJECT_DIR$/lib/lib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/yytx.iml" filepath="$PROJECT_DIR$/yytx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zlsp.iml" filepath="$PROJECT_DIR$/zlsp.iml" />
     </modules>
   </component>
 </project>

@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.bdlm.yytx.module.scenic.ScenicListActivity">
+    tools:context="com.bdlm.yytx.com.bdlm.zlsp.module.scenic.ScenicListActivity">
 
-    <com.bdlm.yytx.common.view.CommonTitle
+    <com.bdlm.zlsp.common.view.CommonTitle
         android:id="@+id/title"
         android:fitsSystemWindows="true"
         android:layout_width="match_parent"

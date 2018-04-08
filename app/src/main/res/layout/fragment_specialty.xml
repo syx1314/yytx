@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.bdlm.yytx.module.specialty.SpecialtyFragment">
+    tools:context="com.bdlm.yytx.com.bdlm.zlsp.module.specialty.SpecialtyFragment">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_height"

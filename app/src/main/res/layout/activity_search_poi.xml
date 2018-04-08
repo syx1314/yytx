@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.bdlm.yytx.module.map.SearchPoiActivity">
+    tools:context="com.bdlm.yytx.com.bdlm.zlsp.module.map.SearchPoiActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

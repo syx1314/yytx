@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.bdlm.yytx.module.business.BusinessActivity">
-    <com.bdlm.yytx.common.view.CommonTitle
+    tools:context="com.bdlm.yytx.com.bdlm.zlsp.module.business.BusinessActivity">
+    <com.bdlm.zlsp.common.view.CommonTitle
         android:id="@+id/ct_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

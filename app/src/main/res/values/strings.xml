@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">亿游天下</string>
+    <string name="app_name">中食旅游</string>
     <string name="tab1">首页</string>
     <string name="tab2">特产</string>
     <string name="tab3">发现</string>
@@ -22,7 +22,7 @@
     <string name="login_phone">手机号</string>
     <string name="login_phone_hint">请输入手机号</string>
     <string name="login_code">验证码</string>
-    <string name="login_cb_tips">同意《亿游天下用户协议》</string>
+    <string name="login_cb_tips">《中食用户协议》</string>
     <string name="login_success">登录成功</string>
     <string name="login_approve">请同意协议</string>
 
@@ -44,7 +44,7 @@
     <string name="me_hand_opinion_tips">请填写意见内容</string>
     <string name="me_exit">退出</string>
     <string name="me_kf_phone">全国统一客服:400-881-0662</string>
-    <string name="me_company">北京亿游天下旅游发展有限公司</string>
+    <string name="me_company">中国食品报社手机台</string>
     <!--TODO: 景区列表-->
     <string name="scenic_list_title">全国景区</string>
     <!--TODO:景区详情-->
@@ -78,7 +78,7 @@
     <string name="business_add_cancel_upload">取消上传</string>
     <string name="business_name">店铺名字</string>
     <string name="business_name_hint">请输入店铺名字</string>
-    <string name="business_discount">亿游优惠</string>
+    <string name="business_discount">优惠折扣</string>
     <string name="business_discount_hint">请输入折扣信息</string>
     <string name="business_phone">联系电话</string>
     <string name="business_join_type">加盟类型</string>
