@@ -66,13 +66,18 @@ public class LoginActivity extends BaseLoginActivity implements LoginContact.ILo
             public void afterTextChanged(Editable editable) {
                 if (editable.length() >= 4) {
                     btnLogin.setEnabled(true);
-                }else {
+                } else {
                     btnLogin.setEnabled(false);
                 }
             }
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+    }
 
     @OnClick(R.id.tv_send_code)
     public void onSendCode() {
@@ -83,6 +88,7 @@ public class LoginActivity extends BaseLoginActivity implements LoginContact.ILo
                 tvSendCode.setEnabled(false);
                 tvSendCode.setClickable(false);
             }
+
             @Override
             public void onFinish() {
                 tvSendCode.setClickable(true);
